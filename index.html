@@ -211,7 +211,8 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .seg2 { display: flex; gap: 6px; flex-wrap: wrap; }
 .seg2 button { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; text-align: left; }
 .seg2 button[aria-pressed="true"] { border-color: var(--navy); box-shadow: inset 0 0 0 1px var(--navy); }
-.paper { background: #FFFFFF; color: #111827; border-radius: 6px; padding: 28px 30px; font-family: var(--body); font-size: 14px; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px var(--line); position: sticky; top: 64px; overflow-x: auto; }
+.paper { background: #FFFFFF; color: #111827; border-radius: 6px; padding: 28px 30px; font-family: var(--body); font-size: 14px; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px var(--line); overflow-x: auto; }
+.scol { display: grid; gap: 10px; min-width: 0; position: sticky; top: 64px; }
 .paper h4 { text-align: center; font-size: 14px; margin: 0 0 16px; font-weight: 700; line-height: 1.4; }
 .paper .row { display: grid; grid-template-columns: 120px 10px minmax(0, 1fr); }
 .paper .ind { padding-left: 18px; }
@@ -232,6 +233,12 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .notes { margin: 0; padding-left: 20px; display: grid; gap: 8px; font-size: 14px; }
 .foot { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
 .foot .wrap { padding-block: 20px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.foot .saran { flex: 1 1 100%; }
+.saran { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--yellow); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; color: var(--ink); font-size: 14px; }
+.saran b { font-weight: 700; }
+.saran .row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+.saran .mail { font-family: var(--mono); font-size: 14px; font-weight: 600; padding: 6px 10px; border-radius: 8px; background: var(--chip); user-select: all; overflow-wrap: anywhere; }
+.saran .btn { padding: 6px 12px; font-size: 13px; }
 .toast { position: fixed; left: 50%; bottom: calc(18px + env(safe-area-inset-bottom, 0px)); transform: translateX(-50%); background: var(--ink); color: var(--paper); padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600; z-index: 20; }
 
 @media (max-width: 900px) {
@@ -239,7 +246,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
   .calc { grid-template-columns: minmax(0, 1fr); }
   .side { position: static; }
   .surat { grid-template-columns: minmax(0, 1fr); }
-  .paper { position: static; }
+  .scol { position: static; }
 }
 @media (max-width: 560px) {
   .phead, .form, .sect, .pfoot { padding-left: 16px; padding-right: 16px; }
@@ -248,6 +255,41 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
   .stamp { width: 112px; height: 112px; } .stamp .pct { font-size: 32px; }
   .paper { padding: 20px 16px; font-size: 13px; } .paper .row { grid-template-columns: 96px 10px minmax(0, 1fr); }
   .klusters { grid-template-columns: 1fr 1fr; }
+}
+
+/* Navigasi bawah (ponsel) */
+.bnav, .ssel-wrap { display: none; }
+.ssel-wrap { gap: 5px; }
+.ssel-wrap label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ssel { width: 100%; font: inherit; font-size: 14.5px; font-weight: 600; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+@media (max-width: 760px) {
+  .tabs { display: none; }
+  body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
+  .bnav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: var(--card); border-top: 1px solid var(--line); box-shadow: 0 -6px 18px rgba(10, 30, 60, .08);
+    padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px)); }
+  .bnav > button { border: 0; background: none; display: grid; justify-items: center; gap: 3px; padding: 5px 2px 4px; font-size: 10.5px; font-weight: 600; color: var(--ink-3); line-height: 1.1; min-width: 0; }
+  .bnav > button .ic { display: grid; place-items: center; width: 48px; height: 28px; border-radius: 999px; transition: background .2s; }
+  .bnav svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+  .bnav > button[aria-current="page"] { color: var(--navy); }
+  .bnav > button[aria-current="page"] .ic { background: var(--chip); }
+  .bnav > button[aria-current="page"] .ic::after { content: ""; }
+  .more { position: absolute; right: max(10px, env(safe-area-inset-right, 0px)); bottom: calc(100% + 8px); min-width: 210px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 30px rgba(10, 30, 60, .18); padding: 6px; display: grid; gap: 2px; }
+  .more button { border: 0; background: none; text-align: left; padding: 11px 12px; border-radius: 9px; font-size: 14px; font-weight: 600; display: flex; gap: 10px; align-items: center; }
+  .more button svg { width: 20px; height: 20px; color: var(--ink-3); }
+  .more button[aria-current="page"] { background: var(--chip); color: var(--navy); }
+  .toast { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
+  /* pita atas lebih ringkas */
+  .band .wrap { padding-block: 20px 16px; gap: 16px; }
+  .band .lead { font-size: 14px; }
+  .deadlines { display: flex; overflow-x: auto; gap: 8px; scroll-snap-type: x mandatory; scrollbar-width: none; margin-right: calc(-1 * max(16px, env(safe-area-inset-right, 0px))); padding-right: 16px; }
+  .deadlines::-webkit-scrollbar { display: none; }
+  .dl { flex: none; width: 240px; scroll-snap-align: start; grid-template-columns: minmax(0, 1fr); gap: 2px; }
+  /* daftar skenario jadi pilihan ringkas */
+  .slist, .wizlink { display: none; }
+  .ssel-wrap { display: grid; }
+  main .wrap { padding-block: 18px 28px; }
+  .side { gap: 10px; }
+  .foot .wrap { padding-block: 18px 22px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -268,8 +310,8 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 
 <nav class="tabs" aria-label="Bagian">
   <div class="wrap" id="tabs">
-    <button class="tab" data-view="kalkulator">Kalkulator</button>
     <button class="tab" data-view="cek">Cek Kluster Saya</button>
+    <button class="tab" data-view="kalkulator">Kalkulator</button>
     <button class="tab" data-view="syarat">Ceklist Syarat</button>
     <button class="tab" data-view="surat">Surat Pernyataan</button>
     <button class="tab" data-view="pasal">Kamus Pasal</button>
@@ -280,7 +322,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 <main>
   <div class="wrap">
     <!-- KALKULATOR -->
-    <section class="view" id="v-kalkulator" aria-label="Kalkulator">
+    <section class="view" id="v-kalkulator" aria-label="Kalkulator" hidden>
       <div class="calc">
         <aside class="side">
           <div class="eyebrow">1 · Pilih kluster</div>
@@ -288,6 +330,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
           <p class="kket" id="kket"></p>
           <div class="eyebrow">2 · Pilih skenario</div>
           <div class="slist" id="slist"></div>
+          <div class="ssel-wrap"><label for="sselect">Skenario</label><select class="ssel" id="sselect"></select><button class="lnk" data-go="cek" style="justify-self:start;margin-top:4px">Bingung pilih? Jawab pertanyaan di Cek Kluster →</button></div>
           <button class="wizlink" data-go="cek">Bingung pilih yang mana? Jawab beberapa pertanyaan di <b>Cek Kluster Saya</b> →</button>
         </aside>
         <article class="panel" id="panel" aria-live="polite"></article>
@@ -295,10 +338,10 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
     </section>
 
     <!-- WIZARD -->
-    <section class="view page wiz" id="v-cek" aria-label="Cek kluster" hidden>
+    <section class="view page wiz" id="v-cek" aria-label="Cek kluster">
       <div>
         <h2>Cek Kluster Saya</h2>
-        <p class="intro">Jawab pertanyaan berikut sesuai surat yang Anda pegang. Di akhir, Anda diarahkan ke skenario kalkulator yang tepat.</p>
+        <p class="intro">Mulai dari sini. Jawab pertanyaan berikut sesuai surat yang Anda pegang, lalu Anda diarahkan ke skenario kalkulator yang tepat. Sudah tahu skenarionya? Langsung buka <button class="lnk" data-go="kalkulator" style="font-size:inherit">Kalkulator</button>.</p>
       </div>
       <div class="card" id="wiz"></div>
     </section>
@@ -335,7 +378,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
       </div>
       <div class="surat">
         <div class="card"><div class="form" id="sform"></div></div>
-        <div style="display:grid;gap:10px;min-width:0">
+        <div class="scol">
           <div class="paper" id="spaper"></div>
           <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="copySurat">Salin teks surat</button><button class="btn" id="resetSurat">Kembalikan contoh</button></div>
         </div>
@@ -386,7 +429,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
       <div class="card">
         <h3>Penting</h3>
         <p>Situs ini alat bantu edukasi, bukan keputusan DJP. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Anda. Untuk kepastian, hubungi KPP terdaftar atau Kring Pajak <span class="num">1500200</span>.</p>
-        <p>Disusun oleh <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube <b>@widodomaruf</b> · pertanyaan: <span class="num">hi.widodomaruf@gmail.com</span></p>
+        <p>Disusun oleh <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube <b>@widodomaruf</b> · saran dan pertanyaan: <span class="num">hi.widodomaruf@gmail.com</span></p>
       </div>
     </section>
   </div>
@@ -394,10 +437,12 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 
 <footer class="foot">
   <div class="wrap">
+    <div class="saran" role="note"><p><b>Catatan:</b> ada saran, koreksi, atau menemukan hasil hitung yang janggal? Kirim email ke:</p><div class="row2"><span class="mail">hi.widodomaruf@gmail.com</span><button class="btn" data-copy="hi.widodomaruf@gmail.com">Salin alamat</button><a class="btn" href="mailto:hi.widodomaruf@gmail.com?subject=Saran%20Simulasi%20PSA%202026" style="text-decoration:none;color:var(--ink)">Tulis email</a></div></div>
     <span>© 2026 <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube @widodomaruf</span>
     <span>Alat edukasi independen, bukan situs resmi atau keputusan DJP · berdasarkan PMK 71/2026 dan KEP-239/PJ/2026</span>
   </div>
 </footer>
+<nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Kluster</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
 <div class="toast" id="toast" hidden></div>
 
 <script>
@@ -650,17 +695,20 @@ if (typeof module !== 'undefined') module.exports = PSA;
   })();
 
   /* ---------- Routing ---------- */
-  var VIEWS = ['kalkulator', 'cek', 'syarat', 'surat', 'pasal', 'tentang'];
+  var VIEWS = ['cek', 'kalkulator', 'syarat', 'surat', 'pasal', 'tentang'];
   function show(view, push) {
-    if (VIEWS.indexOf(view) < 0) view = 'kalkulator';
+    if (VIEWS.indexOf(view) < 0) view = 'cek';
     VIEWS.forEach(function (v) { $('#v-' + v).hidden = v !== view; });
-    document.querySelectorAll('.tab').forEach(function (t) { if (t.dataset.view === view) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current'); });
+    document.querySelectorAll('.tab, .bnav [data-view]').forEach(function (t) { if (t.dataset.view === view) t.setAttribute('aria-current', 'page'); else t.removeAttribute('aria-current'); });
+    var inMore = view === 'pasal' || view === 'tentang';
+    if (inMore) $('#bMore').setAttribute('aria-current', 'page'); else $('#bMore').removeAttribute('aria-current');
+    closeMore();
     if (push !== false) setHash(view === 'kalkulator' ? 'skenario-' + state.id : view);
   }
   function route() {
     var h = (location.hash || '').slice(1);
     if (h.indexOf('skenario-') === 0) { var id = h.slice(9); if (PSA.byId(id)) { pick(id, false); show('kalkulator', false); return; } }
-    show(h || 'kalkulator', false);
+    show(h || 'cek', false);
   }
   document.addEventListener('click', function (e) {
     var t = e.target.closest('[data-view],[data-go]');
@@ -673,12 +721,22 @@ if (typeof module !== 'undefined') module.exports = PSA;
   var state = { kluster: 'pengawasan', id: 'a1', vals: {}, edited: {} };
   function vals(id) { if (!state.vals[id]) state.vals[id] = Object.assign({}, PSA.byId(id).contoh.v); return state.vals[id]; }
 
+  function closeMore() { var m = $('#more'); if (m) { m.hidden = true; $('#bMore').setAttribute('aria-expanded', 'false'); } }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('#bMore')) { var m = $('#more'); m.hidden = !m.hidden; $('#bMore').setAttribute('aria-expanded', String(!m.hidden)); return; }
+    if (!e.target.closest('#more')) closeMore();
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMore(); });
+  document.addEventListener('click', function (e) { var c = e.target.closest('[data-copy]'); if (!c) return; copy(c.dataset.copy); });
+  $('#sselect').addEventListener('change', function (e) { pick(e.target.value); });
+
   function renderKlusters() {
     $('#klusters').innerHTML = Object.keys(PSA.K).map(function (k) {
       var K = PSA.K[k], n = PSA.SC.filter(function (s) { return s.kluster === k; }).length;
       return '<button class="kbtn" data-k="' + k + '" aria-pressed="' + (state.kluster === k) + '"><b>' + K.nama + '</b><small>' + K.tabel + ' · ' + n + ' skenario</small></button>';
     }).join('');
     $('#kket').textContent = PSA.K[state.kluster].ket;
+    $('#sselect').innerHTML = PSA.SC.filter(function (s) { return s.kluster === state.kluster; }).map(function (s) { return '<option value="' + s.id + '"' + (s.id === state.id ? ' selected' : '') + '>' + esc(s.judul) + '</option>'; }).join('');
     $('#slist').innerHTML = PSA.SC.filter(function (s) { return s.kluster === state.kluster; }).map(function (s) {
       return '<button class="sbtn" data-s="' + s.id + '" aria-current="' + (s.id === state.id) + '"><span class="t">' + esc(s.judul) + '</span><span class="p">' + esc(s.pasal) + '</span></button>';
     }).join('');

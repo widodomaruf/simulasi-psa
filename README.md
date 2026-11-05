@@ -8,6 +8,7 @@ Situs ini membantu Wajib Pajak memahami program PSA. Pengguna bisa melihat skema
 
 ## Fitur
 
+- **Cek Kluster Saya (halaman awal).** Tanya-jawab singkat sesuai surat yang dipegang Wajib Pajak, lalu langsung diarahkan ke skenario kalkulator yang tepat.
 - **Kalkulator per kluster.** Ada 4 kluster sesuai Tabel A–D Lampiran KEP-239/PJ/2026, dengan total 19 skenario:
   - Pengawasan
   - Pemeriksaan
@@ -15,12 +16,12 @@ Situs ini membantu Wajib Pajak memahami program PSA. Pengguna bisa melihat skema
   - Basis Data
 - **Simulasi dengan contoh resmi.** Setiap skenario terbuka dalam keadaan terisi contoh kasus dari Lampiran E KEP. Pengguna langsung melihat hasilnya, lalu tinggal mengganti angka dan tanggal sesuai suratnya.
 - **Jadwal pengurangan.** Berupa garis waktu dan tabel yang menunjukkan persentase di tiap periode, berapa yang harus disetor, dan berapa yang dihemat.
-- **Cek Kluster Saya.** Tanya-jawab singkat yang mengarahkan pengguna ke skenario yang tepat.
 - **Ceklist syarat umum.** Mencakup Pasal 23 dan 24 PMK 118/2024 s.t.d.d. PMK 71/2026, serta Diktum KETIGA dan KEEMPAT KEP-239.
 - **Generator surat pernyataan.** Membuat surat sesuai Lampiran F (tidak mengajukan gugatan) dan Lampiran G (sanksi timbul karena kekhilafan), lengkap dengan tombol salin teks.
 - **Kamus pasal sanksi.** Setiap pasal ditautkan ke skenario yang relevan.
 - **Hitung mundur tenggat program.**
-- Bisa dipakai di ponsel, dan mendukung mode terang maupun gelap.
+- **Tampilan menyesuaikan perangkat.** Di PC memakai tab di atas; di HP memakai menu di bagian bawah (Cek Kluster · Hitung · Syarat · Surat · Lainnya).
+- Mendukung mode terang maupun gelap.
 
 ## Cara pasang di GitHub Pages
 
@@ -39,7 +40,8 @@ Setiap skenario punya alamat sendiri, sehingga bisa dibagikan langsung. Contoh:
 - `.../#skenario-a1`: terlambat lapor SPT
 - `.../#skenario-b1`: SKPKB hasil pemeriksaan
 - `.../#skenario-c7`: STP bunga penagihan baru
-- `.../#cek`, `.../#syarat`, `.../#surat`, `.../#pasal`, `.../#tentang`: halaman lain
+- `.../#kalkulator`: kalkulator (skenario pertama); `.../#syarat`, `.../#surat`, `.../#pasal`, `.../#tentang`: halaman lain
+- Tanpa tanda `#`, situs terbuka di **Cek Kluster Saya**.
 
 ## Pola penghitungan
 
@@ -91,6 +93,10 @@ Bila DJP merevisi ketentuan, cukup ubah objek tersebut. Tanggal tenggat program 
 - Ringkasan resmi DJP: [pajak.go.id/psa](https://pajak.go.id/psa)
 
 Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **1500200**.
+
+## Saran dan koreksi
+
+Ada saran, koreksi, atau menemukan hasil hitung yang janggal? Kirim email ke **hi.widodomaruf@gmail.com**.
 
 ## Pembuat
 
