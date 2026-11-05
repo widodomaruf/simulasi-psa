@@ -268,13 +268,21 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .vthumb .yt-play { position: absolute; inset: 0; display: grid; place-items: center; }
 .yt-play svg { width: 40px; height: 28px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .3)); transition: transform .15s; }
 a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
-.tut { display: grid; grid-template-columns: 128px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 10px 10px; }
+.tut { display: grid; grid-template-columns: 168px minmax(0, 1fr) auto; gap: 10px 16px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 10px 10px; }
 .tut .txt { display: grid; gap: 2px; min-width: 0; }
 .tut .txt b { font-size: 15px; font-weight: 700; line-height: 1.3; }
 .tut .txt a { color: inherit; text-decoration: none; }
 .tut .txt a:hover b { text-decoration: underline; text-underline-offset: 2px; }
 .tut .x { border: 0; background: none; color: var(--ink-3); font-size: 12.5px; font-weight: 600; padding: 6px 8px; border-radius: 6px; }
 .tut .x:hover { background: var(--chip); color: var(--ink); }
+.tut .vchips, .tut .tutfoot { grid-column: 2 / -1; }
+.vchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.vchip { display: inline-flex; align-items: baseline; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--paper); color: var(--ink); text-decoration: none; font-size: 13px; font-weight: 600; white-space: nowrap; }
+.vchip .num { color: var(--navy); font-size: 12px; }
+.vchip small { color: var(--ink-3); font-weight: 500; font-size: 11.5px; }
+.vchip:hover { border-color: var(--navy); }
+.tutfoot { display: flex; flex-wrap: wrap; gap: 4px 10px; align-items: center; }
+.tut .vthumb { grid-row: 1 / span 3; align-self: start; }
 .vlink { display: inline-flex; align-items: center; gap: 6px; color: var(--band-ink); font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--band-line); border-radius: 999px; padding: 3px 10px 3px 6px; }
 .vlink:hover { border-color: var(--yellow); }
 .vlink svg { width: 20px; height: 14px; }
@@ -284,6 +292,11 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 .psavid { display: grid; gap: 10px; }
 .psavid .vthumb { border-radius: 10px; }
 .psavid .yt-play svg { width: 68px; height: 48px; }
+.chap { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 2px 16px; }
+.chap a { display: grid; grid-template-columns: 52px minmax(0, 1fr); gap: 8px; padding: 7px 8px; border-radius: 8px; text-decoration: none; color: var(--ink); font-size: 13.5px; line-height: 1.35; }
+.chap a:hover { background: var(--chip); }
+.chap .num { color: var(--navy); font-weight: 600; font-size: 12.5px; padding-top: 1px; }
+.vtempat { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; }
 .vmodal { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(5, 15, 30, .78); }
 .vbox { width: min(960px, 100%); display: grid; gap: 10px; }
 .vhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #FFFFFF; }
@@ -294,7 +307,14 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 .vframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 @media (max-width: 760px) {
   .tut { grid-template-columns: 96px minmax(0, 1fr); gap: 10px 12px; }
-  .tut .x { grid-column: 2; justify-self: start; padding: 2px 0; }
+  .tut .vthumb { grid-row: auto; align-self: center; }
+  .tut .x { grid-column: 1 / -1; grid-row: 4; justify-self: start; padding: 2px 0; }
+  .tut .vchips { grid-column: 1 / -1; flex-wrap: nowrap; overflow-x: auto; scrollbar-width: none; margin-right: -12px; padding-right: 12px; }
+  .tut .vchips::-webkit-scrollbar { display: none; }
+  .tut .tutfoot { grid-column: 1 / -1; }
+  .tut .txt .kket, .tut .tutfoot .kket { display: none; }
+  .tut { padding: 10px; }
+  .tut .tutfoot { gap: 6px 10px; }
   .tut .x:hover { background: none; }
   .vlink { display: none; }
 }
@@ -407,7 +427,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
         <h2>Cek Kluster Saya</h2>
         <p class="intro">Mulai dari sini. Jawab pertanyaan berikut sesuai surat yang Anda pegang, lalu Anda diarahkan ke skenario kalkulator yang tepat. Sudah tahu skenarionya? Langsung buka <button class="lnk" data-go="kalkulator" style="font-size:inherit">Kalkulator</button>.</p>
       </div>
-      <div class="tut" id="tut" data-video="tutorial"><a class="vthumb" data-play="tutorial" href="#" aria-label="Putar video cara pakai situs"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div class="txt"><a data-play="tutorial" href="#"><b>Baru pertama kali di sini? Tonton cara pakai situs ini</b></a><span class="kket">Video panduan singkat oleh Widodo Ma'ruf</span></div><button class="x" id="tutHide">Sembunyikan</button></div>
+      <div class="tut" id="tut" data-video="psa"><a class="vthumb" data-play="psa" href="#" aria-label="Putar video penjelasan PSA"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div class="txt"><span class="eyebrow">Mulai dari sini</span><a data-play="psa" href="#"><b>Belum paham PSA? Tonton penjelasannya dulu</b></a><span class="kket">Cukup beberapa menit untuk bagian intinya:</span></div><button class="x" id="tutHide">Sembunyikan</button><div class="vchips"><a class="vchip" data-play="psa" data-t="0" href="#"><span class="num">00:00</span> Gambaran umum PSA 2026 <small>±1,5 mnt</small></a><a class="vchip" data-play="psa" data-t="200" href="#"><span class="num">03:20</span> Skema &amp; masa berlaku <small>±2 mnt</small></a><a class="vchip" data-play="psa" data-t="1766" href="#"><span class="num">29:26</span> Contoh kasus <small>±2 mnt</small></a></div><div class="tutfoot"><a class="vinline" data-play="psa" href="#">Tonton lengkap (51 menit)</a><span class="kket">·</span><a class="vinline" data-play="tutorial" data-video="tutorial" href="#">Baru pertama kali pakai situs ini? Lihat cara pakainya</a></div></div>
       <div class="card" id="wiz"></div>
     </section>
 
@@ -418,6 +438,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
         <p class="intro">Syarat umum yang berlaku untuk semua skenario, dari Pasal 23 dan 24 PMK 118/2024 s.t.d.d. PMK 71/2026 serta Diktum KETIGA dan KEEMPAT KEP-239/PJ/2026. Syarat khusus (periode dan besaran) ada di setiap skenario kalkulator.</p>
       </div>
       <div class="card">
+        <div class="vtempat" data-vtempat="syarat"></div>
         <div class="meter"><div class="status" id="chkStatus"></div><div class="track"><div class="fill" id="chkFill" style="width:0"></div></div></div>
         <div class="chk" id="chk"></div>
       </div>
@@ -437,6 +458,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
         <h2>Surat Permohonan &amp; Pernyataan</h2>
         <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Data yang sama, seperti identitas, nomor surat, dan nomor permohonan, cukup diisi sekali dan otomatis terpakai di ketiganya. Isian awal adalah contoh.</p>
       </div>
+      <div class="vtempat" data-vtempat="surat"></div>
       <div class="seg2" id="jenisSurat">
         <button data-j="P" aria-pressed="true">1 · Surat permohonan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran C PMK 71/2026</small></button>
         <button data-j="F" aria-pressed="false">2 · Pernyataan tidak mengajukan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran F</small></button>
@@ -471,7 +493,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
         <h2>Tentang PSA 2026</h2>
         <p class="intro">Program Pengurangan atau Penghapusan Sanksi Administratif dalam rangka mendorong perekonomian nasional.</p>
       </div>
-      <div class="card psavid" data-video="psa" hidden><a class="vthumb" data-play="psa" href="#" aria-label="Putar video penjelasan PSA"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div><span class="eyebrow">Video penjelasan</span><h3 style="margin-top:4px">Penjelasan lengkap PSA 2026</h3></div><div class="vchap kket"></div></div>
+      <div class="card psavid" data-video="psa" hidden><a class="vthumb" data-play="psa" href="#" aria-label="Putar video penjelasan PSA"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div><span class="eyebrow">Video penjelasan</span><h3 style="margin-top:4px">Penjelasan lengkap PSA 2026</h3><p class="kket" style="margin-top:4px">Dari dasar hukum, empat kluster, contoh kasus, sampai cara mengajukan lewat Coretax. Ketuk bab untuk langsung menonton bagian itu.</p></div><div class="vchap"></div></div>
             <div class="card">
         <h3>Dasar hukum</h3>
         <ul class="notes">
@@ -1236,12 +1258,15 @@ if (typeof module !== 'undefined') module.exports = PSA;
      Contoh: bab: { pengawasan: 90, pemeriksaan: 240, penagihan: 400, basisdata: 610 } */
   var VIDEOS = {
     tutorial: { id: '85TN8Hjtwvc', judul: 'Cara pakai Simulasi PSA 2026' },
-    psa: { id: '', judul: 'Penjelasan PSA 2026', bab: {} }
+    psa: { id: 'tQDLmxmEdMo', judul: 'Penjelasan lengkap PSA 2026',
+      bab: { basisdata: 788, pengawasan: 999, pemeriksaan: 1250, penagihan: 1411 },
+      tempat: { syarat: [[613, 'Persyaratan umum & surat pernyataan'], [1904, 'Syarat dokumen & lampiran wajib']], surat: [[1904, 'Syarat dokumen & lampiran'], [1958, 'Cara mengajukan lewat Coretax']] },
+      daftar: [[0, "Pendahuluan & Gambaran Umum Program PSA 2026"], [97, "Latar Belakang & Dasar Hukum PMK 71/2026 jo. PMK 118/2024"], [200, "Pokok Perubahan & Skema Masa Berlaku Insentif"], [332, "Kedudukan & Fungsi KEP-239/PJ/2026"], [480, "Ruang Lingkup & Jenis Sanksi Administrasi yang Diberikan Pengurangan"], [613, "Persyaratan Umum & Syarat Bebas Upaya Hukum/Keterangan Khilaf"], [788, "Klaster 1: Basis Data Perpajakan (SPT Masa & Tahunan)"], [999, "Klaster 2: Pengawasan (SP2DK & Pembetulan SPT)"], [1250, "Klaster 3: Pemeriksaan (SKPKB / SKP PBB)"], [1411, "Klaster 4: Penagihan & Ketetapan Lama"], [1557, "Skenario Khusus Sanksi PBB & Keberatan"], [1695, "Alur Penelitian Permohonan oleh Penelaah Keberatan Kanwil DJP"], [1766, "Contoh Kasus 1: Pembetulan SPT Masa/Tahunan"], [1842, "Contoh Kasus 2: SKPKB Pasca Program Pengungkapan Sukarela (PPS)"], [1904, "Syarat Dokumen & Lampiran Wajib Sebelum Pengajuan"], [1958, "Tutorial Pengajuan Permohonan Pengurangan Sanksi via Coretax DJP"], [2090, "Mengisi Formulir Permohonan & Memilih Transaksi Ketetapan Pajak"], [2310, "Mengisi Alasan Kekhilafan & Mengunggah Lampiran Surat Pernyataan"], [2455, "Tanda Tangan Elektronik (Passphrase) & Penyelesaian di Coretax"], [2577, "Pengenalan & Demo Web Simulasi PSA 2026"], [2624, "Demo Fitur Cek Klaster & Kalkulator Hitung Sanksi"], [2842, "Demo Fitur Ceklist Syarat & Cetak Surat Pernyataan"], [2970, "Fitur Kamus Pasal & Dasar Hukum"], [3047, "Penutup, Disclaimer & Kontak"]] }
   };
   var TOP = false; try { TOP = window.self === window.top; } catch (e) { TOP = false; }
   var vLast = null;
   function ytWatch(v, t) { return 'https://www.youtube.com/watch?v=' + VIDEOS[v].id + (t ? '&t=' + t + 's' : ''); }
-  function fmtT(t) { return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); }
+  function fmtT(t) { return String(Math.floor(t / 60)).padStart(2, '0') + ':' + String(t % 60).padStart(2, '0'); }
   function vLink(v, t, label) {
     if (!VIDEOS[v] || !VIDEOS[v].id) return '';
     return '<a class="vinline" data-play="' + v + '"' + (t ? ' data-t="' + t + '"' : '') + ' href="' + ytWatch(v, t) + '" target="_blank" rel="noopener"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg>' + label + (t ? ' (' + fmtT(t) + ')' : '') + '</a>';
@@ -1257,8 +1282,9 @@ if (typeof module !== 'undefined') module.exports = PSA;
       a.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg), linear-gradient(135deg, #0A3263 0%, #13457F 60%, #A87400 160%)';
     });
     var p = VIDEOS.psa, ch = document.querySelector('.psavid .vchap');
-    if (p.id && ch) ch.innerHTML = Object.keys(PSA.K).filter(function (k) { return p.bab[k] != null; }).map(function (k) { return vLink('psa', p.bab[k], PSA.K[k].nama); }).join(' · ');
-    try { if (localStorage.getItem('psa:hideTut') === '1') $('#tut').hidden = true; } catch (e) {}
+    if (p.id && ch && p.daftar) ch.innerHTML = '<ol class="chap">' + p.daftar.map(function (c) { return '<li><a data-play="psa" data-t="' + c[0] + '" href="' + ytWatch('psa', c[0]) + '" target="_blank" rel="noopener"><span class="num">' + fmtT(c[0]) + '</span><span>' + esc(c[1]) + '</span></a></li>'; }).join('') + '</ol>';
+    document.querySelectorAll('[data-vtempat]').forEach(function (el) { var t = p.tempat && p.tempat[el.dataset.vtempat]; if (!p.id || !t) { el.hidden = true; return; } el.innerHTML = '<span class="kket">Penjelasan video:</span> ' + t.map(function (x) { return vLink('psa', x[0], x[1]); }).join('<span class="kket"> · </span>'); });
+    try { if (localStorage.getItem('psa:hideStart') === '1') $('#tut').hidden = true; } catch (e) {}
   }
   function openVideo(v, t, from) {
     vLast = from || null;
@@ -1281,7 +1307,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
       return;
     }
     if (e.target.id === 'vmodal' || e.target.closest('#vclose')) closeVideo();
-    if (e.target.closest('#tutHide')) { $('#tut').hidden = true; try { localStorage.setItem('psa:hideTut', '1'); } catch (err) {} toast('Video panduan tetap bisa dibuka dari menu Cara pakai'); }
+    if (e.target.closest('#tutHide')) { $('#tut').hidden = true; try { localStorage.setItem('psa:hideStart', '1'); } catch (err) {} toast('Video tetap bisa ditonton di halaman Tentang PSA'); }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
 
