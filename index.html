@@ -263,6 +263,41 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .foot { border-top: 1px solid var(--line); color: var(--ink-3); font-size: 12.5px; }
 .foot .wrap { padding-block: 20px 28px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 .foot .saran { flex: 1 1 100%; }
+/* Video: banner tutorial, slot penjelasan PSA, dan pop-up pemutar */
+.vthumb { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: linear-gradient(135deg, #0A3263 0%, #13457F 60%, #A87400 160%); background-size: cover; background-position: center; flex: none; }
+.vthumb .yt-play { position: absolute; inset: 0; display: grid; place-items: center; }
+.yt-play svg { width: 40px; height: 28px; filter: drop-shadow(0 2px 6px rgba(0, 0, 0, .3)); transition: transform .15s; }
+a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
+.tut { display: grid; grid-template-columns: 128px minmax(0, 1fr) auto; gap: 14px; align-items: center; background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 10px 12px 10px 10px; }
+.tut .txt { display: grid; gap: 2px; min-width: 0; }
+.tut .txt b { font-size: 15px; font-weight: 700; line-height: 1.3; }
+.tut .txt a { color: inherit; text-decoration: none; }
+.tut .txt a:hover b { text-decoration: underline; text-underline-offset: 2px; }
+.tut .x { border: 0; background: none; color: var(--ink-3); font-size: 12.5px; font-weight: 600; padding: 6px 8px; border-radius: 6px; }
+.tut .x:hover { background: var(--chip); color: var(--ink); }
+.vlink { display: inline-flex; align-items: center; gap: 6px; color: var(--band-ink); font-size: 13px; font-weight: 600; text-decoration: none; border: 1px solid var(--band-line); border-radius: 999px; padding: 3px 10px 3px 6px; }
+.vlink:hover { border-color: var(--yellow); }
+.vlink svg { width: 20px; height: 14px; }
+.vinline { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--navy); text-decoration: none; }
+.vinline svg { width: 18px; height: 13px; }
+.vinline:hover { text-decoration: underline; text-underline-offset: 2px; }
+.psavid { display: grid; gap: 10px; }
+.psavid .vthumb { border-radius: 10px; }
+.psavid .yt-play svg { width: 68px; height: 48px; }
+.vmodal { position: fixed; inset: 0; z-index: 40; display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); background: rgba(5, 15, 30, .78); }
+.vbox { width: min(960px, 100%); display: grid; gap: 10px; }
+.vhead { display: flex; justify-content: space-between; align-items: center; gap: 12px; color: #FFFFFF; }
+.vhead b { font-size: 15px; font-weight: 700; }
+.vclose { border: 1px solid rgba(255, 255, 255, .35); background: none; color: #FFFFFF; border-radius: 8px; padding: 6px 12px; font-weight: 600; font-size: 13px; }
+.vclose:hover { background: rgba(255, 255, 255, .12); }
+.vframe { position: relative; aspect-ratio: 16 / 9; max-width: 100%; background: #000000; border-radius: 10px; overflow: hidden; }
+.vframe iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+@media (max-width: 760px) {
+  .tut { grid-template-columns: 96px minmax(0, 1fr); gap: 10px 12px; }
+  .tut .x { grid-column: 2; justify-self: start; padding: 2px 0; }
+  .tut .x:hover { background: none; }
+  .vlink { display: none; }
+}
 .saran { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--yellow); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; color: var(--ink); font-size: 14px; }
 .saran b { font-weight: 700; }
 .saran .row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -303,8 +338,8 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
   .bnav > button[aria-current="page"] .ic { background: var(--chip); }
   .bnav > button[aria-current="page"] .ic::after { content: ""; }
   .more { position: absolute; right: max(10px, env(safe-area-inset-right, 0px)); bottom: calc(100% + 8px); min-width: 210px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; box-shadow: 0 10px 30px rgba(10, 30, 60, .18); padding: 6px; display: grid; gap: 2px; }
-  .more button { border: 0; background: none; text-align: left; padding: 11px 12px; border-radius: 9px; font-size: 14px; font-weight: 600; display: flex; gap: 10px; align-items: center; }
-  .more button svg { width: 20px; height: 20px; color: var(--ink-3); }
+  .more button, .more a { text-decoration: none; color: var(--ink); border: 0; background: none; text-align: left; padding: 11px 12px; border-radius: 9px; font-size: 14px; font-weight: 600; display: flex; gap: 10px; align-items: center; }
+  .more button svg, .more a svg { width: 20px; height: 20px; color: var(--ink-3); }
   .more button[aria-current="page"] { background: var(--chip); color: var(--navy); }
   .toast { bottom: calc(86px + env(safe-area-inset-bottom, 0px)); }
   /* pita atas lebih ringkas */
@@ -331,7 +366,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
       <div class="eyebrow">PMK 71 Tahun 2026 · KEP-239/PJ/2026</div>
       <h1>Simulasi <em>PSA</em> 2026</h1>
       <p class="lead">Hitung berapa sanksi pajak Anda yang bisa dihapus atau dikurangi lewat program Pengurangan Sanksi Administratif. Setiap skenario sudah terisi contoh resmi dari KEP, tinggal ganti dengan data Anda.</p>
-      <div class="credit"><span class="by">Dibuat oleh <b>Muhammad Widodo Ma'ruf</b> · Edukator Pajak · @widodomaruf</span><span class="unof">Bukan situs resmi DJP</span></div>
+      <div class="credit"><span class="by">Dibuat oleh <b>Muhammad Widodo Ma'ruf</b> · Edukator Pajak · @widodomaruf</span><span class="unof">Bukan situs resmi DJP</span><a class="vlink" data-video="tutorial" data-play="tutorial" href="#"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg>Cara pakai situs ini</a></div>
     </div>
     <div class="deadlines" id="deadlines" aria-label="Tenggat program"></div>
   </div>
@@ -372,6 +407,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
         <h2>Cek Kluster Saya</h2>
         <p class="intro">Mulai dari sini. Jawab pertanyaan berikut sesuai surat yang Anda pegang, lalu Anda diarahkan ke skenario kalkulator yang tepat. Sudah tahu skenarionya? Langsung buka <button class="lnk" data-go="kalkulator" style="font-size:inherit">Kalkulator</button>.</p>
       </div>
+      <div class="tut" id="tut" data-video="tutorial"><a class="vthumb" data-play="tutorial" href="#" aria-label="Putar video cara pakai situs"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div class="txt"><a data-play="tutorial" href="#"><b>Baru pertama kali di sini? Tonton cara pakai situs ini</b></a><span class="kket">Video panduan singkat oleh Widodo Ma'ruf</span></div><button class="x" id="tutHide">Sembunyikan</button></div>
       <div class="card" id="wiz"></div>
     </section>
 
@@ -435,7 +471,8 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
         <h2>Tentang PSA 2026</h2>
         <p class="intro">Program Pengurangan atau Penghapusan Sanksi Administratif dalam rangka mendorong perekonomian nasional.</p>
       </div>
-      <div class="card">
+      <div class="card psavid" data-video="psa" hidden><a class="vthumb" data-play="psa" href="#" aria-label="Putar video penjelasan PSA"><span class="yt-play"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg></span></a><div><span class="eyebrow">Video penjelasan</span><h3 style="margin-top:4px">Penjelasan lengkap PSA 2026</h3></div><div class="vchap kket"></div></div>
+            <div class="card">
         <h3>Dasar hukum</h3>
         <ul class="notes">
           <li><b>PMK 71 Tahun 2026</b> (diundangkan 2 Okt 2026) menyisipkan Pasal 27A ke PMK 118/2024: DJP dapat mengurangi atau menghapus sanksi administratif untuk permohonan yang diajukan paling lama 2 tahun sejak PMK berlaku. <a href="https://pajak.go.id/peraturan/perubahan-atas-peraturan-menteri-keuangan-nomor-118-tahun-2024-tentang-tata-cara" target="_blank" rel="noopener">Teks PMK</a></li>
@@ -477,9 +514,10 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
     <span>Alat edukasi independen, bukan situs resmi atau keputusan DJP · berdasarkan PMK 71/2026 dan KEP-239/PJ/2026</span>
   </div>
 </footer>
-<nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Kluster</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
+<nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Kluster</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><a href="#" data-play="tutorial" data-video="tutorial"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9.5 5 2.5-5 2.5z"/></svg>Cara Pakai Situs</a><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
 <div class="toast" id="toast" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
+<div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-labelledby="vtitle" hidden><div class="vbox"><div class="vhead"><b id="vtitle"></b><button class="vclose" id="vclose">Tutup ✕</button></div><div class="vframe" id="vframe"></div></div></div>
 
 <script>
 /* Mesin hitung PSA — KEP-239/PJ/2026 jo. PMK 71 Tahun 2026 */
@@ -830,6 +868,8 @@ if (typeof module !== 'undefined') module.exports = PSA;
       return '<div class="field' + (f.primary ? ' primary' : '') + '"><label for="' + id + '">' + esc(f.label) + '</label>' + input + (f.hint ? '<span class="hint">' + esc(f.hint) + '</span>' : '') + '</div>';
     }).join('') + '</div>';
     html += '<div id="out"></div>';
+    var vb = VIDEOS.psa.bab[sc.kluster];
+    if (VIDEOS.psa.id && vb != null) html += '<div class="sect" style="padding-top:14px">' + vLink('psa', vb, 'Tonton penjelasan kluster ' + K.nama) + '</div>';
     html += '<div class="sect"><h3>Persyaratan khusus skenario ini</h3><ul class="syarat">' + sc.syarat.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
     html += '<div class="pfoot"><button class="btn pri" data-go="syarat">Cek syarat umum permohonan</button><button class="btn" data-go="surat" id="goSurat">Buat surat permohonan</button></div>';
     $('#panel').innerHTML = html;
@@ -951,7 +991,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     if (trail.length) h += '<div class="trail">' + trail.map(function (t) { return '<span>' + esc(t) + '</span>'; }).join('') + '</div>';
     if (node.charAt(0) === '=') {
       var sc = PSA.byId(node.slice(1));
-      h += '<div class="ans"><span class="k">Skenario Anda · ' + PSA.K[sc.kluster].nama + '</span><h3>' + esc(sc.judul) + '</h3><p>' + esc(sc.pasal) + ' · Diktum ' + esc(sc.diktum) + '</p><div><button class="btn pri" data-open="' + sc.id + '">Hitung di kalkulator →</button></div></div>';
+      h += '<div class="ans"><span class="k">Skenario Anda · ' + PSA.K[sc.kluster].nama + '</span><h3>' + esc(sc.judul) + '</h3><p>' + esc(sc.pasal) + ' · Diktum ' + esc(sc.diktum) + '</p><div style="display:flex;flex-wrap:wrap;gap:12px;align-items:center"><button class="btn pri" data-open="' + sc.id + '">Hitung di kalkulator →</button>' + (VIDEOS.psa.id && VIDEOS.psa.bab[sc.kluster] != null ? vLink('psa', VIDEOS.psa.bab[sc.kluster], 'Tonton penjelasan kluster ini') : '') + '</div></div>';
     } else if (node.charAt(0) === '!') {
       var d = DEAD[node.slice(1)];
       h += '<div class="ans dead"><span class="k">Perlu perhatian</span><h3>' + esc(d.h) + '</h3><p>' + esc(d.p) + '</p>' + (d.go ? '<div><button class="btn" data-open="' + d.go + '">Lihat skenario terkait →</button></div>' : '') + '</div>';
@@ -1189,7 +1229,64 @@ if (typeof module !== 'undefined') module.exports = PSA;
   }).join('') + '<p class="kket" style="grid-column:1/-1">Besaran di atas gambaran umum. Angka yang dimohonkan selalu mengikuti yang tercantum di surat Anda.</p>';
   $('#pgrid').addEventListener('click', function (e) { var b = e.target.closest('[data-open]'); if (!b) return; pick(b.dataset.open, false); show('kalkulator'); window.scrollTo({ top: 0 }); });
 
+
+  /* ---------- Video ----------
+     Isi id YouTube di sini. Bila id kosong, semua tempat video itu disembunyikan.
+     bab: menit mulai (dalam detik) per kluster, dipakai untuk tautan di kalkulator dan hasil Cek Kluster.
+     Contoh: bab: { pengawasan: 90, pemeriksaan: 240, penagihan: 400, basisdata: 610 } */
+  var VIDEOS = {
+    tutorial: { id: '85TN8Hjtwvc', judul: 'Cara pakai Simulasi PSA 2026' },
+    psa: { id: '', judul: 'Penjelasan PSA 2026', bab: {} }
+  };
+  var TOP = false; try { TOP = window.self === window.top; } catch (e) { TOP = false; }
+  var vLast = null;
+  function ytWatch(v, t) { return 'https://www.youtube.com/watch?v=' + VIDEOS[v].id + (t ? '&t=' + t + 's' : ''); }
+  function fmtT(t) { return Math.floor(t / 60) + ':' + String(t % 60).padStart(2, '0'); }
+  function vLink(v, t, label) {
+    if (!VIDEOS[v] || !VIDEOS[v].id) return '';
+    return '<a class="vinline" data-play="' + v + '"' + (t ? ' data-t="' + t + '"' : '') + ' href="' + ytWatch(v, t) + '" target="_blank" rel="noopener"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg>' + label + (t ? ' (' + fmtT(t) + ')' : '') + '</a>';
+  }
+  function setupVideos() {
+    document.querySelectorAll('[data-video]').forEach(function (el) { el.hidden = !(VIDEOS[el.dataset.video] && VIDEOS[el.dataset.video].id); });
+    document.querySelectorAll('a[data-play]').forEach(function (a) {
+      var v = a.dataset.play; if (!VIDEOS[v] || !VIDEOS[v].id) return;
+      a.href = ytWatch(v, a.dataset.t); a.target = '_blank'; a.rel = 'noopener';
+    });
+    document.querySelectorAll('.vthumb[data-play]').forEach(function (a) {
+      var v = VIDEOS[a.dataset.play]; if (!v || !v.id || !TOP) return;
+      a.style.backgroundImage = 'url(https://i.ytimg.com/vi/' + v.id + '/hqdefault.jpg), linear-gradient(135deg, #0A3263 0%, #13457F 60%, #A87400 160%)';
+    });
+    var p = VIDEOS.psa, ch = document.querySelector('.psavid .vchap');
+    if (p.id && ch) ch.innerHTML = Object.keys(PSA.K).filter(function (k) { return p.bab[k] != null; }).map(function (k) { return vLink('psa', p.bab[k], PSA.K[k].nama); }).join(' · ');
+    try { if (localStorage.getItem('psa:hideTut') === '1') $('#tut').hidden = true; } catch (e) {}
+  }
+  function openVideo(v, t, from) {
+    vLast = from || null;
+    $('#vtitle').textContent = VIDEOS[v].judul;
+    $('#vframe').innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + VIDEOS[v].id + '?autoplay=1&rel=0' + (t ? '&start=' + t : '') + '" title="' + esc(VIDEOS[v].judul) + '" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>';
+    $('#vmodal').hidden = false; $('#vclose').focus();
+  }
+  function closeVideo() {
+    if ($('#vmodal').hidden) return;
+    $('#vmodal').hidden = true; $('#vframe').innerHTML = '';
+    if (vLast && vLast.focus) try { vLast.focus(); } catch (e) {}
+  }
+  document.addEventListener('click', function (e) {
+    var t = e.target.closest('[data-play]');
+    if (t) {
+      var v = t.dataset.play; if (!VIDEOS[v] || !VIDEOS[v].id) return;
+      closeMore();
+      if (TOP) { e.preventDefault(); openVideo(v, +t.dataset.t || 0, t); }
+      else if (t.tagName !== 'A') window.open(ytWatch(v, t.dataset.t), '_blank', 'noopener');
+      return;
+    }
+    if (e.target.id === 'vmodal' || e.target.closest('#vclose')) closeVideo();
+    if (e.target.closest('#tutHide')) { $('#tut').hidden = true; try { localStorage.setItem('psa:hideTut', '1'); } catch (err) {} toast('Video panduan tetap bisa dibuka dari menu Cara pakai'); }
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+
   /* ---------- Start ---------- */
+  setupVideos();
   renderKlusters(); renderPanel(); renderWiz(); renderChk(); renderSForm(); renderPaper();
   route();
 })();
