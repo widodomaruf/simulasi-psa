@@ -222,6 +222,35 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .paper .ttd { margin-top: 18px; margin-left: auto; width: 230px; text-align: center; }
 .paper .meterai { margin: 10px auto; width: 92px; height: 56px; border: 1px dashed #888; display: grid; place-content: center; font-size: 11px; color: #666; font-family: Arial, sans-serif; }
 .paper .ph { background: #FFF4CC; }
+.paper .kop, #printArea .kop { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; margin-bottom: 14px; }
+.paper .kop .row { grid-template-columns: 70px 10px minmax(0, 1fr); }
+.paper .ind .row { grid-template-columns: 160px 10px minmax(0, 1fr); }
+@media (max-width: 560px) { .paper .ind .row { grid-template-columns: 110px 10px minmax(0, 1fr); } }
+.kop-tgl { white-space: nowrap; }
+.meterai-note { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; font-size: 13.5px; display: grid; gap: 6px; }
+.meterai-note b { font-weight: 700; }
+.meterai-note ul { margin: 0; padding-left: 18px; display: grid; gap: 4px; }
+#printArea { display: none; }
+@page { size: A4; margin: 20mm 22mm; }
+@media print {
+  :root { padding: 0 !important; }
+  html, body { background: #FFFFFF !important; color: #000000 !important; }
+  body { padding: 0 !important; }
+  body::before { display: none !important; }
+  body > *:not(#printArea) { display: none !important; }
+  #printArea { display: block !important; color: #000000; font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; font-size: 11.5pt; line-height: 1.5; }
+  #printArea h4 { text-align: center; font-size: 12pt; margin: 0 0 18pt; font-weight: 700; line-height: 1.4; }
+  #printArea p { margin: 8pt 0; }
+  #printArea .row { display: grid; grid-template-columns: 34mm 4mm minmax(0, 1fr); }
+  #printArea .ind { padding-left: 6mm; }
+  #printArea .kop .row { grid-template-columns: 22mm 4mm minmax(0, 1fr); }
+  #printArea .ind .row { grid-template-columns: 50mm 4mm minmax(0, 1fr); }
+  #printArea table { width: 100%; border-collapse: collapse; margin: 6pt 0; font-size: 10.5pt; }
+  #printArea th, #printArea td { border: 1px solid #000000; padding: 4pt 6pt; text-align: center; }
+  #printArea .ttd { margin-top: 20pt; margin-left: auto; width: 65mm; text-align: center; break-inside: avoid; }
+  #printArea .meterai { margin: 8pt auto; width: 30mm; height: 20mm; border: 1px dashed #777777; display: grid; place-content: center; font-size: 8pt; color: #777777; }
+  #printArea .ph { background: none; }
+}
 
 .pasal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
 .pcard { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 8px; align-content: start; }
@@ -313,7 +342,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
     <button class="tab" data-view="cek">Cek Kluster Saya</button>
     <button class="tab" data-view="kalkulator">Kalkulator</button>
     <button class="tab" data-view="syarat">Ceklist Syarat</button>
-    <button class="tab" data-view="surat">Surat Pernyataan</button>
+    <button class="tab" data-view="surat">Surat Permohonan</button>
     <button class="tab" data-view="pasal">Kamus Pasal</button>
     <button class="tab" data-view="tentang">Tentang PSA</button>
   </div>
@@ -367,20 +396,26 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
     </section>
 
     <!-- SURAT -->
-    <section class="view page" id="v-surat" aria-label="Surat pernyataan" style="max-width:none" hidden>
+    <section class="view page" id="v-surat" aria-label="Surat permohonan" style="max-width:none" hidden>
       <div>
-        <h2>Surat Pernyataan</h2>
-        <p class="intro">Diktum KEEMPAT KEP-239 mewajibkan dua surat pernyataan bermeterai sebagai lampiran permohonan. Isi formulir, periksa pratinjau, lalu salin teksnya ke dokumen Anda. Isian awal adalah contoh.</p>
+        <h2>Surat Permohonan &amp; Pernyataan</h2>
+        <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Data yang sama, seperti identitas, nomor surat, dan nomor permohonan, cukup diisi sekali dan otomatis terpakai di ketiganya. Isian awal adalah contoh.</p>
       </div>
       <div class="seg2" id="jenisSurat">
-        <button data-j="F" aria-pressed="true">Tidak mengajukan gugatan / upaya hukum lain<br><small style="font-weight:400;color:var(--ink-3)">Lampiran F</small></button>
-        <button data-j="G" aria-pressed="false">Sanksi timbul karena kekhilafan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran G</small></button>
+        <button data-j="P" aria-pressed="true">1 · Surat permohonan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran C PMK 71/2026</small></button>
+        <button data-j="F" aria-pressed="false">2 · Pernyataan tidak mengajukan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran F</small></button>
+        <button data-j="G" aria-pressed="false">3 · Pernyataan sanksi karena kekhilafan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran G</small></button>
       </div>
       <div class="surat">
         <div class="card"><div class="form" id="sform"></div></div>
         <div class="scol">
           <div class="paper" id="spaper"></div>
-          <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="copySurat">Salin teks surat</button><button class="btn" id="resetSurat">Kembalikan contoh</button></div>
+          <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="printSurat" hidden>Cetak / Simpan PDF</button><button class="btn" id="copySurat">Salin teks surat</button><button class="btn" id="resetSurat">Kembalikan contoh</button></div>
+          <div class="meterai-note"><b>Soal meterai</b><ul>
+            <li><b>Surat permohonan</b> tidak memerlukan meterai. <b>Kedua surat pernyataan</b> wajib bermeterai.</li>
+            <li><b>Dicetak di kertas:</b> tempel meterai Rp10.000 di kotak yang tersedia, lalu tanda tangani di atasnya.</li>
+            <li><b>Disimpan sebagai PDF untuk diunggah lewat Coretax:</b> bubuhkan e-Meterai pada PDF sebelum diunggah.</li>
+          </ul><p id="printHint" style="color:var(--ink-3);font-size:12.5px">Tombol cetak tersedia saat situs dibuka langsung di browser. Di sini, gunakan Salin teks surat lalu tempel ke dokumen Anda.</p></div>
         </div>
       </div>
     </section>
@@ -444,6 +479,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 </footer>
 <nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Kluster</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
 <div class="toast" id="toast" hidden></div>
+<div id="printArea" aria-hidden="true"></div>
 
 <script>
 /* Mesin hitung PSA — KEP-239/PJ/2026 jo. PMK 71 Tahun 2026 */
@@ -703,6 +739,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     var inMore = view === 'pasal' || view === 'tentang';
     if (inMore) $('#bMore').setAttribute('aria-current', 'page'); else $('#bMore').removeAttribute('aria-current');
     closeMore();
+    if (view === 'surat' && typeof renderSForm === 'function') renderSForm();
     if (push !== false) setHash(view === 'kalkulator' ? 'skenario-' + state.id : view);
   }
   function route() {
@@ -794,7 +831,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     }).join('') + '</div>';
     html += '<div id="out"></div>';
     html += '<div class="sect"><h3>Persyaratan khusus skenario ini</h3><ul class="syarat">' + sc.syarat.map(function (s) { return '<li>' + esc(s) + '</li>'; }).join('') + '</ul></div>';
-    html += '<div class="pfoot"><button class="btn pri" data-go="syarat">Cek syarat umum permohonan</button><button class="btn" data-go="surat">Buat surat pernyataan</button></div>';
+    html += '<div class="pfoot"><button class="btn pri" data-go="syarat">Cek syarat umum permohonan</button><button class="btn" data-go="surat" id="goSurat">Buat surat permohonan</button></div>';
     $('#panel').innerHTML = html;
     renderOut();
   }
@@ -963,49 +1000,97 @@ if (typeof module !== 'undefined') module.exports = PSA;
   }
   $('#chk').addEventListener('change', function (e) { var i = e.target.dataset.i; if (i == null) return; chkState[i] = e.target.checked; store.set('chk', chkState); updChk(); });
 
-  /* ---------- Surat pernyataan ---------- */
-  var SDEF = { j: 'F', selaku: 'Wakil', nama: 'Budi Santoso', npwp: '0123456789012345', jabatan: 'Direktur', alamat: 'Jl. Contoh No. 1, Tangerang', telp: '0812-0000-0000',
+  /* ---------- Surat permohonan & pernyataan ---------- */
+  var JS_FULL = { 'STP': 'Surat Tagihan Pajak', 'SKPKB': 'Surat Ketetapan Pajak Kurang Bayar', 'SKPKBT': 'Surat Ketetapan Pajak Kurang Bayar Tambahan', 'SKP PBB': 'Surat Ketetapan Pajak Pajak Bumi dan Bangunan', 'STP PBB': 'Surat Tagihan Pajak Pajak Bumi dan Bangunan' };
+  var SDEF = { j: 'P', selaku: 'Wakil', nama: 'Widodo Ma\'ruf', npwp: '0123456789012345', jabatan: 'Direktur', alamat: 'Jl. Contoh No. 1, Tangerang', telp: '0812-0000-0000',
     wpNama: 'PT ABC', wpNpwp: '0987654321098765', wpAlamat: 'Jl. Contoh No. 1, Tangerang', nop: '', nopAlamat: '', jenisSurat: 'STP',
-    noSurat: '00001/107/26/402/26', tglSurat: '2026-10-12', jenisPajak: 'PPh Badan', masa: '2025', noMohon: '', tglMohon: '', sanksiMohon: 'Sanksi administratif berupa denda Pasal 7 ayat (1) UU KUP atas keterlambatan penyampaian SPT Tahunan PPh Badan Tahun Pajak 2025', kota: 'Tangerang', tglTtd: TODAY };
+    noSurat: '00001/107/26/402/26', tglSurat: '2026-10-12', jenisPajak: 'PPh Badan', masa: '2025',
+    noMohon: '001/ABC/XI/2026', tglMohon: TODAY, kpp: 'Pratama Tangerang Barat', jenisMohon: 'penghapusan sanksi administratif',
+    dendaPBB: '', kurangPBB: '', pbbTerutang: '', sanksiWP: '0',
+    alasan: 'Sanksi administratif dalam STP tersebut timbul karena kekhilafan, bukan karena kesengajaan. Wajib Pajak telah menyampaikan SPT Tahunan PPh Badan Tahun Pajak 2025 berstatus kurang bayar pada periode 8 Oktober s.d. 31 Desember 2026, sehingga memenuhi ketentuan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam Pasal 27A PMK 118 Tahun 2024 s.t.d.d. PMK 71 Tahun 2026 dan KEP-239/PJ/2026.',
+    lampiran: 'Fotokopi STP yang dimohonkan ; 1 lembar\nBukti penyampaian SPT dan pelunasan pokok pajak ; 1 set\nSurat pernyataan tidak mengajukan gugatan (bermeterai) ; 1 lembar\nSurat pernyataan sanksi timbul karena kekhilafan (bermeterai) ; 1 lembar',
+    sanksiMohon: 'Sanksi administratif berupa denda Pasal 7 ayat (1) UU KUP atas keterlambatan penyampaian SPT Tahunan PPh Badan Tahun Pajak 2025', kota: 'Tangerang', tglTtd: TODAY };
   var S = Object.assign({}, SDEF);
+  // [kunci, label, tipe, opsi, berlaku-untuk ('P','F','G' gabungan) atau 'wk', syarat tambahan]
   var SF = [
+    ['noMohon', 'Nomor surat permohonan', 0, 0, 'PG'], ['tglMohon', 'Tanggal surat permohonan', 'date', 0, 'PG'], ['kpp', 'Kantor Pelayanan Pajak (tanpa kata "KPP")', 0, 0, 'P'],
     ['selaku', 'Bertindak selaku', 'select', ['Wajib Pajak', 'Wakil', 'Kuasa']], ['nama', 'Nama penanda tangan'], ['npwp', 'NPWP penanda tangan'], ['jabatan', 'Jabatan (kosongkan untuk WP orang pribadi)'],
     ['alamat', 'Alamat penanda tangan'], ['telp', 'Nomor telepon'],
     ['wpNama', 'Nama Wajib Pajak', 0, 0, 'wk'], ['wpNpwp', 'NPWP Wajib Pajak', 0, 0, 'wk'], ['wpAlamat', 'Alamat Wajib Pajak', 0, 0, 'wk'],
-    ['jenisSurat', 'Jenis surat', 'select', ['SKP', 'STP', 'SKP PBB', 'STP PBB'], 'F'], ['noSurat', 'Nomor SKP/STP'], ['tglSurat', 'Tanggal SKP/STP', 'date'],
-    ['jenisPajak', 'Jenis pajak', 0, 0, 'F'], ['masa', 'Masa/Tahun Pajak', 0, 0, 'F'],
     ['nop', 'NOP (khusus PBB)'], ['nopAlamat', 'Alamat objek pajak (khusus PBB)'],
-    ['noMohon', 'Nomor surat permohonan', 0, 0, 'G'], ['tglMohon', 'Tanggal surat permohonan', 'date', 0, 'G'], ['sanksiMohon', 'Sanksi yang dimohonkan', 'textarea', 0, 'G'],
-    ['kota', 'Kota'], ['tglTtd', 'Tanggal tanda tangan', 'date']
+    ['jenisMohon', 'Jenis permohonan', 'select', ['penghapusan sanksi administratif', 'pengurangan sanksi administratif', 'pengurangan denda administratif Pajak Bumi dan Bangunan'], 'P'],
+    ['jenisSurat', 'Jenis surat yang dimohonkan', 'select', ['STP', 'SKPKB', 'SKPKBT', 'SKP PBB', 'STP PBB'], 'FP'], ['noSurat', 'Nomor surat', 0, 0, 'FP'], ['tglSurat', 'Tanggal surat', 'date', 0, 'FP'],
+    ['jenisPajak', 'Jenis pajak', 0, 0, 'F'], ['masa', 'Masa/Tahun Pajak', 0, 0, 'FP'],
+    ['dendaPBB', 'Denda administratif PBB (Rp)', 'money', 0, 'P', 'pbb'], ['kurangPBB', 'Pengurangan sebesar (Rp)', 'money', 0, 'P', 'pbb'], ['pbbTerutang', 'PBB terutang (Rp)', 'money', 0, 'P', 'pbb'],
+    ['sanksiWP', 'Sanksi menurut Wajib Pajak setelah dikurangi (Rp)', 'money', 0, 'P'],
+    ['alasan', 'Alasan permohonan', 'textarea', 0, 'P'],
+    ['lampiran', 'Lampiran: satu dokumen per baris, format "nama dokumen ; jumlah"', 'textarea', 0, 'P'],
+    ['sanksiMohon', 'Sanksi yang dimohonkan', 'textarea', 0, 'G'],
+    ['kota', 'Kota'], ['tglTtd', 'Tanggal tanda tangan', 'date', 0, 'FG']
   ];
+  function isPBB() { return S.jenisSurat.indexOf('PBB') >= 0; }
+  function showField(f) {
+    var only = f[4];
+    if (only === 'wk') { if (S.selaku === 'Wajib Pajak') return false; }
+    else if (only && only.indexOf(S.j) < 0) return false;
+    if (f[5] === 'pbb' && !isPBB()) return false;
+    return true;
+  }
   function renderSForm() {
-    $('#sform').innerHTML = SF.filter(function (f) { var only = f[4]; return !only || only === S.j || (only === 'wk' && S.selaku !== 'Wajib Pajak'); }).map(function (f) {
+    var sc = PSA.byId(state.id);
+    var auto = '<div style="grid-column:1/-1;display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding-bottom:4px;border-bottom:1px solid var(--line)"><button class="btn" id="fromCalc">Isi dari kalkulator</button><span class="kket">Skenario terakhir: ' + esc(sc.judul) + '</span></div>';
+    $('#sform').innerHTML = auto + SF.filter(showField).map(function (f) {
       var id = 'sf-' + f[0], v = S[f[0]] || '', inp;
       if (f[2] === 'select') inp = '<select id="' + id + '" data-k="' + f[0] + '">' + f[3].map(function (o) { return '<option' + (o === v ? ' selected' : '') + '>' + o + '</option>'; }).join('') + '</select>';
-      else if (f[2] === 'textarea') inp = '<textarea id="' + id + '" data-k="' + f[0] + '" rows="3">' + esc(v) + '</textarea>';
+      else if (f[2] === 'textarea') inp = '<textarea id="' + id + '" data-k="' + f[0] + '" rows="' + (f[0] === 'sanksiMohon' ? 3 : 5) + '">' + esc(v) + '</textarea>';
+      else if (f[2] === 'money') inp = '<div class="money"><span>Rp</span><input id="' + id + '" data-k="' + f[0] + '" data-money="1" inputmode="numeric" autocomplete="off" value="' + (v === '' ? '' : Number(v).toLocaleString('id-ID')) + '"></div>';
       else inp = '<input id="' + id + '" data-k="' + f[0] + '" type="' + (f[2] || 'text') + '" value="' + esc(v) + '">';
       return '<div class="field"' + (f[2] === 'textarea' ? ' style="grid-column:1/-1"' : '') + '><label for="' + id + '">' + f[1] + '</label>' + inp + '</div>';
     }).join('');
   }
   function ph(v) { return v ? esc(v) : '<span class="ph">…………………</span>'; }
-  function idBlock() {
+  function rpv(v) { return v === '' || v == null ? ph('') : 'Rp' + Number(v).toLocaleString('id-ID'); }
+  function lampRows() { return (S.lampiran || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean).map(function (l) { var p = l.split(';'); return [p[0].trim(), (p[1] || '').trim()]; }); }
+  function cap(t) { return t.replace(/(^|\s)\S/g, function (c) { return c.toUpperCase(); }); }
+  function objekSanksi() { return S.jenisMohon.indexOf('Pajak Bumi') >= 0 ? 'denda administratif Pajak Bumi dan Bangunan' : 'sanksi administratif'; }
+  function idBlock(intro, caps) {
     var r = function (k, v) { return '<div class="row"><span>' + k + '</span><span>:</span><span>' + ph(v) + '</span></div>'; };
-    var h = '<p>Saya yang bertanda tangan di bawah ini:</p>' + r('nama', S.nama) + r('NPWP', S.npwp) + (S.jabatan ? r('jabatan', S.jabatan) : '') + r('alamat', S.alamat) + r('nomor telepon', S.telp);
-    h += '<div class="row" style="margin-top:6px"><span>bertindak selaku</span><span>:</span><span>' + ['Wajib Pajak', 'Wakil', 'Kuasa'].map(function (o) { return (o === S.selaku ? '☒ ' : '☐ ') + o; }).join('&nbsp;&nbsp; ') + '</span></div>';
-    if (S.selaku !== 'Wajib Pajak') h += '<p style="margin-bottom:2px">dari Wajib Pajak</p><div class="ind">' + r('nama', S.wpNama) + r('NPWP', S.wpNpwp) + r('alamat', S.wpAlamat) + '</div>';
-    if (S.nop) h += '<p style="margin-bottom:2px">atas objek pajak:</p><div class="ind">' + r('NOP', S.nop) + r('alamat', S.nopAlamat) + '</div>';
+    var L = caps ? ['Nama', 'NPWP', 'Jabatan', 'Alamat', 'Nomor Telepon', 'Bertindak selaku'] : ['nama', 'NPWP', 'jabatan', 'alamat', 'nomor telepon', 'bertindak selaku'];
+    var h = '<p>' + intro + '</p>' + r(L[0], S.nama) + r(L[1], S.npwp) + (S.jabatan ? r(L[2], S.jabatan) : '') + r(L[3], S.alamat) + r(L[4], S.telp);
+    h += '<div class="row" style="margin-top:6px"><span>' + L[5] + '</span><span>:</span><span>' + ['Wajib Pajak', 'Wakil', 'Kuasa'].map(function (o) { return (o === S.selaku ? '☒ ' : '☐ ') + o; }).join('&nbsp;&nbsp; ') + '</span></div>';
+    if (S.selaku !== 'Wajib Pajak') h += '<p style="margin-bottom:2px">dari Wajib Pajak</p><div class="ind">' + r(caps ? 'Nama' : 'nama', S.wpNama) + r('NPWP', S.wpNpwp) + r(caps ? 'Alamat' : 'alamat', S.wpAlamat) + '</div>';
+    if (S.nop) h += '<p style="margin-bottom:2px">atas objek pajak:</p><div class="ind">' + r('NOP', S.nop) + r(caps ? 'Alamat' : 'alamat', S.nopAlamat) + '</div>';
     return h;
   }
   function ttd() { return '<div class="ttd">' + ph(S.kota) + ', ' + ph(S.tglTtd ? fdl(S.tglTtd) : '') + '<br>' + (S.j === 'F' ? 'Yang membuat pernyataan,<br>' : '') + S.selaku + '<div class="meterai">Meterai<br>Rp10.000</div><u>' + ph(S.nama) + '</u></div>'; }
+  function paperP() {
+    var r = function (k, v, raw) { return '<div class="row"><span>' + k + '</span><span>:</span><span>' + (raw ? v : ph(v)) + '</span></div>'; };
+    var lr = lampRows();
+    var h = '<div class="kop"><div>' + r('Nomor', S.noMohon) + r('Lampiran', lr.length ? lr.length + ' berkas' : '-') + r('Hal', 'Permohonan ' + cap(S.jenisMohon)) + '</div>' +
+      '<div class="kop-tgl">' + ph(S.kota) + ', ' + ph(S.tglMohon ? fdl(S.tglMohon) : '') + '</div></div>';
+    h += '<p>Yth. Direktur Jenderal Pajak<br>Melalui Kantor Pelayanan Pajak ' + ph(S.kpp) + '</p>';
+    h += idBlock('Yang bertanda tangan di bawah ini:', true);
+    h += '<p>bersama ini mengajukan permohonan ' + esc(S.jenisMohon) + ' yang tercantum dalam ' + esc(JS_FULL[S.jenisSurat] || S.jenisSurat) + ':</p><div class="ind">' +
+      r('Nomor', S.noSurat) + r('Tanggal', S.tglSurat ? fdl(S.tglSurat) : '') + r(isPBB() ? 'Tahun Pajak' : 'Masa/Tahun Pajak', S.masa) +
+      (isPBB() ? r('Denda administrasi PBB', rpv(S.dendaPBB), 1) + r('Pengurangan sebesar', rpv(S.kurangPBB), 1) + r('PBB Terutang', rpv(S.pbbTerutang), 1) : '') + '</div>';
+    h += '<p style="margin-bottom:2px">Alasan permohonan:</p><p style="margin-top:0;white-space:pre-line">' + ph(S.alasan) + '</p>';
+    h += '<p>Berdasarkan hal tersebut di atas, dengan ini dimohon ' + objekSanksi() + ' menjadi sebesar ' + rpv(S.sanksiWP) + '.</p>';
+    h += '<p style="margin-bottom:4px">Sebagai kelengkapan permohonan, terlampir disampaikan:</p><table><thead><tr><th style="width:36px">No.</th><th>Jenis Dokumen</th><th style="width:90px">Set/Lembar</th></tr></thead><tbody>' +
+      (lr.length ? lr.map(function (x, i) { return '<tr><td>' + (i + 1) + '</td><td style="text-align:left">' + esc(x[0]) + '</td><td>' + esc(x[1]) + '</td></tr>'; }).join('') : '<tr><td>&nbsp;</td><td></td><td></td></tr>') + '</tbody></table>';
+    h += '<p>Demikian surat permohonan kami sampaikan untuk dapat dipertimbangkan.</p>';
+    h += '<div class="ttd">' + S.selaku + '<div style="height:64px"></div><u>' + ph(S.nama) + '</u></div>';
+    return h;
+  }
   function renderPaper() {
     var h;
-    if (S.j === 'F') {
-      h = '<h4>SURAT PERNYATAAN<br>TIDAK MENGAJUKAN GUGATAN DAN/ATAU UPAYA HUKUM LAINNYA</h4>' + idBlock() +
+    if (S.j === 'P') h = paperP();
+    else if (S.j === 'F') {
+      h = '<h4>SURAT PERNYATAAN<br>TIDAK MENGAJUKAN GUGATAN DAN/ATAU UPAYA HUKUM LAINNYA</h4>' + idBlock('Saya yang bertanda tangan di bawah ini:') +
         '<p>dengan ini menyatakan bahwa sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif yang saya ajukan atas ' + esc(S.jenisSurat) + ',</p>' +
         '<table><thead><tr><th>Nomor SKP dan/atau STP</th><th>Tanggal SKP dan/atau STP</th><th>Jenis Pajak</th><th>Masa atau Tahun Pajak</th></tr></thead><tbody><tr><td>' + ph(S.noSurat) + '</td><td>' + ph(S.tglSurat ? fdl(S.tglSurat) : '') + '</td><td>' + ph(S.jenisPajak) + '</td><td>' + ph(S.masa) + '</td></tr></tbody></table>' +
         '<p>saya tidak mengajukan gugatan dan/atau upaya hukum lainnya.</p><p>Demikian surat pernyataan ini saya buat dengan sebenarnya untuk digunakan sebagai kelengkapan permohonan pengurangan atau penghapusan sanksi administratif.</p>' + ttd();
     } else {
-      h = '<h4>SURAT PERNYATAAN<br>SANKSI ADMINISTRATIF TIMBUL KARENA KEKHILAFAN<br>ATAU BUKAN KARENA KESALAHAN</h4>' + idBlock() +
+      h = '<h4>SURAT PERNYATAAN<br>SANKSI ADMINISTRATIF TIMBUL KARENA KEKHILAFAN<br>ATAU BUKAN KARENA KESALAHAN</h4>' + idBlock('Saya yang bertanda tangan di bawah ini:') +
         '<p style="margin-bottom:2px">Sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif:</p><div class="ind"><div class="row"><span>Nomor</span><span>:</span><span>' + ph(S.noMohon) + '</span></div><div class="row"><span>Tanggal</span><span>:</span><span>' + ph(S.tglMohon ? fdl(S.tglMohon) : '') + ',</span></div></div>' +
         '<p>dengan ini saya menyatakan bahwa:</p><p>' + ph(S.sanksiMohon) + ' dilakukan karena kekhilafan atau bukan karena kesalahan saya.</p><p>Demikian Surat Pernyataan ini saya buat dengan sebenar-benarnya.</p>' + ttd();
     }
@@ -1013,14 +1098,30 @@ if (typeof module !== 'undefined') module.exports = PSA;
   }
   function suratText() {
     var L = [], v = function (x) { return x || '..........'; };
-    var row = function (k, x) { L.push((k + '                    ').slice(0, 18) + ': ' + v(x)); };
+    var rpt = function (x) { return x === '' || x == null ? '..........' : 'Rp' + Number(x).toLocaleString('id-ID'); };
+    var row = function (k, x) { L.push((k + '                         ').slice(0, 24) + ': ' + v(x)); };
+    var ident = function (caps) {
+      row(caps ? 'Nama' : 'nama', S.nama); row('NPWP', S.npwp); if (S.jabatan) row(caps ? 'Jabatan' : 'jabatan', S.jabatan); row(caps ? 'Alamat' : 'alamat', S.alamat); row(caps ? 'Nomor Telepon' : 'nomor telepon', S.telp);
+      row(caps ? 'Bertindak selaku' : 'bertindak selaku', ['Wajib Pajak', 'Wakil', 'Kuasa'].map(function (o) { return (o === S.selaku ? '[X] ' : '[ ] ') + o; }).join('  '));
+      if (S.selaku !== 'Wajib Pajak') { L.push('dari Wajib Pajak'); row('  Nama', S.wpNama); row('  NPWP', S.wpNpwp); row('  Alamat', S.wpAlamat); }
+      if (S.nop) { L.push('atas objek pajak:'); row('  NOP', S.nop); row('  Alamat', S.nopAlamat); }
+    };
+    if (S.j === 'P') {
+      var lr = lampRows();
+      row('Nomor', S.noMohon); row('Lampiran', lr.length ? lr.length + ' berkas' : '-'); row('Hal', 'Permohonan ' + cap(S.jenisMohon));
+      L.push(v(S.kota) + ', ' + v(S.tglMohon ? fdl(S.tglMohon) : ''), '', 'Yth. Direktur Jenderal Pajak', 'Melalui Kantor Pelayanan Pajak ' + v(S.kpp), '', 'Yang bertanda tangan di bawah ini:');
+      ident(true); L.push('');
+      L.push('bersama ini mengajukan permohonan ' + S.jenisMohon + ' yang tercantum dalam ' + (JS_FULL[S.jenisSurat] || S.jenisSurat) + ':');
+      row('  Nomor', S.noSurat); row('  Tanggal', S.tglSurat ? fdl(S.tglSurat) : ''); row(isPBB() ? '  Tahun Pajak' : '  Masa/Tahun Pajak', S.masa);
+      if (isPBB()) { row('  Denda administrasi PBB', rpt(S.dendaPBB)); row('  Pengurangan sebesar', rpt(S.kurangPBB)); row('  PBB Terutang', rpt(S.pbbTerutang)); }
+      L.push('', 'Alasan permohonan:', v(S.alasan), '', 'Berdasarkan hal tersebut di atas, dengan ini dimohon ' + objekSanksi() + ' menjadi sebesar ' + rpt(S.sanksiWP) + '.', '', 'Sebagai kelengkapan permohonan, terlampir disampaikan:');
+      lr.forEach(function (x, i) { L.push((i + 1) + '. ' + x[0] + (x[1] ? ' (' + x[1] + ')' : '')); });
+      L.push('', 'Demikian surat permohonan kami sampaikan untuk dapat dipertimbangkan.', '', S.selaku, '', '', S.nama || '..........');
+      return L.join('\n');
+    }
     if (S.j === 'F') L.push('SURAT PERNYATAAN', 'TIDAK MENGAJUKAN GUGATAN DAN/ATAU UPAYA HUKUM LAINNYA', '');
     else L.push('SURAT PERNYATAAN', 'SANKSI ADMINISTRATIF TIMBUL KARENA KEKHILAFAN', 'ATAU BUKAN KARENA KESALAHAN', '');
-    L.push('Saya yang bertanda tangan di bawah ini:'); row('nama', S.nama); row('NPWP', S.npwp); if (S.jabatan) row('jabatan', S.jabatan); row('alamat', S.alamat); row('nomor telepon', S.telp);
-    row('bertindak selaku', ['Wajib Pajak', 'Wakil', 'Kuasa'].map(function (o) { return (o === S.selaku ? '[X] ' : '[ ] ') + o; }).join('  '));
-    if (S.selaku !== 'Wajib Pajak') { L.push('dari Wajib Pajak'); row('  nama', S.wpNama); row('  NPWP', S.wpNpwp); row('  alamat', S.wpAlamat); }
-    if (S.nop) { L.push('atas objek pajak:'); row('  NOP', S.nop); row('  alamat', S.nopAlamat); }
-    L.push('');
+    L.push('Saya yang bertanda tangan di bawah ini:'); ident(false); L.push('');
     if (S.j === 'F') {
       L.push('dengan ini menyatakan bahwa sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif yang saya ajukan atas ' + S.jenisSurat + ',', '');
       L.push('Nomor SKP/STP: ' + v(S.noSurat), 'Tanggal SKP/STP: ' + v(S.tglSurat ? fdl(S.tglSurat) : ''), 'Jenis Pajak: ' + v(S.jenisPajak), 'Masa/Tahun Pajak: ' + v(S.masa), '');
@@ -1032,10 +1133,38 @@ if (typeof module !== 'undefined') module.exports = PSA;
     L.push('', v(S.kota) + ', ' + v(S.tglTtd ? fdl(S.tglTtd) : ''), S.j === 'F' ? 'Yang membuat pernyataan,' : '', S.selaku, '', '[Meterai Rp10.000]', '', S.nama || '..........');
     return L.join('\n');
   }
+  function fromCalc() {
+    var sc = PSA.byId(state.id), v = vals(sc.id), r = PSA.hitung(sc, v);
+    if (!r.ok) { toast('Data di kalkulator belum lengkap. Lengkapi dulu skenarionya.'); return; }
+    var skp = { b1: 'SKPKB', c2: 'SKPKB', c3: 'SKPKB', d2: 'SKPKB' }[sc.id] || 'STP';
+    S.jenisSurat = skp;
+    if (v.terbit) S.tglSurat = v.terbit;
+    S.sanksiWP = String(Math.max(0, r.base - r.potong));
+    S.jenisMohon = r.rate === 100 ? 'penghapusan sanksi administratif' : 'pengurangan sanksi administratif';
+    S.sanksiMohon = 'Sanksi administratif berdasarkan ' + sc.pasal + ' sebesar Rp' + r.base.toLocaleString('id-ID');
+    S.alasan = 'Sanksi administratif dalam ' + skp + ' tersebut timbul karena kekhilafan, bukan karena kesengajaan. Wajib Pajak telah memenuhi persyaratan pengurangan atau penghapusan sanksi administratif untuk ' + sc.judul + ' (' + sc.pasal + ') sebagaimana diatur dalam Pasal 27A PMK 118 Tahun 2024 s.t.d.d. PMK 71 Tahun 2026 dan KEP-239/PJ/2026 Diktum ' + sc.diktum + ', dengan pengurangan sebesar ' + r.rate + '%.';
+    renderSForm(); renderPaper();
+    toast(r.rate ? 'Terisi: ' + r.rate + '% → sanksi menjadi Rp' + Number(S.sanksiWP).toLocaleString('id-ID') : 'Menurut kalkulator, tanggal itu tidak mendapat pengurangan');
+  }
   $('#jenisSurat').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; S.j = b.dataset.j; document.querySelectorAll('#jenisSurat button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); renderSForm(); renderPaper(); });
-  $('#sform').addEventListener('input', function (e) { var k = e.target.dataset.k; if (!k) return; S[k] = e.target.value; if (k === 'selaku') renderSForm(); renderPaper(); });
-  $('#sform').addEventListener('change', function (e) { var k = e.target.dataset.k; if (k === 'selaku') { S[k] = e.target.value; renderSForm(); renderPaper(); } });
+  $('#sform').addEventListener('input', function (e) {
+    var el = e.target, k = el.dataset.k; if (!k) return;
+    S[k] = el.dataset.money ? el.value.replace(/\D/g, '') : el.value;
+    if (k === 'selaku' || k === 'jenisSurat') renderSForm();
+    renderPaper();
+  });
+  $('#sform').addEventListener('focusout', function (e) { var el = e.target; if (el.dataset && el.dataset.money) el.value = S[el.dataset.k] === '' ? '' : Number(S[el.dataset.k]).toLocaleString('id-ID'); });
+  $('#sform').addEventListener('click', function (e) { if (e.target.closest('#fromCalc')) fromCalc(); });
   $('#copySurat').addEventListener('click', function () { copy(suratText()); });
+  var canPrint = false;
+  try { canPrint = window.self === window.top && typeof window.print === 'function'; } catch (e) { canPrint = false; }
+  if (canPrint) { $('#printSurat').hidden = false; $('#printHint').hidden = true; }
+  $('#printSurat').addEventListener('click', function () {
+    var empty = $('#spaper').querySelectorAll('.ph').length;
+    $('#printArea').innerHTML = $('#spaper').innerHTML;
+    if (empty) toast('Masih ada ' + empty + ' isian kosong (titik-titik) di surat');
+    setTimeout(function () { try { window.print(); } catch (e) { toast('Browser menolak mencetak. Gunakan Salin teks surat.'); } }, empty ? 600 : 0);
+  });
   $('#resetSurat').addEventListener('click', function () { var j = S.j; S = Object.assign({}, SDEF, { j: j }); renderSForm(); renderPaper(); });
 
   /* ---------- Kamus pasal ---------- */
