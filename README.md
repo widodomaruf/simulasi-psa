@@ -23,26 +23,6 @@ Situs ini membantu Wajib Pajak memahami program PSA. Pengguna bisa melihat skema
 - **Tampilan menyesuaikan perangkat.** Di PC memakai tab di atas; di HP memakai menu di bagian bawah (Cek Kluster · Hitung · Syarat · Surat · Lainnya).
 - Mendukung mode terang maupun gelap.
 
-## Cara pasang di GitHub Pages
-
-1. Buat repository baru di GitHub, misalnya `simulasi-psa`.
-2. Unggah `index.html` dan `README.md` ke root repository.
-3. Buka **Settings → Pages**.
-4. Pada **Source**, pilih **Deploy from a branch**, lalu pilih branch `main` dan folder `/ (root)`. Klik **Save**.
-5. Tunggu 1–2 menit. Situs akan tayang di `https://<username>.github.io/simulasi-psa/`.
-
-Situs ini hanya satu file HTML. Tidak perlu build, server, atau database. Satu-satunya sumber eksternal adalah font angka (IBM Plex Mono) dari Google Fonts. Kalau font itu gagal dimuat, browser otomatis memakai font monospace bawaan.
-
-### Tautan langsung ke skenario
-
-Setiap skenario punya alamat sendiri, sehingga bisa dibagikan langsung. Contoh:
-
-- `.../#skenario-a1`: terlambat lapor SPT
-- `.../#skenario-b1`: SKPKB hasil pemeriksaan
-- `.../#skenario-c7`: STP bunga penagihan baru
-- `.../#kalkulator`: kalkulator (skenario pertama); `.../#syarat`, `.../#surat`, `.../#pasal`, `.../#tentang`: halaman lain
-- Tanpa tanda `#`, situs terbuka di **Cek Kluster Saya**.
-
 ## Pola penghitungan
 
 Seluruh baris di Tabel A–D KEP-239 diturunkan ke enam pola:
