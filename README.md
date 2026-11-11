@@ -1,10 +1,12 @@
-# Simulasi PSA 2026
+# LEGA · Simulasi PSA 2026
+
+**L**ihat sanksi · **E**valuasi syarat · **G**arap surat · **A**jukan
 
 **Versi 2.0** · diperbarui 11 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
 
 Alat bantu untuk memahami dan menghitung program **Pengurangan atau Penghapusan Sanksi Administratif (PSA)** berdasarkan **PMK 71 Tahun 2026** dan **KEP-239/PJ/2026**.
 
-Situs ini membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, berapa yang harus dibayar, sampai kapan, dan dokumen apa saja yang perlu disiapkan.
+LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, berapa yang harus dibayar, sampai kapan, dan dokumen apa saja yang perlu disiapkan.
 
 > **Bukan situs resmi DJP.** Situs ini alat edukasi independen. Hasil simulasi bukan keputusan Direktorat Jenderal Pajak. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Wajib Pajak.
 
@@ -12,10 +14,11 @@ Situs ini membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA,
 
 - **Cek Sanksi Saya.** Tanya-jawab dalam bahasa sehari-hari tentang surat yang Anda terima. Hasilnya berupa rencana tindakan: berapa yang dibayar, paling lambat kapan, dan berapa yang dihapus.
 - **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi Anda. Hasilnya kesimpulan apakah permohonan bisa diajukan, ditambah daftar dokumen yang perlu disiapkan.
-- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan/permohonan lain, dan surat pencabutan gugatan. Surat bisa dicetak atau disimpan sebagai PDF.
+- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan/permohonan lain, surat pencabutan gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
 - **Kalkulator Lengkap.** Perhitungan per kluster dan skenario KEP-239/PJ/2026, untuk petugas dan praktisi.
 - **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP.
 - **Video penjelasan** program PSA dan cara memakai situs ini.
+- **Bisa diinstal sebagai aplikasi** di HP (Android/iPhone) dan komputer (Chrome/Edge), dan tetap bisa dipakai tanpa internet, kecuali video.
 
 ## Dasar hukum
 
@@ -30,8 +33,9 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 **Versi 2.0 (11 November 2026)**
 - Cek Sanksi Saya menggantikan Cek Kluster, dengan pertanyaan yang lebih mudah dipahami.
 - Cek Syarat Permohonan menggantikan ceklist, sehingga syarat yang tidak berlaku otomatis dilewati.
-- Surat baru: pencabutan keberatan/permohonan lain dan pencabutan gugatan.
+- Surat baru: pencabutan keberatan/permohonan lain, pencabutan gugatan, dan cetak ulang (salinan) STP/SKP.
 - Penjelasan untuk kasus khusus: SPT nihil/lebih bayar, PBB rumah/tanah, dan sanksi atas keputusan keberatan, putusan banding, atau PK.
+- Brand baru LEGA dan bisa diinstal sebagai aplikasi.
 - Banner ringkasan program PSA, tombol Beranda, serta tautan Instagram dan LinkedIn.
 
 **Versi 1.0**: rilis pertama.

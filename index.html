@@ -3,9 +3,26 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Simulasi PSA 2026</title>
+<meta name="description" content="LEGA: cek sanksi, hitung potongan PSA 2026, dan siapkan surat permohonannya. Alat edukasi independen, bukan situs resmi DJP.">
+<meta name="theme-color" content="#0A3263">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="LEGA">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="LEGA">
+<meta property="og:title" content="LEGA – Simulasi PSA 2026">
+<meta property="og:description" content="Cek sanksi, hitung potongan, siapkan suratnya. Sanksi pajak bisa dihapus sampai 100% lewat program PSA 2026.">
+<meta property="og:url" content="https://simulasi-psa.vercel.app/">
+<meta property="og:image" content="https://simulasi-psa.vercel.app/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<title>LEGA Simulasi PSA 2026</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="Kalkulator simulasi Pengurangan Sanksi Administratif (PSA) berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&display=swap">
@@ -53,7 +70,16 @@ button { font: inherit; color: inherit; cursor: pointer; }
 .band { background: var(--band); color: var(--band-ink); }
 .band .wrap { padding-block: 28px 22px; display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 28px; align-items: end; }
 .band .eyebrow { color: var(--band-2); }
-.band h1 { font-size: clamp(30px, 5vw, 46px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; margin: 8px 0 10px; }
+.band h1 { font-size: clamp(26px, 4vw, 38px); font-weight: 700; letter-spacing: -0.02em; line-height: 1.05; margin: 8px 0 10px; }
+.brand { display: flex; align-items: center; gap: 12px; margin: 4px 0 14px; }
+.brand .lmark { width: 54px; height: 54px; flex: none; }
+.brand > div { display: grid; gap: 2px; min-width: 0; }
+.bname { font-family: var(--display); font-weight: 800; font-size: 34px; line-height: 1; letter-spacing: .04em; color: var(--yellow); }
+.bsub { font-size: 12.5px; color: var(--band-2); }
+.bsub b { color: var(--band-ink); }
+.inst { border: 1px solid var(--yellow); background: none; color: var(--yellow); font-size: 12.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; }
+.inst:hover { background: rgba(245, 184, 0, .12); }
+.ihelp ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; }
 .band h1 em { font-style: normal; color: var(--yellow); }
 .band .lead { color: var(--band-2); max-width: 52ch; }
 .topline { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 14px; }
@@ -408,6 +434,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
   .tut .x:hover { background: none; }
   .vlink { display: none; }
 }
+.exbox { margin: 0; padding: 8px 10px; background: var(--chip); border-radius: 8px; font-family: var(--mono); font-size: 12.5px; white-space: pre-wrap; overflow-wrap: anywhere; color: var(--ink-2); }
 .saran { background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--yellow); border-radius: 12px; padding: 14px 16px; display: grid; gap: 8px; color: var(--ink); font-size: 14px; }
 .saran b { font-weight: 700; }
 .saran .row2 { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
@@ -473,8 +500,9 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 <header class="band">
   <div class="wrap">
     <div>
-      <div class="topline"><a class="home" href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><button class="ver" data-go="tentang" data-ver="1">v2.0</button></div>
+      <div class="topline"><a class="home" href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><button class="ver" data-go="tentang" data-ver="1">v2.0</button><button class="inst" data-install hidden>Instal aplikasi LEGA</button></div>
       <div class="eyebrow">PMK 71 Tahun 2026 · KEP-239/PJ/2026</div>
+      <div class="brand"><img class="lmark" src="data:image/png;base64,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" alt="" width="54" height="54"><div><span class="bname">LEGA</span><span class="bsub"><b>L</b>ihat sanksi · <b>E</b>valuasi syarat · <b>G</b>arap surat · <b>A</b>jukan</span></div></div>
       <h1>Simulasi <em>PSA</em> 2026</h1>
       <p class="lead">Hitung berapa sanksi pajak Anda yang bisa dihapus atau dikurangi lewat program Pengurangan Sanksi Administratif. Setiap skenario sudah terisi contoh resmi dari KEP, tinggal ganti dengan data Anda.</p>
       <div class="credit"><span class="by">Dibuat oleh <b>Muhammad Widodo Ma'ruf</b> · Edukator Pajak · <a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a></span><span class="unof">Bukan situs resmi DJP</span><a class="vlink" data-video="tutorial" data-play="tutorial" href="#"><svg viewBox="0 0 68 48" aria-hidden="true"><path d="M66.5 7.7a8.5 8.5 0 0 0-6-6C55.2.3 34 .3 34 .3s-21.2 0-26.5 1.4a8.5 8.5 0 0 0-6 6C.1 13 .1 24 .1 24s0 11 1.4 16.3a8.5 8.5 0 0 0 6 6C12.8 47.7 34 47.7 34 47.7s21.2 0 26.5-1.4a8.5 8.5 0 0 0 6-6C67.9 35 67.9 24 67.9 24s0-11-1.4-16.3z" fill="#E1251B"/><path d="M27 34.3 44.6 24 27 13.7z" fill="#fff"/></svg>Cara pakai situs ini</a></div>
@@ -539,13 +567,14 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
     <section class="view page" id="v-surat" aria-label="Surat permohonan" style="max-width:none" hidden>
       <div>
         <h2>Surat Permohonan &amp; Pernyataan</h2>
-        <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Bila Anda sempat mengajukan gugatan atau upaya hukum lain, surat nomor 2 diganti dengan <b>surat permohonan pencabutan gugatan</b>. Bila surat Anda masih diajukan keberatan atau permohonan lain, ajukan dulu <b>surat permohonan pencabutan</b> ke DJP. Data yang sama cukup diisi sekali dan otomatis terpakai di semua surat. Isian awal adalah contoh.</p>
+        <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Bila Anda sempat mengajukan gugatan atau upaya hukum lain, surat nomor 2 diganti dengan <b>surat permohonan pencabutan gugatan</b>. Bila surat Anda masih diajukan keberatan atau permohonan lain, ajukan dulu <b>surat permohonan pencabutan</b> ke DJP. Tidak punya salinan STP/SKP-nya? Mintakan dengan <b>surat permohonan cetak ulang</b>. Data yang sama cukup diisi sekali dan otomatis terpakai di semua surat. Isian awal adalah contoh.</p>
       </div>
       <div class="vtempat" data-vtempat="surat"></div>
       <div class="seg2" id="jenisSurat">
         <button data-j="P" aria-pressed="true">1 · Surat permohonan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran C PMK 71/2026</small></button>
         <button data-j="F" aria-pressed="false">2 · Pernyataan tidak mengajukan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran F</small></button>
         <button data-j="G" aria-pressed="false">3 · Pernyataan sanksi karena kekhilafan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran G</small></button>
+        <button data-j="S" aria-pressed="false">Cetak ulang (salinan) STP/SKP<br><small style="font-weight:400;color:var(--ink-3)">Bila tidak punya salinan suratnya</small></button>
         <button data-j="R" aria-pressed="false">Pencabutan keberatan/permohonan lain<br><small style="font-weight:400;color:var(--ink-3)">Format PMK 118/2024 · diajukan lebih dulu</small></button>
         <button data-j="C" aria-pressed="false">Pencabutan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Hanya bila sempat menggugat · pengganti no. 2</small></button>
       </div>
@@ -556,6 +585,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
           <div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn pri" id="printSurat" hidden>Cetak / Simpan PDF</button><button class="btn" id="copySurat">Salin teks surat</button><button class="btn" id="resetSurat">Kembalikan contoh</button></div>
           <div class="meterai-note"><b>Soal meterai</b><ul>
             <li><b>Surat permohonan</b> tidak memerlukan meterai. <b>Kedua surat pernyataan</b> wajib bermeterai.</li>
+            <li><b>Surat permohonan cetak ulang (salinan)</b> ditujukan ke Kepala KPP tempat WP terdaftar, tanpa meterai. Satu surat bisa untuk beberapa STP/SKP sekaligus. Format ini contoh, bukan format baku.</li>
             <li><b>Surat pencabutan keberatan/permohonan lain</b> mengikuti contoh format PMK 118/2024 dan diajukan ke DJP melalui KPP <b>sebelum</b> permohonan PSA. Permohonan PSA baru bisa diajukan setelah pencabutannya disetujui DJP. Tidak perlu meterai; bila ditandatangani kuasa, lampirkan surat kuasa khusus.</li>
             <li><b>Surat pencabutan gugatan</b>: KEP-239 tidak menyediakan format resmi, jadi ini contoh. Sampaikan ke Pengadilan Pajak (atau lembaga tempat upaya hukum diajukan) sesuai ketentuannya, lalu lampirkan salinannya pada permohonan PSA.</li>
             <li><b>Dicetak di kertas:</b> tempel meterai Rp10.000 di kotak yang tersedia, lalu tanda tangani di atasnya.</li>
@@ -614,12 +644,14 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
             <ul class="notes">
               <li><b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.</li>
               <li><b>Cek Syarat Permohonan</b> menggantikan ceklist: pertanyaan sesuai kondisi, syarat yang tidak berlaku otomatis dilewati, kesimpulan, dan daftar dokumen.</li>
-              <li>Surat baru: <b>permohonan pencabutan keberatan/permohonan lain</b> (format PMK 118/2024) dan <b>permohonan pencabutan gugatan</b>.</li>
+              <li>Surat baru: <b>permohonan pencabutan keberatan/permohonan lain</b> (format PMK 118/2024), <b>permohonan pencabutan gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.</li>
               <li>Penegasan: STP bunga Pasal 19 atas SKP yang diajukan keberatan tetap bisa dimohonkan; sanksi atas keputusan keberatan, putusan banding, dan PK yang sudah diputus tidak bisa.</li>
               <li>Kasus SPT nihil atau lebih bayar yang dilapor mulai 8 Oktober 2026, PBB rumah/tanah dari pemda, dan sanksi atas putusan kini diberi penjelasan.</li>
               <li>Kalkulator per kluster kini bernama <b>Kalkulator Lengkap</b>, untuk petugas dan praktisi.</li>
               <li>Tombol kembali ke beranda s.id/widodomaruf, tautan Instagram, dan kartu LinkedIn.</li>
               <li>Banner sambutan berisi ringkasan program PSA saat situs dibuka.</li>
+              <li>Brand baru <b>LEGA</b> (Lihat sanksi · Evaluasi syarat · Garap surat · Ajukan).</li>
+              <li>Bisa <b>diinstal sebagai aplikasi</b> di HP dan komputer, dan tetap bisa dipakai tanpa internet (kecuali video).</li>
             </ul></div>
           <div><p class="vlog-h"><b>Versi 1.0</b> <span class="kket">rilis pertama</span></p>
             <ul class="notes"><li>Kalkulator per kluster KEP-239/PJ/2026, cek kluster, ceklist syarat, generator surat permohonan dan surat pernyataan, kamus pasal, serta video penjelasan.</li></ul></div>
@@ -639,17 +671,26 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
     <a class="li-card" href="https://www.linkedin.com/in/mwidodomaruf/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0A66C2"/><path d="M7 10v7M7 7.2v.1M11 17v-4.2c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V17M11 10v7" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span><b>Terhubung dengan saya di LinkedIn</b><small>linkedin.com/in/mwidodomaruf</small></span><span class="go">→</span></a>
     <div class="saran" role="note"><p><b>Catatan:</b> ada saran, koreksi, atau menemukan hasil hitung yang janggal? Kirim email ke:</p><div class="row2"><span class="mail">hi.widodomaruf@gmail.com</span><button class="btn" data-copy="hi.widodomaruf@gmail.com">Salin alamat</button><a class="btn" href="mailto:hi.widodomaruf@gmail.com?subject=Saran%20Simulasi%20PSA%202026" style="text-decoration:none;color:var(--ink)">Tulis email</a></div></div>
     <span>© 2026 <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube <a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a> · <a href="https://s.id/widodomaruf">s.id/widodomaruf</a></span>
-    <span>Simulasi PSA <b>versi 2.0</b> · diperbarui 11 November 2026 · <button class="lnk" data-go="tentang" data-ver="1">catatan versi</button></span>
+    <span><b>LEGA</b> versi 2.0 · diperbarui 11 November 2026 · <button class="lnk" data-go="tentang" data-ver="1">catatan versi</button></span>
     <span>Alat edukasi independen, bukan situs resmi atau keputusan DJP · berdasarkan PMK 71/2026 dan KEP-239/PJ/2026</span>
   </div>
 </footer>
-<nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Sanksi</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><a href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><a href="#" data-play="tutorial" data-video="tutorial"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9.5 5 2.5-5 2.5z"/></svg>Cara Pakai Situs</a><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
+<nav class="bnav" id="bnav" aria-label="Menu utama"><button data-view="cek"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/><path d="M9.2 9.2a2 2 0 1 1 2.6 2c-.5.2-.8.6-.8 1.1v.4M11 15.3h.01"/></svg></span>Cek Sanksi</button><button data-view="kalkulator"><span class="ic"><svg viewBox="0 0 24 24"><rect x="5" y="3" width="14" height="18" rx="2.5"/><path d="M8 7h8M8.5 11h.01M12 11h.01M15.5 11h.01M8.5 14.5h.01M12 14.5h.01M15.5 14.5h.01M8.5 18h.01M12 18h3.5"/></svg></span>Hitung</button><button data-view="syarat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M9 5H6.5A1.5 1.5 0 0 0 5 6.5v13A1.5 1.5 0 0 0 6.5 21h11a1.5 1.5 0 0 0 1.5-1.5v-13A1.5 1.5 0 0 0 17.5 5H15"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m8.5 13 2 2 4-4.5"/></svg></span>Syarat</button><button data-view="surat"><span class="ic"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h4"/></svg></span>Surat</button><button id="bMore" aria-expanded="false" aria-controls="more"><span class="ic"><svg viewBox="0 0 24 24"><circle cx="5.5" cy="12" r="1.2"/><circle cx="12" cy="12" r="1.2"/><circle cx="18.5" cy="12" r="1.2"/></svg></span>Lainnya</button><div class="more" id="more" hidden><button data-install hidden><svg viewBox="0 0 24 24"><path d="M12 4v11M7.5 10.5 12 15l4.5-4.5"/><path d="M5 19h14"/></svg>Instal aplikasi LEGA</button><a href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><a href="#" data-play="tutorial" data-video="tutorial"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="m10 9.5 5 2.5-5 2.5z"/></svg>Cara Pakai Situs</a><button data-view="pasal"><svg viewBox="0 0 24 24"><path d="M4 5.5A1.5 1.5 0 0 1 5.5 4H11v16H5.5A1.5 1.5 0 0 1 4 18.5zM20 5.5A1.5 1.5 0 0 0 18.5 4H13v16h5.5a1.5 1.5 0 0 0 1.5-1.5z"/></svg>Kamus Pasal</button><button data-view="tentang"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>Tentang PSA</button></div></nav>
 <div class="toast" id="toast" hidden></div>
 <div id="printArea" aria-hidden="true"></div>
+<div class="welcome" id="ihelp" role="dialog" aria-modal="true" aria-labelledby="ihTitle" hidden>
+  <div class="wbox ihelp"><div class="wtop"><span class="eyebrow">LEGA</span><h2 id="ihTitle">Pasang LEGA di HP atau komputer</h2><button class="wx" id="ihClose" aria-label="Tutup">✕</button></div>
+    <div class="wbody">
+      <div><p><b>iPhone / iPad (Safari)</b></p><ol><li>Ketuk tombol <b>Bagikan</b> (kotak dengan panah ke atas).</li><li>Pilih <b>Tambahkan ke Layar Utama</b>.</li><li>Ketuk <b>Tambah</b>. Ikon LEGA muncul di layar HP.</li></ol></div>
+      <div><p><b>Android (Chrome)</b></p><ol><li>Ketuk menu <b>⋮</b> di kanan atas.</li><li>Pilih <b>Instal aplikasi</b> atau <b>Tambahkan ke layar utama</b>.</li></ol></div>
+      <div><p><b>Komputer (Chrome atau Edge)</b></p><ol><li>Klik ikon instal di ujung kanan kolom alamat, atau menu <b>⋮</b> lalu <b>Instal LEGA</b>.</li></ol></div>
+      <p class="kket">Setelah dipasang, LEGA terbuka seperti aplikasi dan tetap bisa dipakai tanpa internet (kecuali video).</p>
+    </div></div>
+</div>
 <div class="welcome" id="welcome" role="dialog" aria-modal="true" aria-labelledby="wtitle" hidden>
   <div class="wbox">
     <div class="wtop">
-      <span class="eyebrow">Program PSA 2026 · PMK 71/2026 · KEP-239/PJ/2026</span>
+      <span class="eyebrow">LEGA · Simulasi PSA 2026 · PMK 71/2026 · KEP-239/PJ/2026</span>
       <h2 id="wtitle">Sanksi pajak Anda bisa <em>dihapus sampai 100%</em></h2>
       <p>Program Pengurangan Sanksi Administratif (PSA) dari DJP untuk denda, bunga, dan kenaikan pajak.</p>
       <button class="wx" id="wClose" aria-label="Tutup">✕</button>
@@ -1438,7 +1479,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     F: { t: 'Surat pernyataan tidak mengajukan gugatan/upaya hukum lain (Lampiran F)', d: 'Bermeterai.', j: 'F' },
     C: { t: 'Surat permohonan pencabutan gugatan/upaya hukum lain', d: 'Pengganti surat pernyataan tidak mengajukan gugatan, untuk yang sempat menggugat.', j: 'C' },
     G: { t: 'Surat pernyataan sanksi timbul karena kekhilafan (Lampiran G)', d: 'Bermeterai.', j: 'G' },
-    salinan: { t: 'Salinan surat yang dimohonkan (STP/SKP)' },
+    salinan: { t: 'Salinan surat yang dimohonkan (STP/SKP)', j: 'S', btn: 'Tidak punya? Buat surat permohonan cetak ulang →' },
     bukti: { t: 'Bukti pelunasan pokok pajak (dan bukti bayar sebagian sanksi, bila skemanya bayar sebagian)' },
     kuasa: { t: 'Surat kuasa khusus' }
   };
@@ -1470,7 +1511,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     var list = blocks.concat(todos, warns);
     if (list.length) out += '<ul class="steps">' + list.map(function (x) { return '<li>' + esc(x.o.msg || x.o.t) + '</li>'; }).join('') + '</ul>';
     if (!blocks.length) {
-      out += '<p class="k" style="margin-top:6px">Dokumen yang perlu disiapkan</p><ol class="steps">' + docs.map(function (k) { var D = DOCS[k]; return '<li><b>' + esc(D.t) + '</b>' + (D.d ? '<br><span class="kket">' + esc(D.d) + '</span>' : '') + (D.j ? ' <button class="lnk" data-surat="' + D.j + '">Buat suratnya →</button>' : '') + '</li>'; }).join('') + '</ol>';
+      out += '<p class="k" style="margin-top:6px">Dokumen yang perlu disiapkan</p><ol class="steps">' + docs.map(function (k) { var D = DOCS[k]; return '<li><b>' + esc(D.t) + '</b>' + (D.d ? '<br><span class="kket">' + esc(D.d) + '</span>' : '') + (D.j ? ' <button class="lnk" data-surat="' + D.j + '">' + (D.btn || 'Buat suratnya →') + '</button>' : '') + '</li>'; }).join('') + '</ol>';
       out += '<p class="kket">Ajukan paling lambat <b>1 Oktober 2028</b>. Satu permohonan untuk satu surat: punya tiga STP berarti tiga permohonan.</p>';
     }
     out += '</div>';
@@ -1508,6 +1549,8 @@ if (typeof module !== 'undefined') module.exports = PSA;
     lampiran: 'Fotokopi STP yang dimohonkan ; 1 lembar\nBukti penyampaian SPT dan pelunasan pokok pajak ; 1 set\nSurat pernyataan tidak mengajukan gugatan (bermeterai) ; 1 lembar\nSurat pernyataan sanksi timbul karena kekhilafan (bermeterai) ; 1 lembar',
     sanksiMohon: 'Sanksi administratif berupa denda Pasal 7 ayat (1) UU KUP atas keterlambatan penyampaian SPT Tahunan PPh Badan Tahun Pajak 2025', kota: 'Tangerang', tglTtd: TODAY,
     tujuan: 'Ketua Pengadilan Pajak', upaya: 'gugatan', noGugatan: '', tglGugatan: '',
+    noSalinan: '003/ABC/XI/2026', kppKota: 'Tangerang', alasanSalinan: 'tidak kami miliki', suratLain: '',
+    lampSalinan: 'Fotokopi identitas penanda tangan\nSurat kuasa khusus (dalam hal ditandatangani oleh kuasa)',
     noCabut: '002/ABC/XI/2026', jenisCabut: CABUT[0][0], noRef: '', tglRef: '', noBPE: '', tglBPE: '', lampR: '-', tglSPPT: '',
     alasanR: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan surat yang dimohonkan tidak sedang diajukan keberatan atau permohonan lain.',
     alasanCabut: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan tidak adanya gugatan dan/atau upaya hukum lainnya atas surat tersebut.' };
@@ -1515,8 +1558,9 @@ if (typeof module !== 'undefined') module.exports = PSA;
   // [kunci, label, tipe, opsi, berlaku-untuk ('P','F','G' gabungan) atau 'wk', syarat tambahan]
   var SF = [
     ['noMohon', 'Nomor surat permohonan', 0, 0, 'PG'], ['tglMohon', 'Tanggal surat permohonan', 'date', 0, 'PG'],
+    ['noSalinan', 'Nomor surat permohonan cetak ulang', 0, 0, 'S'],
     ['noCabut', 'Nomor surat permohonan pencabutan', 0, 0, 'R'], ['lampR', 'Jumlah lampiran', 0, 0, 'R'], ['jenisCabut', 'Yang dicabut', 'select', CABUT.map(function (c) { return c[0]; }), 'R'],
-    ['kpp', 'Kantor Pelayanan Pajak (tanpa kata "KPP")', 0, 0, 'PR'],
+    ['kpp', 'Kantor Pelayanan Pajak (tanpa kata "KPP")', 0, 0, 'PRS'], ['kppKota', 'Kota KPP', 0, 0, 'S'],
     ['selaku', 'Bertindak selaku', 'select', ['Wajib Pajak', 'Wakil', 'Kuasa']], ['nama', 'Nama penanda tangan'], ['npwp', 'NPWP penanda tangan'], ['jabatan', 'Jabatan (kosongkan untuk WP orang pribadi)'],
     ['alamat', 'Alamat penanda tangan'], ['telp', 'Nomor telepon'],
     ['wpNama', 'Nama Wajib Pajak', 0, 0, 'wk'], ['wpNpwp', 'NPWP Wajib Pajak', 0, 0, 'wk'], ['wpAlamat', 'Alamat Wajib Pajak', 0, 0, 'wk'],
@@ -1524,14 +1568,16 @@ if (typeof module !== 'undefined') module.exports = PSA;
     ['noRef', 'Nomor surat keberatan/permohonan yang dicabut', 0, 0, 'R'], ['tglRef', 'Tanggal surat keberatan/permohonan tersebut', 'date', 0, 'R'], ['noBPE', 'Nomor bukti penerimaan', 0, 0, 'R'], ['tglBPE', 'Tanggal bukti penerimaan', 'date', 0, 'R'],
     ['jenisMohon', 'Jenis permohonan', 'select', ['penghapusan sanksi administratif', 'pengurangan sanksi administratif', 'pengurangan denda administratif Pajak Bumi dan Bangunan'], 'P'],
     ['tujuan', 'Ditujukan kepada', 0, 0, 'C'], ['upaya', 'Jenis upaya hukum yang dicabut', 'select', ['gugatan', 'upaya hukum lainnya'], 'C'], ['noGugatan', 'Nomor surat gugatan / nomor register', 0, 0, 'C'], ['tglGugatan', 'Tanggal gugatan diajukan', 'date', 0, 'C'],
-    ['jenisSurat', 'Jenis surat yang dimohonkan', 'select', ['STP', 'SKPKB', 'SKPKBT', 'SKP PBB', 'STP PBB'], 'FPC'], ['noSurat', 'Nomor surat', 0, 0, 'FPC'], ['tglSurat', 'Tanggal surat', 'date', 0, 'FPC'],
-    ['jenisPajak', 'Jenis pajak', 0, 0, 'FC'], ['masa', 'Masa/Tahun Pajak', 0, 0, 'FPC'],
+    ['jenisSurat', 'Jenis surat yang dimohonkan', 'select', ['STP', 'SKPKB', 'SKPKBT', 'SKP PBB', 'STP PBB'], 'FPCS'], ['noSurat', 'Nomor surat', 0, 0, 'FPCS'], ['tglSurat', 'Tanggal surat', 'date', 0, 'FPCS'],
+    ['jenisPajak', 'Jenis pajak', 0, 0, 'FC'], ['masa', 'Masa/Tahun Pajak', 0, 0, 'FPCS'],
+    ['suratLain', 'Surat lain yang juga diminta salinannya (opsional)', 'textarea', 0, 'S', 0, { hint: 'Bila salinan yang diminta lebih dari satu. Tulis satu surat per baris dengan urutan: jenis ; nomor ; tanggal ; masa/tahun pajak (dipisah titik koma). Contoh:', ex: 'SKPKB ; 00002/206/25/402/26 ; 12 Oktober 2026 ; 2025\nSTP ; 00003/107/26/402/26 ; 1 November 2026 ; Juni 2026', btn: 'Isi dengan contoh' }],
+    ['alasanSalinan', 'Alasan', 'select', ['tidak kami miliki', 'hilang', 'rusak'], 'S'], ['lampSalinan', 'Lampiran', 'textarea', 0, 'S', 0, { hint: 'Satu dokumen per baris. Tambah baris baru dengan Enter, hapus baris yang tidak Anda lampirkan. Jumlah berkas di bagian "Lampiran" surat ikut berubah otomatis.' }],
     ['dendaPBB', 'Denda administratif PBB (Rp)', 'money', 0, 'P', 'pbb'], ['kurangPBB', 'Pengurangan sebesar (Rp)', 'money', 0, 'P', 'pbb'], ['pbbTerutang', 'PBB terutang (Rp)', 'money', 0, 'P', 'pbb'],
     ['sanksiWP', 'Sanksi menurut Wajib Pajak setelah dikurangi (Rp)', 'money', 0, 'P'],
     ['alasan', 'Alasan permohonan', 'textarea', 0, 'P'],
     ['lampiran', 'Lampiran: satu dokumen per baris, format "nama dokumen ; jumlah"', 'textarea', 0, 'P'],
     ['sanksiMohon', 'Sanksi yang dimohonkan', 'textarea', 0, 'G'], ['alasanCabut', 'Alasan pencabutan', 'textarea', 0, 'C'], ['alasanR', 'Alasan permohonan pencabutan', 'textarea', 0, 'R'],
-    ['kota', 'Kota'], ['tglTtd', 'Tanggal tanda tangan', 'date', 0, 'FGCR']
+    ['kota', 'Kota'], ['tglTtd', 'Tanggal tanda tangan', 'date', 0, 'FGCRS']
   ];
   function isPBB() { return S.jenisSurat.indexOf('PBB') >= 0; }
   function showField(f) {
@@ -1550,7 +1596,10 @@ if (typeof module !== 'undefined') module.exports = PSA;
       else if (f[2] === 'textarea') inp = '<textarea id="' + id + '" data-k="' + f[0] + '" rows="' + (f[0] === 'sanksiMohon' ? 3 : 5) + '">' + esc(v) + '</textarea>';
       else if (f[2] === 'money') inp = '<div class="money"><span>Rp</span><input id="' + id + '" data-k="' + f[0] + '" data-money="1" inputmode="numeric" autocomplete="off" value="' + (v === '' ? '' : Number(v).toLocaleString('id-ID')) + '"></div>';
       else inp = '<input id="' + id + '" data-k="' + f[0] + '" type="' + (f[2] || 'text') + '" value="' + esc(v) + '">';
-      return '<div class="field"' + (f[2] === 'textarea' ? ' style="grid-column:1/-1"' : '') + '><label for="' + id + '">' + f[1] + '</label>' + inp + '</div>';
+      var x = f[6], extra = '';
+      var pre = '', post = '';
+      if (x) { pre = '<span class="hint">' + esc(x.hint) + '</span>' + (x.ex ? '<pre class="exbox">' + esc(x.ex) + '</pre>' : ''); post = x.btn ? '<button class="lnk" data-fillex="' + f[0] + '" style="justify-self:start">' + esc(x.btn) + '</button>' : ''; }
+      return '<div class="field"' + (f[2] === 'textarea' ? ' style="grid-column:1/-1"' : '') + '><label for="' + id + '">' + f[1] + '</label>' + pre + inp + post + '</div>';
     }).join('');
   }
   function ph(v) { return v ? esc(v) : '<span class="ph">…………………</span>'; }
@@ -1586,9 +1635,34 @@ if (typeof module !== 'undefined') module.exports = PSA;
     h += '<div class="ttd">' + S.selaku + '<div style="height:64px"></div><u>' + ph(S.nama) + '</u></div>';
     return h;
   }
+  function salinanRows() {
+    var rows = [[S.jenisSurat, S.noSurat, S.tglSurat ? fdl(S.tglSurat) : '', S.masa]];
+    (S.suratLain || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean).forEach(function (l) { var p = l.split(';').map(function (x) { return x.trim(); }); rows.push([p[0] || '', p[1] || '', p[2] || '', p[3] || '']); });
+    return rows;
+  }
+  function salinanHal(rows) {
+    var kinds = {}; rows.forEach(function (r) { kinds[/^STP/i.test(r[0]) ? 'STP' : 'SKP'] = 1; });
+    var k = Object.keys(kinds);
+    if (rows.length === 1) return JS_FULL[rows[0][0]] || rows[0][0];
+    return k.length > 1 ? 'Surat Tagihan Pajak dan Surat Ketetapan Pajak' : (k[0] === 'STP' ? 'Surat Tagihan Pajak' : 'Surat Ketetapan Pajak');
+  }
+  function lines(t) { return (t || '').split('\n').map(function (l) { return l.trim(); }).filter(Boolean); }
   function renderPaper() {
     var h;
     if (S.j === 'P') h = paperP();
+    else if (S.j === 'S') {
+      var r3 = function (k, v) { return '<div class="row"><span>' + k + '</span><span>:</span><span>' + ph(v) + '</span></div>'; };
+      var rows = salinanRows(), lp = lines(S.lampSalinan);
+      h = '<div class="kop"><div>' + r3('Nomor', S.noSalinan) + r3('Lampiran', lp.length ? lp.length + ' berkas' : '-') + r3('Hal', 'Permohonan Cetak Ulang (Salinan) ' + salinanHal(rows)) + '</div><div class="kop-tgl">' + ph(S.kota) + ', ' + ph(S.tglTtd ? fdl(S.tglTtd) : '') + '</div></div>' +
+        '<p>Yth. Kepala Kantor Pelayanan Pajak ' + ph(S.kpp) + '<br>di ' + ph(S.kppKota) + '</p>' + idBlock('Yang bertanda tangan di bawah ini:', false) +
+        '<p style="margin-bottom:4px">dengan ini mengajukan permohonan cetak ulang (salinan) atas surat berikut:</p>' +
+        '<table><thead><tr><th style="width:34px">No.</th><th>Jenis Surat</th><th>Nomor</th><th>Tanggal</th><th>Masa/Tahun Pajak</th></tr></thead><tbody>' +
+        rows.map(function (r, i) { return '<tr><td>' + (i + 1) + '</td><td>' + ph(r[0]) + '</td><td>' + ph(r[1]) + '</td><td>' + ph(r[2]) + '</td><td>' + ph(r[3]) + '</td></tr>'; }).join('') + '</tbody></table>' +
+        '<p>Salinan tersebut kami perlukan sebagai lampiran permohonan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, karena dokumen asli ' + esc(S.alasanSalinan) + '.</p>' +
+        (lp.length ? '<p style="margin-bottom:2px">Sebagai kelengkapan, terlampir:</p><ol style="margin:0;padding-left:20px">' + lp.map(function (x) { return '<li>' + esc(x) + '</li>'; }).join('') + '</ol>' : '') +
+        '<p>Demikian permohonan ini kami sampaikan. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.</p>' +
+        '<div class="ttd">' + S.selaku + '<div style="height:64px"></div><u>' + ph(S.nama) + '</u></div>';
+    }
     else if (S.j === 'R') {
       var r2 = function (k, v) { return '<div class="row"><span>' + k + '</span><span>:</span><span>' + ph(v) + '</span></div>'; };
       var cb = CABUT.filter(function (c) { return c[0] === S.jenisCabut; })[0] || CABUT[0];
@@ -1645,6 +1719,17 @@ if (typeof module !== 'undefined') module.exports = PSA;
       L.push('', 'Demikian surat permohonan kami sampaikan untuk dapat dipertimbangkan.', '', S.selaku, '', '', S.nama || '..........');
       return L.join('\n');
     }
+    if (S.j === 'S') {
+      var rows = salinanRows(), lp = lines(S.lampSalinan);
+      row('Nomor', S.noSalinan); row('Lampiran', lp.length ? lp.length + ' berkas' : '-'); row('Hal', 'Permohonan Cetak Ulang (Salinan) ' + salinanHal(rows));
+      L.push(v(S.kota) + ', ' + v(S.tglTtd ? fdl(S.tglTtd) : ''), '', 'Yth. Kepala Kantor Pelayanan Pajak ' + v(S.kpp), 'di ' + v(S.kppKota), '', 'Yang bertanda tangan di bawah ini:');
+      ident(false); L.push('', 'dengan ini mengajukan permohonan cetak ulang (salinan) atas surat berikut:');
+      rows.forEach(function (r, i) { L.push((i + 1) + '. ' + v(r[0]) + ' nomor ' + v(r[1]) + ', tanggal ' + v(r[2]) + ', masa/tahun pajak ' + v(r[3])); });
+      L.push('', 'Salinan tersebut kami perlukan sebagai lampiran permohonan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, karena dokumen asli ' + S.alasanSalinan + '.');
+      if (lp.length) { L.push('', 'Sebagai kelengkapan, terlampir:'); lp.forEach(function (x, i) { L.push((i + 1) + '. ' + x); }); }
+      L.push('', 'Demikian permohonan ini kami sampaikan. Atas perhatian dan kerja samanya, kami ucapkan terima kasih.', '', S.selaku, '', '', S.nama || '..........');
+      return L.join('\n');
+    }
     if (S.j === 'R') {
       var cb = CABUT.filter(function (c) { return c[0] === S.jenisCabut; })[0] || CABUT[0];
       row('Nomor', S.noCabut); row('Lampiran', S.lampR); row('Hal', 'Permohonan Pencabutan ' + cb[0]);
@@ -1696,7 +1781,11 @@ if (typeof module !== 'undefined') module.exports = PSA;
     renderPaper();
   });
   $('#sform').addEventListener('focusout', function (e) { var el = e.target; if (el.dataset && el.dataset.money) el.value = S[el.dataset.k] === '' ? '' : Number(S[el.dataset.k]).toLocaleString('id-ID'); });
-  $('#sform').addEventListener('click', function (e) { if (e.target.closest('#fromCalc')) fromCalc(); });
+  $('#sform').addEventListener('click', function (e) {
+    if (e.target.closest('#fromCalc')) { fromCalc(); return; }
+    var b = e.target.closest('[data-fillex]');
+    if (b) { var f = SF.filter(function (x) { return x[0] === b.dataset.fillex; })[0]; S[f[0]] = f[6].ex; var t = $('#sf-' + f[0]); if (t) t.value = f[6].ex; renderPaper(); toast('Contoh terisi. Ganti dengan data surat Anda.'); }
+  });
   $('#copySurat').addEventListener('click', function () { copy(suratText()); });
   var canPrint = false;
   try { canPrint = window.self === window.top && typeof window.print === 'function'; } catch (e) { canPrint = false; }
@@ -1790,6 +1879,30 @@ if (typeof module !== 'undefined') module.exports = PSA;
     if (e.target.closest('#tutHide')) { $('#tut').hidden = true; try { localStorage.setItem('psa:hideStart', '1'); } catch (err) {} toast('Video tetap bisa ditonton di halaman Tentang PSA'); }
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
+
+  /* ---------- Aplikasi (PWA): instal & offline ---------- */
+  var deferredPrompt = null;
+  var standalone = false; try { standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch (e) {}
+  var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  function showInstall(on) { document.querySelectorAll('[data-install]').forEach(function (b) { b.hidden = !on; }); }
+  if (TOP && !standalone) {
+    if (isIOS) showInstall(true);
+    window.addEventListener('beforeinstallprompt', function (e) { e.preventDefault(); deferredPrompt = e; showInstall(true); });
+    window.addEventListener('appinstalled', function () { deferredPrompt = null; showInstall(false); toast('LEGA terpasang. Buka dari ikon di layar Anda.'); });
+  }
+  if (TOP && 'serviceWorker' in navigator && (location.protocol === 'https:' || location.hostname === 'localhost')) {
+    window.addEventListener('load', function () { navigator.serviceWorker.register('sw.js').catch(function () {}); });
+  }
+  document.addEventListener('click', function (e) {
+    if (e.target.closest('[data-install]')) {
+      closeMore();
+      if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function () { deferredPrompt = null; }); }
+      else { $('#ihelp').hidden = false; $('#ihClose').focus(); }
+      return;
+    }
+    if (e.target.id === 'ihelp' || e.target.closest('#ihClose')) $('#ihelp').hidden = true;
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('#ihelp').hidden = true; });
 
   /* ---------- Banner sambutan ---------- */
   function closeWelcome() {
