@@ -35,7 +35,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 - Cek Syarat Permohonan menggantikan ceklist, sehingga syarat yang tidak berlaku otomatis dilewati.
 - Surat baru: pencabutan keberatan/permohonan lain, pencabutan gugatan, dan cetak ulang (salinan) STP/SKP.
 - Penjelasan untuk kasus khusus: SPT nihil/lebih bayar, PBB rumah/tanah, dan sanksi atas keputusan keberatan, putusan banding, atau PK.
-- Brand baru LEGA dan bisa diinstal sebagai aplikasi.
+- Brand baru LEGA, bisa diinstal sebagai aplikasi, dan tombol tema terang/gelap.
 - Banner ringkasan program PSA, tombol Beranda, serta tautan Instagram dan LinkedIn.
 
 **Versi 1.0**: rilis pertama.
