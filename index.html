@@ -330,6 +330,20 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .seg2 { display: flex; gap: 6px; flex-wrap: wrap; }
 .seg2 button { border: 1px solid var(--line); background: var(--card); border-radius: 8px; padding: 8px 12px; font-size: 13px; font-weight: 600; text-align: left; }
 .seg2 button[aria-pressed="true"] { border-color: var(--navy); box-shadow: inset 0 0 0 1px var(--navy); }
+.seg2 button small { display: block; font-weight: 400; color: var(--ink-3); font-size: 12px; margin-top: 2px; }
+.jsurat { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 12px; }
+.jgrp { border-radius: 12px; padding: 12px; display: grid; gap: 8px; align-content: start; }
+.jgrp.wajib { background: var(--good-soft); border: 1px solid color-mix(in srgb, var(--good) 30%, transparent); }
+.jgrp.opsi { border: 1px dashed var(--line); }
+.jgrp.wajib .seg2 button { border-color: color-mix(in srgb, var(--good) 35%, var(--line)); }
+.jgrp.wajib .seg2 button[aria-pressed="true"] { border-color: var(--good); box-shadow: inset 0 0 0 1px var(--good); }
+.jgrp.opsi .seg2 button { border-style: dashed; }
+.jgrp.opsi .seg2 button[aria-pressed="true"] { border-style: solid; }
+.jlbl { font-size: 13px; font-weight: 600; color: var(--ink-2); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.badge { font-size: 11px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; padding: 2px 8px; border-radius: 999px; }
+.badge.wj { background: var(--good); color: var(--card); }
+.badge.op { background: var(--chip); color: var(--ink-2); }
+@media (max-width: 900px) { .jsurat { grid-template-columns: minmax(0, 1fr); } }
 .paper { background: #FFFFFF; color: #111827; border-radius: 6px; padding: 28px 30px; font-family: var(--body); font-size: 14px; line-height: 1.5; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 0 0 1px var(--line); overflow-x: auto; }
 .scol { display: grid; gap: 10px; min-width: 0; position: sticky; top: 64px; }
 .paper h4 { text-align: center; font-size: 14px; margin: 0 0 16px; font-weight: 700; line-height: 1.4; }
@@ -571,16 +585,22 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
     <section class="view page" id="v-surat" aria-label="Surat permohonan" style="max-width:none" hidden>
       <div>
         <h2>Surat Permohonan &amp; Pernyataan</h2>
-        <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Bila Anda sempat mengajukan gugatan atau upaya hukum lain, surat nomor 2 diganti dengan <b>surat permohonan pencabutan gugatan</b>. Bila surat Anda masih diajukan keberatan atau permohonan lain, ajukan dulu <b>surat permohonan pencabutan</b> ke DJP. Tidak punya salinan STP/SKP-nya? Mintakan dengan <b>surat permohonan cetak ulang</b>. Data yang sama cukup diisi sekali dan otomatis terpakai di semua surat. Isian awal adalah contoh.</p>
+        <p class="intro">Satu permohonan PSA terdiri dari tiga dokumen: surat permohonan (format Lampiran C PMK 71/2026) dan dua surat pernyataan bermeterai (Lampiran F dan G KEP-239). Yang bisa dicabut adalah <b>keberatan</b> (ke DJP), serta <b>banding</b> dan <b>gugatan</b> (ke Pengadilan Pajak). Bila surat Anda masih diajukan keberatan, ajukan dulu <b>surat pencabutan keberatan</b>. Bila Anda sempat mengajukan banding atau gugatan, surat nomor 2 diganti dengan <b>surat pencabutan banding/gugatan</b>. Tidak punya salinan STP/SKP-nya? Mintakan dengan <b>surat permohonan cetak ulang</b>. Data yang sama cukup diisi sekali dan otomatis terpakai di semua surat. Isian awal adalah contoh.</p>
       </div>
       <div class="vtempat" data-vtempat="surat"></div>
-      <div class="seg2" id="jenisSurat">
-        <button data-j="P" aria-pressed="true">1 · Surat permohonan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran C PMK 71/2026</small></button>
-        <button data-j="F" aria-pressed="false">2 · Pernyataan tidak mengajukan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran F</small></button>
-        <button data-j="G" aria-pressed="false">3 · Pernyataan sanksi karena kekhilafan<br><small style="font-weight:400;color:var(--ink-3)">Lampiran G</small></button>
-        <button data-j="S" aria-pressed="false">Cetak ulang (salinan) STP/SKP<br><small style="font-weight:400;color:var(--ink-3)">Bila tidak punya salinan suratnya</small></button>
-        <button data-j="R" aria-pressed="false">Pencabutan keberatan/permohonan lain<br><small style="font-weight:400;color:var(--ink-3)">Format PMK 118/2024 · diajukan lebih dulu</small></button>
-        <button data-j="C" aria-pressed="false">Pencabutan gugatan<br><small style="font-weight:400;color:var(--ink-3)">Hanya bila sempat menggugat · pengganti no. 2</small></button>
+      <div class="jsurat" id="jenisSurat">
+        <div class="jgrp wajib"><p class="jlbl"><span class="badge wj">Wajib</span> Dilampirkan di setiap permohonan</p>
+          <div class="seg2">
+            <button data-j="P" aria-pressed="true">1 · Surat permohonan<small>Lampiran C PMK 71/2026 · tanpa meterai</small></button>
+            <button data-j="F" aria-pressed="false">2 · Pernyataan tidak mengajukan gugatan<small>Lampiran F · bermeterai</small></button>
+            <button data-j="G" aria-pressed="false">3 · Pernyataan sanksi karena kekhilafan<small>Lampiran G · bermeterai</small></button>
+          </div></div>
+        <div class="jgrp opsi"><p class="jlbl"><span class="badge op">Bila perlu</span> Sesuai kondisi Anda</p>
+          <div class="seg2">
+            <button data-j="S" aria-pressed="false">Cetak ulang (salinan) STP/SKP<small>Bila tidak punya salinan suratnya</small></button>
+            <button data-j="R" aria-pressed="false">Pencabutan keberatan<small>Format PMK 118/2024 · ke DJP, diajukan lebih dulu</small></button>
+            <button data-j="C" aria-pressed="false">Pencabutan banding/gugatan<small>Surat pernyataan ke Ketua Pengadilan Pajak · pengganti no. 2</small></button>
+          </div></div>
       </div>
       <div class="surat">
         <div class="card"><div class="form" id="sform"></div></div>
@@ -590,8 +610,16 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
           <div class="meterai-note"><b>Soal meterai</b><ul>
             <li><b>Surat permohonan</b> tidak memerlukan meterai. <b>Kedua surat pernyataan</b> wajib bermeterai.</li>
             <li><b>Surat permohonan cetak ulang (salinan)</b> ditujukan ke Kepala KPP tempat WP terdaftar, tanpa meterai. Satu surat bisa untuk beberapa STP/SKP sekaligus. Format ini contoh, bukan format baku.</li>
-            <li><b>Surat pencabutan keberatan/permohonan lain</b> mengikuti contoh format PMK 118/2024 dan diajukan ke DJP melalui KPP <b>sebelum</b> permohonan PSA. Permohonan PSA baru bisa diajukan setelah pencabutannya disetujui DJP. Tidak perlu meterai; bila ditandatangani kuasa, lampirkan surat kuasa khusus.</li>
-            <li><b>Surat pencabutan gugatan</b>: KEP-239 tidak menyediakan format resmi, jadi ini contoh. Sampaikan ke Pengadilan Pajak (atau lembaga tempat upaya hukum diajukan) sesuai ketentuannya, lalu lampirkan salinannya pada permohonan PSA.</li>
+            <li><b>Surat pencabutan keberatan</b> mengikuti contoh format PMK 118/2024 dan diajukan ke DJP melalui KPP <b>sebelum</b> permohonan PSA. Permohonan PSA baru bisa diajukan setelah pencabutannya disetujui DJP. Tidak perlu meterai; bila ditandatangani kuasa, lampirkan surat kuasa khusus.</li>
+            <li><b>Surat pernyataan pencabutan banding/gugatan</b> ditujukan ke <b>Ketua Pengadilan Pajak</b>:
+              <ul style="margin:4px 0 0;padding-left:18px;display:grid;gap:3px">
+                <li>Dibuat <b>2 rangkap</b>. Satu surat pernyataan untuk satu surat banding atau gugatan.</li>
+                <li>Ditandatangani WP orang pribadi (atau ahli warisnya), pengurus yang sah sesuai akta untuk WP badan, atau kuasa hukum dengan <b>surat kuasa khusus bermeterai</b> (asli, 2 rangkap).</li>
+                <li>Dikirim ke Pengadilan Pajak lewat <b>pos atau ekspedisi tercatat</b>. Bila diserahkan saat sidang, rangkap pertama untuk majelis dan rangkap kedua untuk Ketua Pengadilan Pajak.</li>
+                <li>Format resmi dapat diunduh di <a href="https://setpp.kemenkeu.go.id/peraturan" target="_blank" rel="noopener">setpp.kemenkeu.go.id/peraturan</a>; contoh di sini mengikuti isi pokoknya.</li>
+                <li>Lampirkan salinannya pada permohonan PSA.</li>
+              </ul></li>
+            <li>Permohonan lain (misalnya pembetulan, pengurangan/pembatalan STP atau SKP yang tidak benar) <b>tidak bisa dicabut</b>. Tunggu sampai ada keputusannya sebelum mengajukan PSA.</li>
             <li><b>Dicetak di kertas:</b> tempel meterai Rp10.000 di kotak yang tersedia, lalu tanda tangani di atasnya.</li>
             <li><b>Disimpan sebagai PDF untuk diunggah lewat Coretax:</b> bubuhkan e-Meterai pada PDF sebelum diunggah.</li>
           </ul><p id="printHint" style="color:var(--ink-3);font-size:12.5px">Tombol cetak tersedia saat situs dibuka langsung di browser. Di sini, gunakan Salin teks surat lalu tempel ke dokumen Anda.</p></div>
@@ -648,7 +676,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
             <ul class="notes">
               <li><b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.</li>
               <li><b>Cek Syarat Permohonan</b> menggantikan ceklist: pertanyaan sesuai kondisi, syarat yang tidak berlaku otomatis dilewati, kesimpulan, dan daftar dokumen.</li>
-              <li>Surat baru: <b>permohonan pencabutan keberatan/permohonan lain</b> (format PMK 118/2024), <b>permohonan pencabutan gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.</li>
+              <li>Surat baru: <b>permohonan pencabutan keberatan</b> (format PMK 118/2024), <b>pernyataan pencabutan banding/gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.</li>
               <li>Penegasan: STP bunga Pasal 19 atas SKP yang diajukan keberatan tetap bisa dimohonkan; sanksi atas keputusan keberatan, putusan banding, dan PK yang sudah diputus tidak bisa.</li>
               <li>Kasus SPT nihil atau lebih bayar yang dilapor mulai 8 Oktober 2026, PBB rumah/tanah dari pemda, dan sanksi atas putusan kini diberi penjelasan.</li>
               <li>Kalkulator per kluster kini bernama <b>Kalkulator Lengkap</b>, untuk petugas dan praktisi.</li>
@@ -656,6 +684,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
               <li>Banner sambutan berisi ringkasan program PSA saat situs dibuka.</li>
               <li>Brand baru <b>LEGA</b> (Lihat sanksi · Evaluasi syarat · Garap surat · Ajukan).</li>
               <li>Tombol <b>tema terang/gelap</b> (Otomatis, Terang, Gelap).</li>
+              <li>Halaman Surat: surat wajib ditandai jelas, contoh pengisian alasan permohonan, dan nomor/tanggal di surat pernyataan kekhilafan kini memakai nomor/tanggal STP/SKP sesuai petunjuk KEP.</li>
               <li>Bisa <b>diinstal sebagai aplikasi</b> di HP dan komputer, dan tetap bisa dipakai tanpa internet (kecuali video).</li>
             </ul></div>
           <div><p class="vlog-h"><b>Versi 1.0</b> <span class="kket">rilis pertama</span></p>
@@ -1455,10 +1484,11 @@ if (typeof module !== 'undefined') module.exports = PSA;
       src: 'Pasal 23 ayat (2) huruf d–m dan ayat (3) huruf a–c, e, f', o: [
         { t: 'Tidak ada', st: 'ok' },
         { t: 'Ada, tapi sudah selesai', d: 'Sudah dicabut dan disetujui DJP, tidak dipertimbangkan, ditolak, atau dikembalikan.', st: 'ok' },
-        { t: 'Ada, dan masih diproses', st: 'todo', doc: ['R'], msg: 'Cabut dulu permohonan itu dan tunggu persetujuan pencabutan dari DJP, atau tunggu sampai ada keputusan.' } ] },
-    { id: 'gugat', show: function (A) { return !!A.jenis; }, q: 'Apakah Anda mengajukan gugatan atau upaya hukum lain atas surat ini?', src: 'Diktum KEEMPAT huruf a dan b KEP-239', o: [
+        { t: 'Ada, dan masih diproses', st: 'todo', msg: 'Tunggu sampai ada keputusan atas permohonan itu. Permohonan seperti ini tidak bisa dicabut; yang bisa dicabut hanya keberatan, banding, dan gugatan.' } ] },
+    { id: 'gugat', show: function (A) { return !!A.jenis; }, q: 'Apakah Anda mengajukan banding, gugatan, atau upaya hukum lain atas surat ini?', src: 'Diktum KEEMPAT huruf a dan b KEP-239', o: [
       { t: 'Tidak', st: 'ok', doc: ['F'] },
-      { t: 'Ya, tapi akan atau sudah saya cabut', st: 'ok', doc: ['C'], msg: 'Lampirkan surat permohonan pencabutan gugatan atau upaya hukum lainnya.' } ] },
+      { t: 'Ya, banding atau gugatan, dan akan atau sudah saya cabut', st: 'ok', doc: ['C'], msg: 'Ajukan surat pernyataan pencabutan ke Ketua Pengadilan Pajak, lalu lampirkan salinannya pada permohonan PSA sebagai pengganti surat pernyataan tidak mengajukan gugatan.' },
+      { t: 'Ya, upaya hukum lain (misalnya peninjauan kembali)', st: 'todo', msg: 'Yang bisa dicabut hanya keberatan, banding, dan gugatan. Tunggu sampai upaya hukum itu diputus, atau konfirmasikan ke KPP.' } ] },
     { id: 'pokok', show: function (A) { return !!A.jenis; }, q: 'Apakah surat Anda memuat pokok pajak (pajak yang tidak atau kurang dibayar)?', d: 'Pokok adalah pajak yang seharusnya dibayar. Sanksi adalah denda, bunga, atau kenaikan.', src: 'Pasal 23 ayat (5) huruf a', o: [
       { t: 'Tidak, isinya hanya sanksi', d: 'Misalnya denda telat lapor SPT atau denda faktur pajak.', st: 'na' },
       { t: 'Ya, dan pokoknya sudah lunas', st: 'ok', doc: ['bukti'] },
@@ -1479,10 +1509,10 @@ if (typeof module !== 'undefined') module.exports = PSA;
       { t: 'Kuasa (mis. konsultan pajak)', st: 'ok', doc: ['kuasa'] } ] }
   ];
   var DOCS = {
-    R: { t: 'Lebih dulu: surat permohonan pencabutan keberatan/permohonan lain', d: 'Format PMK 118/2024, ke DJP melalui KPP. Permohonan PSA diajukan setelah pencabutan disetujui.', j: 'R' },
+    R: { t: 'Lebih dulu: surat permohonan pencabutan keberatan', d: 'Format PMK 118/2024, ke DJP melalui KPP. Permohonan PSA diajukan setelah pencabutan disetujui.', j: 'R' },
     P: { t: 'Surat permohonan (format Lampiran C PMK 71/2026)', d: 'Menyebut jumlah sanksi menurut Anda dan alasannya. Tidak perlu meterai.', j: 'P' },
     F: { t: 'Surat pernyataan tidak mengajukan gugatan/upaya hukum lain (Lampiran F)', d: 'Bermeterai.', j: 'F' },
-    C: { t: 'Surat permohonan pencabutan gugatan/upaya hukum lain', d: 'Pengganti surat pernyataan tidak mengajukan gugatan, untuk yang sempat menggugat.', j: 'C' },
+    C: { t: 'Surat pernyataan pencabutan banding/gugatan', d: 'Ke Ketua Pengadilan Pajak, 2 rangkap. Salinannya dilampirkan sebagai pengganti surat pernyataan tidak mengajukan gugatan.', j: 'C' },
     G: { t: 'Surat pernyataan sanksi timbul karena kekhilafan (Lampiran G)', d: 'Bermeterai.', j: 'G' },
     salinan: { t: 'Salinan surat yang dimohonkan (STP/SKP)', j: 'S', btn: 'Tidak punya? Buat surat permohonan cetak ulang →' },
     bukti: { t: 'Bukti pelunasan pokok pajak (dan bukti bayar sebagian sanksi, bila skemanya bayar sebagian)' },
@@ -1531,55 +1561,43 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
 
   /* ---------- Surat permohonan & pernyataan ---------- */
-  var CABUT = [
-    ['Pengajuan Keberatan', 'keberatan'],
-    ['Permohonan Pengurangan atau Pembatalan Surat Ketetapan Pajak yang Tidak Benar', 'permohonan pengurangan atau pembatalan Surat Ketetapan Pajak yang tidak benar'],
-    ['Permohonan Pengurangan atau Pembatalan Surat Tagihan Pajak yang Tidak Benar', 'permohonan pengurangan atau pembatalan Surat Tagihan Pajak yang tidak benar'],
-    ['Permohonan Pembatalan Surat Ketetapan Pajak dari Hasil Pemeriksaan', 'permohonan pembatalan Surat Ketetapan Pajak dari hasil pemeriksaan'],
-    ['Permohonan Pengurangan atau Penghapusan Sanksi Administratif', 'permohonan pengurangan atau penghapusan sanksi administratif'],
-    ['Permohonan Pembetulan', 'permohonan pembetulan'],
-    ['Permohonan Pengurangan Denda Administratif Pajak Bumi dan Bangunan', 'permohonan pengurangan denda administratif Pajak Bumi dan Bangunan'],
-    ['Permohonan Pengurangan atau Pembatalan Surat Pemberitahuan Pajak Terutang yang Tidak Benar', 'permohonan pengurangan atau pembatalan Surat Pemberitahuan Pajak Terutang yang tidak benar'],
-    ['Permohonan Pengurangan atau Pembatalan Surat Ketetapan Pajak Pajak Bumi dan Bangunan yang Tidak Benar', 'permohonan pengurangan atau pembatalan Surat Ketetapan Pajak Pajak Bumi dan Bangunan yang tidak benar'],
-    ['Permohonan Pembatalan Surat Tagihan Pajak Pajak Bumi dan Bangunan yang Tidak Benar', 'permohonan pembatalan Surat Tagihan Pajak Pajak Bumi dan Bangunan yang tidak benar'],
-    ['Permohonan Pembatalan Surat Ketetapan Pajak Pajak Bumi dan Bangunan dari Hasil Pemeriksaan', 'permohonan pembatalan Surat Ketetapan Pajak Pajak Bumi dan Bangunan dari hasil pemeriksaan']
-  ];
+  var CABUT = [['Pengajuan Keberatan', 'keberatan']];
   var JS_FULL = { 'STP': 'Surat Tagihan Pajak', 'SKPKB': 'Surat Ketetapan Pajak Kurang Bayar', 'SKPKBT': 'Surat Ketetapan Pajak Kurang Bayar Tambahan', 'SKP PBB': 'Surat Ketetapan Pajak Pajak Bumi dan Bangunan', 'STP PBB': 'Surat Tagihan Pajak Pajak Bumi dan Bangunan' };
   var SDEF = { j: 'P', selaku: 'Wakil', nama: 'Widodo Ma\'ruf', npwp: '0123456789012345', jabatan: 'Direktur', alamat: 'Jl. Contoh No. 1, Tangerang', telp: '0812-0000-0000',
     wpNama: 'PT ABC', wpNpwp: '0987654321098765', wpAlamat: 'Jl. Contoh No. 1, Tangerang', nop: '', nopAlamat: '', jenisSurat: 'STP',
     noSurat: '00001/107/26/402/26', tglSurat: '2026-10-12', jenisPajak: 'PPh Badan', masa: '2025',
     noMohon: '001/ABC/XI/2026', tglMohon: TODAY, kpp: 'Pratama Tangerang Barat', jenisMohon: 'penghapusan sanksi administratif',
     dendaPBB: '', kurangPBB: '', pbbTerutang: '', sanksiWP: '0',
-    alasan: 'Sanksi administratif dalam STP tersebut timbul karena kekhilafan, bukan karena kesengajaan. Wajib Pajak telah menyampaikan SPT Tahunan PPh Badan Tahun Pajak 2025 berstatus kurang bayar pada periode 8 Oktober s.d. 31 Desember 2026, sehingga memenuhi ketentuan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam Pasal 27A PMK 118 Tahun 2024 s.t.d.d. PMK 71 Tahun 2026 dan KEP-239/PJ/2026.',
+    alasan: 'Sanksi administratif dalam STP tersebut timbul karena keterlambatan penyampaian SPT. Keterlambatan terjadi karena kekhilafan, bukan kesengajaan, dan SPT tersebut telah kami sampaikan. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut.',
     lampiran: 'Fotokopi STP yang dimohonkan ; 1 lembar\nBukti penyampaian SPT dan pelunasan pokok pajak ; 1 set\nSurat pernyataan tidak mengajukan gugatan (bermeterai) ; 1 lembar\nSurat pernyataan sanksi timbul karena kekhilafan (bermeterai) ; 1 lembar',
     sanksiMohon: 'Sanksi administratif berupa denda Pasal 7 ayat (1) UU KUP atas keterlambatan penyampaian SPT Tahunan PPh Badan Tahun Pajak 2025', kota: 'Tangerang', tglTtd: TODAY,
-    tujuan: 'Ketua Pengadilan Pajak', upaya: 'gugatan', noGugatan: '', tglGugatan: '',
+    tujuan: 'Ketua Pengadilan Pajak', upaya: 'banding', noGugatan: '', tglGugatan: '', noSengketa: '',
     noSalinan: '003/ABC/XI/2026', kppKota: 'Tangerang', alasanSalinan: 'tidak kami miliki', suratLain: '',
     lampSalinan: 'Fotokopi identitas penanda tangan\nSurat kuasa khusus (dalam hal ditandatangani oleh kuasa)',
     noCabut: '002/ABC/XI/2026', jenisCabut: CABUT[0][0], noRef: '', tglRef: '', noBPE: '', tglBPE: '', lampR: '-', tglSPPT: '',
-    alasanR: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan surat yang dimohonkan tidak sedang diajukan keberatan atau permohonan lain.',
-    alasanCabut: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan tidak adanya gugatan dan/atau upaya hukum lainnya atas surat tersebut.' };
+    alasanR: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan surat yang dimohonkan tidak sedang diajukan keberatan.',
+    alasanCabut: 'Wajib Pajak akan memanfaatkan kebijakan pengurangan atau penghapusan sanksi administratif sebagaimana diatur dalam PMK 71 Tahun 2026 dan KEP-239/PJ/2026, yang mensyaratkan tidak adanya banding, gugatan, atau upaya hukum lainnya atas surat tersebut.' };
   var S = Object.assign({}, SDEF);
   // [kunci, label, tipe, opsi, berlaku-untuk ('P','F','G' gabungan) atau 'wk', syarat tambahan]
   var SF = [
-    ['noMohon', 'Nomor surat permohonan', 0, 0, 'PG'], ['tglMohon', 'Tanggal surat permohonan', 'date', 0, 'PG'],
+    ['noMohon', 'Nomor surat permohonan', 0, 0, 'P'], ['tglMohon', 'Tanggal surat permohonan', 'date', 0, 'P'],
     ['noSalinan', 'Nomor surat permohonan cetak ulang', 0, 0, 'S'],
-    ['noCabut', 'Nomor surat permohonan pencabutan', 0, 0, 'R'], ['lampR', 'Jumlah lampiran', 0, 0, 'R'], ['jenisCabut', 'Yang dicabut', 'select', CABUT.map(function (c) { return c[0]; }), 'R'],
+    ['noCabut', 'Nomor surat permohonan pencabutan', 0, 0, 'R'], ['lampR', 'Jumlah lampiran', 0, 0, 'R'],
     ['kpp', 'Kantor Pelayanan Pajak (tanpa kata "KPP")', 0, 0, 'PRS'], ['kppKota', 'Kota KPP', 0, 0, 'S'],
     ['selaku', 'Bertindak selaku', 'select', ['Wajib Pajak', 'Wakil', 'Kuasa']], ['nama', 'Nama penanda tangan'], ['npwp', 'NPWP penanda tangan'], ['jabatan', 'Jabatan (kosongkan untuk WP orang pribadi)'],
     ['alamat', 'Alamat penanda tangan'], ['telp', 'Nomor telepon'],
     ['wpNama', 'Nama Wajib Pajak', 0, 0, 'wk'], ['wpNpwp', 'NPWP Wajib Pajak', 0, 0, 'wk'], ['wpAlamat', 'Alamat Wajib Pajak', 0, 0, 'wk'],
     ['nop', 'NOP (khusus PBB)'], ['nopAlamat', 'Alamat objek pajak (khusus PBB)'], ['tglSPPT', 'Tanggal SPPT/SKP PBB diterima (khusus PBB)', 'date', 0, 'R'],
-    ['noRef', 'Nomor surat keberatan/permohonan yang dicabut', 0, 0, 'R'], ['tglRef', 'Tanggal surat keberatan/permohonan tersebut', 'date', 0, 'R'], ['noBPE', 'Nomor bukti penerimaan', 0, 0, 'R'], ['tglBPE', 'Tanggal bukti penerimaan', 'date', 0, 'R'],
+    ['noRef', 'Nomor surat keberatan yang dicabut', 0, 0, 'R'], ['tglRef', 'Tanggal surat keberatan', 'date', 0, 'R'], ['noBPE', 'Nomor bukti penerimaan', 0, 0, 'R'], ['tglBPE', 'Tanggal bukti penerimaan', 'date', 0, 'R'],
     ['jenisMohon', 'Jenis permohonan', 'select', ['penghapusan sanksi administratif', 'pengurangan sanksi administratif', 'pengurangan denda administratif Pajak Bumi dan Bangunan'], 'P'],
-    ['tujuan', 'Ditujukan kepada', 0, 0, 'C'], ['upaya', 'Jenis upaya hukum yang dicabut', 'select', ['gugatan', 'upaya hukum lainnya'], 'C'], ['noGugatan', 'Nomor surat gugatan / nomor register', 0, 0, 'C'], ['tglGugatan', 'Tanggal gugatan diajukan', 'date', 0, 'C'],
-    ['jenisSurat', 'Jenis surat yang dimohonkan', 'select', ['STP', 'SKPKB', 'SKPKBT', 'SKP PBB', 'STP PBB'], 'FPCS'], ['noSurat', 'Nomor surat', 0, 0, 'FPCS'], ['tglSurat', 'Tanggal surat', 'date', 0, 'FPCS'],
+    ['tujuan', 'Ditujukan kepada', 0, 0, 'C'], ['upaya', 'Yang dicabut', 'select', ['banding', 'gugatan'], 'C'], ['noGugatan', 'Nomor surat banding/gugatan', 0, 0, 'C'], ['tglGugatan', 'Tanggal surat banding/gugatan', 'date', 0, 'C'], ['noSengketa', 'Nomor sengketa di Pengadilan Pajak (bila sudah ada)', 0, 0, 'C'],
+    ['jenisSurat', 'Jenis surat yang dimohonkan', 'select', ['STP', 'SKPKB', 'SKPKBT', 'SKP PBB', 'STP PBB'], 'FPCS'], ['noSurat', 'Nomor STP/SKP yang dimohonkan', 0, 0, 'FPCSG'], ['tglSurat', 'Tanggal terbit STP/SKP', 'date', 0, 'FPCSG'],
     ['jenisPajak', 'Jenis pajak', 0, 0, 'FC'], ['masa', 'Masa/Tahun Pajak', 0, 0, 'FPCS'],
     ['suratLain', 'Surat lain yang juga diminta salinannya (opsional)', 'textarea', 0, 'S', 0, { hint: 'Bila salinan yang diminta lebih dari satu. Tulis satu surat per baris dengan urutan: jenis ; nomor ; tanggal ; masa/tahun pajak (dipisah titik koma). Contoh:', ex: 'SKPKB ; 00002/206/25/402/26 ; 12 Oktober 2026 ; 2025\nSTP ; 00003/107/26/402/26 ; 1 November 2026 ; Juni 2026', btn: 'Isi dengan contoh' }],
     ['alasanSalinan', 'Alasan', 'select', ['tidak kami miliki', 'hilang', 'rusak'], 'S'], ['lampSalinan', 'Lampiran', 'textarea', 0, 'S', 0, { hint: 'Satu dokumen per baris. Tambah baris baru dengan Enter, hapus baris yang tidak Anda lampirkan. Jumlah berkas di bagian "Lampiran" surat ikut berubah otomatis.' }],
     ['dendaPBB', 'Denda administratif PBB (Rp)', 'money', 0, 'P', 'pbb'], ['kurangPBB', 'Pengurangan sebesar (Rp)', 'money', 0, 'P', 'pbb'], ['pbbTerutang', 'PBB terutang (Rp)', 'money', 0, 'P', 'pbb'],
     ['sanksiWP', 'Sanksi menurut Wajib Pajak setelah dikurangi (Rp)', 'money', 0, 'P'],
-    ['alasan', 'Alasan permohonan', 'textarea', 0, 'P'],
+    ['alasan', 'Alasan permohonan', 'textarea', 0, 'P', 0, { hint: 'Cukup jelaskan penyebab sanksinya (misalnya telat lapor, kurang bayar, atau telat bayar), bahwa itu terjadi karena kekhilafan, lalu sebutkan dasarnya: PMK 71 Tahun 2026 dan KEP-239/PJ/2026. Tidak perlu menyebut Diktum. Pilih contoh yang paling mirip, lalu sesuaikan:', examples: [["Telat lapor SPT", "Sanksi administratif dalam STP tersebut timbul karena keterlambatan penyampaian SPT. Keterlambatan terjadi karena kekhilafan, bukan kesengajaan, dan SPT tersebut telah kami sampaikan. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."], ["Kurang bayar / pembetulan SPT", "Sanksi administratif dalam STP tersebut timbul karena kurang bayar yang kami betulkan melalui pembetulan SPT. Kekurangan tersebut terjadi karena kekhilafan dalam penghitungan, bukan kesengajaan, dan pokok pajaknya telah kami lunasi. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."], ["Telat bayar/setor pajak", "Sanksi administratif dalam STP tersebut timbul karena keterlambatan pembayaran atau penyetoran pajak. Keterlambatan terjadi karena kekhilafan, bukan kesengajaan, dan pokok pajaknya telah kami lunasi. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."], ["Faktur pajak", "Sanksi administratif dalam STP tersebut timbul karena keterlambatan pembuatan faktur pajak. Keterlambatan terjadi karena kekhilafan administrasi, bukan kesengajaan. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."], ["Hasil pemeriksaan (SKPKB)", "Sanksi administratif dalam SKPKB tersebut timbul karena kekurangan pembayaran pajak berdasarkan hasil pemeriksaan. Kekurangan tersebut terjadi karena kekhilafan, bukan kesengajaan, dan pokok pajaknya telah kami lunasi. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."], ["Telat melunasi tagihan (bunga)", "Sanksi administratif berupa bunga dalam STP tersebut timbul karena keterlambatan pelunasan tagihan pajak. Keterlambatan terjadi karena kekhilafan, bukan kesengajaan, dan utang pajaknya telah kami lunasi. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan pengurangan atau penghapusan sanksi administratif tersebut."]] }],
     ['lampiran', 'Lampiran: satu dokumen per baris, format "nama dokumen ; jumlah"', 'textarea', 0, 'P'],
     ['sanksiMohon', 'Sanksi yang dimohonkan', 'textarea', 0, 'G'], ['alasanCabut', 'Alasan pencabutan', 'textarea', 0, 'C'], ['alasanR', 'Alasan permohonan pencabutan', 'textarea', 0, 'R'],
     ['kota', 'Kota'], ['tglTtd', 'Tanggal tanda tangan', 'date', 0, 'FGCRS']
@@ -1603,7 +1621,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
       else inp = '<input id="' + id + '" data-k="' + f[0] + '" type="' + (f[2] || 'text') + '" value="' + esc(v) + '">';
       var x = f[6], extra = '';
       var pre = '', post = '';
-      if (x) { pre = '<span class="hint">' + esc(x.hint) + '</span>' + (x.ex ? '<pre class="exbox">' + esc(x.ex) + '</pre>' : ''); post = x.btn ? '<button class="lnk" data-fillex="' + f[0] + '" style="justify-self:start">' + esc(x.btn) + '</button>' : ''; }
+      if (x) { pre = '<span class="hint">' + esc(x.hint) + '</span>' + (x.ex ? '<pre class="exbox">' + esc(x.ex) + '</pre>' : '') + (x.examples ? '<div class="quick">' + x.examples.map(function (e, i) { return '<button class="cbtn" data-fillex="' + f[0] + '" data-exi="' + i + '">Contoh: ' + esc(e[0]) + '</button>'; }).join('') + '</div>' : ''); post = x.btn ? '<button class="lnk" data-fillex="' + f[0] + '" style="justify-self:start">' + esc(x.btn) + '</button>' : ''; }
       return '<div class="field"' + (f[2] === 'textarea' ? ' style="grid-column:1/-1"' : '') + '><label for="' + id + '">' + f[1] + '</label>' + pre + inp + post + '</div>';
     }).join('');
   }
@@ -1681,13 +1699,13 @@ if (typeof module !== 'undefined') module.exports = PSA;
     }
     else if (S.j === 'C') {
       var rr = function (k, v) { return '<div class="row"><span>' + k + '</span><span>:</span><span>' + ph(v) + '</span></div>'; };
-      h = '<div class="kop"><div>' + rr('Hal', 'Permohonan Pencabutan ' + cap(S.upaya)) + '</div><div class="kop-tgl">' + ph(S.kota) + ', ' + ph(S.tglTtd ? fdl(S.tglTtd) : '') + '</div></div>' +
-        '<p>Yth. ' + ph(S.tujuan) + '</p>' + idBlock('Yang bertanda tangan di bawah ini:', true) +
-        '<p>dengan ini mengajukan permohonan pencabutan ' + esc(S.upaya) + ' yang telah saya ajukan:</p><div class="ind">' + rr('Nomor', S.noGugatan) + rr('Tanggal', S.tglGugatan ? fdl(S.tglGugatan) : '') + '</div>' +
-        '<p style="margin-bottom:2px">atas ' + esc(JS_FULL[S.jenisSurat] || S.jenisSurat) + ':</p><div class="ind">' + rr('Nomor', S.noSurat) + rr('Tanggal', S.tglSurat ? fdl(S.tglSurat) : '') + rr('Jenis Pajak', S.jenisPajak) + rr('Masa/Tahun Pajak', S.masa) + '</div>' +
+      h = '<h4>SURAT PERNYATAAN PENCABUTAN ' + esc(S.upaya.toUpperCase()) + '</h4>' +
+        '<p>Yth. ' + ph(S.tujuan) + '<br>di Jakarta</p>' + idBlock('Yang bertanda tangan di bawah ini:', true) +
+        '<p>dengan ini menyatakan mencabut ' + esc(S.upaya) + ' yang telah saya ajukan dengan surat:</p><div class="ind">' + rr('Nomor', S.noGugatan) + rr('Tanggal', S.tglGugatan ? fdl(S.tglGugatan) : '') + (S.noSengketa ? rr('Nomor sengketa', S.noSengketa) : '') + '</div>' +
+        '<p style="margin-bottom:2px">terkait ' + esc(JS_FULL[S.jenisSurat] || S.jenisSurat) + ':</p><div class="ind">' + rr('Nomor', S.noSurat) + rr('Tanggal', S.tglSurat ? fdl(S.tglSurat) : '') + rr('Jenis Pajak', S.jenisPajak) + rr('Masa/Tahun Pajak', S.masa) + '</div>' +
         '<p style="margin-bottom:2px">Alasan pencabutan:</p><p style="margin-top:0">' + ph(S.alasanCabut) + '</p>' +
-        '<p>Demikian permohonan ini kami sampaikan. Salinan surat ini dilampirkan pada permohonan pengurangan atau penghapusan sanksi administratif.</p>' +
-        '<div class="ttd">' + S.selaku + '<div style="height:64px"></div><u>' + ph(S.nama) + '</u></div>';
+        '<p>Demikian surat pernyataan ini saya buat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.</p>' +
+        '<div class="ttd">' + ph(S.kota) + ', ' + ph(S.tglTtd ? fdl(S.tglTtd) : '') + '<br>' + (S.selaku === 'Wajib Pajak' ? 'Pemohon' : S.selaku) + '<div style="height:64px"></div><u>' + ph(S.nama) + '</u></div>';
     }
     else if (S.j === 'F') {
       h = '<h4>SURAT PERNYATAAN<br>TIDAK MENGAJUKAN GUGATAN DAN/ATAU UPAYA HUKUM LAINNYA</h4>' + idBlock('Saya yang bertanda tangan di bawah ini:') +
@@ -1696,7 +1714,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
         '<p>saya tidak mengajukan gugatan dan/atau upaya hukum lainnya.</p><p>Demikian surat pernyataan ini saya buat dengan sebenarnya untuk digunakan sebagai kelengkapan permohonan pengurangan atau penghapusan sanksi administratif.</p>' + ttd();
     } else {
       h = '<h4>SURAT PERNYATAAN<br>SANKSI ADMINISTRATIF TIMBUL KARENA KEKHILAFAN<br>ATAU BUKAN KARENA KESALAHAN</h4>' + idBlock('Saya yang bertanda tangan di bawah ini:') +
-        '<p style="margin-bottom:2px">Sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif:</p><div class="ind"><div class="row"><span>Nomor</span><span>:</span><span>' + ph(S.noMohon) + '</span></div><div class="row"><span>Tanggal</span><span>:</span><span>' + ph(S.tglMohon ? fdl(S.tglMohon) : '') + ',</span></div></div>' +
+        '<p style="margin-bottom:2px">Sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif:</p><div class="ind"><div class="row"><span>Nomor</span><span>:</span><span>' + ph(S.noSurat) + '</span></div><div class="row"><span>Tanggal</span><span>:</span><span>' + ph(S.tglSurat ? fdl(S.tglSurat) : '') + ',</span></div></div>' +
         '<p>dengan ini saya menyatakan bahwa:</p><p>' + ph(S.sanksiMohon) + ' dilakukan karena kekhilafan atau bukan karena kesalahan saya.</p><p>Demikian Surat Pernyataan ini saya buat dengan sebenar-benarnya.</p>' + ttd();
     }
     $('#spaper').innerHTML = h;
@@ -1745,10 +1763,10 @@ if (typeof module !== 'undefined') module.exports = PSA;
       return L.join('\n');
     }
     if (S.j === 'C') {
-      row('Hal', 'Permohonan Pencabutan ' + cap(S.upaya)); L.push(v(S.kota) + ', ' + v(S.tglTtd ? fdl(S.tglTtd) : ''), '', 'Yth. ' + v(S.tujuan), '', 'Yang bertanda tangan di bawah ini:');
-      ident(true); L.push('', 'dengan ini mengajukan permohonan pencabutan ' + S.upaya + ' yang telah saya ajukan:'); row('  Nomor', S.noGugatan); row('  Tanggal', S.tglGugatan ? fdl(S.tglGugatan) : '');
-      L.push('atas ' + (JS_FULL[S.jenisSurat] || S.jenisSurat) + ':'); row('  Nomor', S.noSurat); row('  Tanggal', S.tglSurat ? fdl(S.tglSurat) : ''); row('  Jenis Pajak', S.jenisPajak); row('  Masa/Tahun Pajak', S.masa);
-      L.push('', 'Alasan pencabutan:', v(S.alasanCabut), '', 'Demikian permohonan ini kami sampaikan. Salinan surat ini dilampirkan pada permohonan pengurangan atau penghapusan sanksi administratif.', '', S.selaku, '', '', S.nama || '..........');
+      L.push('SURAT PERNYATAAN PENCABUTAN ' + S.upaya.toUpperCase(), '', 'Yth. ' + v(S.tujuan), 'di Jakarta', '', 'Yang bertanda tangan di bawah ini:');
+      ident(true); L.push('', 'dengan ini menyatakan mencabut ' + S.upaya + ' yang telah saya ajukan dengan surat:'); row('  Nomor', S.noGugatan); row('  Tanggal', S.tglGugatan ? fdl(S.tglGugatan) : ''); if (S.noSengketa) row('  Nomor sengketa', S.noSengketa);
+      L.push('terkait ' + (JS_FULL[S.jenisSurat] || S.jenisSurat) + ':'); row('  Nomor', S.noSurat); row('  Tanggal', S.tglSurat ? fdl(S.tglSurat) : ''); row('  Jenis Pajak', S.jenisPajak); row('  Masa/Tahun Pajak', S.masa);
+      L.push('', 'Alasan pencabutan:', v(S.alasanCabut), '', 'Demikian surat pernyataan ini saya buat dengan sebenarnya untuk dipergunakan sebagaimana mestinya.', '', v(S.kota) + ', ' + v(S.tglTtd ? fdl(S.tglTtd) : ''), S.selaku === 'Wajib Pajak' ? 'Pemohon' : S.selaku, '', '', S.nama || '..........');
       return L.join('\n');
     }
     if (S.j === 'F') L.push('SURAT PERNYATAAN', 'TIDAK MENGAJUKAN GUGATAN DAN/ATAU UPAYA HUKUM LAINNYA', '');
@@ -1759,7 +1777,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
       L.push('Nomor SKP/STP: ' + v(S.noSurat), 'Tanggal SKP/STP: ' + v(S.tglSurat ? fdl(S.tglSurat) : ''), 'Jenis Pajak: ' + v(S.jenisPajak), 'Masa/Tahun Pajak: ' + v(S.masa), '');
       L.push('saya tidak mengajukan gugatan dan/atau upaya hukum lainnya.', '', 'Demikian surat pernyataan ini saya buat dengan sebenarnya untuk digunakan sebagai kelengkapan permohonan pengurangan atau penghapusan sanksi administratif.');
     } else {
-      L.push('Sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif:'); row('  Nomor', S.noMohon); row('  Tanggal', S.tglMohon ? fdl(S.tglMohon) : '');
+      L.push('Sehubungan dengan permohonan pengurangan atau penghapusan sanksi administratif:'); row('  Nomor', S.noSurat); row('  Tanggal', S.tglSurat ? fdl(S.tglSurat) : '');
       L.push('dengan ini saya menyatakan bahwa:', '', v(S.sanksiMohon) + ' dilakukan karena kekhilafan atau bukan karena kesalahan saya.', '', 'Demikian Surat Pernyataan ini saya buat dengan sebenar-benarnya.');
     }
     L.push('', v(S.kota) + ', ' + v(S.tglTtd ? fdl(S.tglTtd) : ''), S.j === 'F' ? 'Yang membuat pernyataan,' : '', S.selaku, '', '[Meterai Rp10.000]', '', S.nama || '..........');
@@ -1774,7 +1792,8 @@ if (typeof module !== 'undefined') module.exports = PSA;
     S.sanksiWP = String(Math.max(0, r.base - r.potong));
     S.jenisMohon = r.rate === 100 ? 'penghapusan sanksi administratif' : 'pengurangan sanksi administratif';
     S.sanksiMohon = 'Sanksi administratif berdasarkan ' + sc.pasal + ' sebesar Rp' + r.base.toLocaleString('id-ID');
-    S.alasan = 'Sanksi administratif dalam ' + skp + ' tersebut timbul karena kekhilafan, bukan karena kesengajaan. Wajib Pajak telah memenuhi persyaratan pengurangan atau penghapusan sanksi administratif untuk ' + sc.judul + ' (' + sc.pasal + ') sebagaimana diatur dalam Pasal 27A PMK 118 Tahun 2024 s.t.d.d. PMK 71 Tahun 2026 dan KEP-239/PJ/2026 Diktum ' + sc.diktum + ', dengan pengurangan sebesar ' + r.rate + '%.';
+    var SEBAB = { a1: 'keterlambatan penyampaian SPT', d1: 'keterlambatan penyampaian SPT', a2: 'kurang bayar yang kami betulkan melalui pembetulan SPT', a3: 'keterlambatan pembayaran atau penyetoran pajak', a4: 'kekurangan pembayaran PPh tahun berjalan', a5: 'keterlambatan pembuatan faktur pajak', b1: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', c2: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', c3: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', d2: 'harta yang belum atau kurang diungkapkan dalam Program Pengungkapan Sukarela', a7: 'keterlambatan pelunasan pajak', c4: 'keterlambatan pelunasan tagihan pajak', c5: 'keterlambatan pelunasan tagihan pajak', c6: 'keterlambatan pelunasan tagihan pajak', c7: 'keterlambatan pelunasan tagihan pajak', c8: 'keterlambatan pelunasan tagihan pajak' }[sc.id] || 'keterlambatan penyampaian SPT atau pembayaran pajak';
+    S.alasan = 'Sanksi administratif dalam ' + skp + ' tersebut timbul karena ' + SEBAB + '. Hal tersebut terjadi karena kekhilafan, bukan kesengajaan' + (sc.pokok ? ', dan pokok pajaknya telah kami lunasi' : '') + '. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan ' + (r.rate === 100 ? 'penghapusan' : 'pengurangan') + ' sanksi administratif tersebut.';
     renderSForm(); renderPaper();
     toast(r.rate ? 'Terisi: ' + r.rate + '% → sanksi menjadi Rp' + Number(S.sanksiWP).toLocaleString('id-ID') : 'Menurut kalkulator, tanggal itu tidak mendapat pengurangan');
   }
@@ -1789,7 +1808,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   $('#sform').addEventListener('click', function (e) {
     if (e.target.closest('#fromCalc')) { fromCalc(); return; }
     var b = e.target.closest('[data-fillex]');
-    if (b) { var f = SF.filter(function (x) { return x[0] === b.dataset.fillex; })[0]; S[f[0]] = f[6].ex; var t = $('#sf-' + f[0]); if (t) t.value = f[6].ex; renderPaper(); toast('Contoh terisi. Ganti dengan data surat Anda.'); }
+    if (b) { var f = SF.filter(function (x) { return x[0] === b.dataset.fillex; })[0]; S[f[0]] = b.dataset.exi != null ? f[6].examples[+b.dataset.exi][1] : f[6].ex; var t = $('#sf-' + f[0]); if (t) t.value = S[f[0]]; renderPaper(); toast('Contoh terisi. Ganti dengan data surat Anda.'); }
   });
   $('#copySurat').addEventListener('click', function () { copy(suratText()); });
   var canPrint = false;

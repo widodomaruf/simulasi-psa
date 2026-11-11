@@ -14,7 +14,7 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 
 - **Cek Sanksi Saya.** Tanya-jawab dalam bahasa sehari-hari tentang surat yang Anda terima. Hasilnya berupa rencana tindakan: berapa yang dibayar, paling lambat kapan, dan berapa yang dihapus.
 - **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi Anda. Hasilnya kesimpulan apakah permohonan bisa diajukan, ditambah daftar dokumen yang perlu disiapkan.
-- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan/permohonan lain, surat pencabutan gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
+- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
 - **Kalkulator Lengkap.** Perhitungan per kluster dan skenario KEP-239/PJ/2026, untuk petugas dan praktisi.
 - **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP.
 - **Video penjelasan** program PSA dan cara memakai situs ini.
@@ -33,9 +33,10 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 **Versi 2.0 (11 November 2026)**
 - Cek Sanksi Saya menggantikan Cek Kluster, dengan pertanyaan yang lebih mudah dipahami.
 - Cek Syarat Permohonan menggantikan ceklist, sehingga syarat yang tidak berlaku otomatis dilewati.
-- Surat baru: pencabutan keberatan/permohonan lain, pencabutan gugatan, dan cetak ulang (salinan) STP/SKP.
+- Surat baru: pencabutan keberatan, pencabutan banding/gugatan, dan cetak ulang (salinan) STP/SKP.
 - Penjelasan untuk kasus khusus: SPT nihil/lebih bayar, PBB rumah/tanah, dan sanksi atas keputusan keberatan, putusan banding, atau PK.
 - Brand baru LEGA, bisa diinstal sebagai aplikasi, dan tombol tema terang/gelap.
+- Halaman Surat: surat wajib ditandai jelas, contoh pengisian alasan permohonan, dan nomor/tanggal di surat pernyataan kekhilafan memakai nomor/tanggal STP/SKP sesuai petunjuk KEP.
 - Banner ringkasan program PSA, tombol Beranda, serta tautan Instagram dan LinkedIn.
 
 **Versi 1.0**: rilis pertama.
