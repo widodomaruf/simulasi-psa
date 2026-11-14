@@ -41,4 +41,6 @@ Cap persentase yang miring (`.stamp`) di hasil kalkulator, seperti stempel di su
 - Kontras teks minimal 4,5:1, garis kontrol minimal 3:1, di tema terang maupun gelap.
 - Area ketuk minimal 44 px di layar sentuh.
 - Semua angka berasal dari PMK 71/2026 dan KEP-239/PJ/2026. Tidak ada statistik atau testimoni karangan.
-- Panah → hanya untuk langkah maju di tanya-jawab ("Lanjut", pilihan jawaban, "Cek sanksi saya").
+- Panah → hanya untuk langkah maju di tanya-jawab ("Lanjut" dan pilihan jawaban).
+- Fokus utama Cek Sanksi adalah pertanyaan yang sedang aktif. Di HP, pertanyaan pertama harus terlihat tanpa menggulir jauh: pita atas ringkas, pengantar singkat di atasnya, video di bawahnya.
+- Jawaban yang sudah diisi selalu bisa diubah satu per satu.
