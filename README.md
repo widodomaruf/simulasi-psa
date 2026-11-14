@@ -2,7 +2,7 @@
 
 **L**ihat sanksi · **E**valuasi syarat · **G**arap surat · **A**jukan
 
-**Versi 2.0** · diperbarui 11 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
+**Versi 2.1** · diperbarui 14 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
 
 Alat bantu untuk memahami dan menghitung program **Pengurangan atau Penghapusan Sanksi Administratif (PSA)** berdasarkan **PMK 71 Tahun 2026** dan **KEP-239/PJ/2026**.
 
@@ -29,6 +29,11 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **1500200**.
 
 ## Catatan versi
+
+**Versi 2.1 (14 November 2026)**
+- Teks lebih mudah dibaca: warna abu-abu dan emas dipertegas, kotak isian surat diberi garis yang lebih jelas.
+- Tombol dan tautan di HP lebih besar sehingga mudah diketuk, dan tombol memberi tanda saat ditekan.
+- Banner sambutan bisa dipakai penuh dengan keyboard.
 
 **Versi 2.0 (11 November 2026)**
 - Cek Sanksi Saya menggantikan Cek Kluster, dengan pertanyaan yang lebih mudah dipahami.

@@ -34,9 +34,9 @@ img{max-width:100%}
 
 /* Layout: pita navy di atas (judul + tenggat), tab tampilan, lalu kerja dua kolom: daftar skenario | panel hitung. */
 :root {
-  --paper: #F2F5FA; --card: #FFFFFF; --ink: #0B1F3A; --ink-2: #43546F; --ink-3: #66768F; --line: #D8E0EC; --chip: #E8EEF7;
+  --paper: #F2F5FA; --card: #FFFFFF; --ink: #0B1F3A; --ink-2: #43546F; --ink-3: #56657D; --line: #D8E0EC; --field-line: #7D8DA5; --chip: #E8EEF7;
   --navy: #0B3A6E; --navy-ink: #FFFFFF; --band: #0A3263; --band-ink: #FFFFFF; --band-2: #BFD0E8; --band-line: #2A5689;
-  --gold: #A87400; --gold-soft: #FFF3D1; --yellow: #F5B800; --good: #1A7049; --good-soft: #E1F2E9; --warn: #A2501A; --warn-soft: #FBEADB; --bad: #9C2F29; --bad-soft: #F9E3E1;
+  --gold: #A87400; --gold-ink: #855C00; --gold-soft: #FFF3D1; --yellow: #F5B800; --good: #1A7049; --good-soft: #E1F2E9; --warn: #A2501A; --warn-soft: #FBEADB; --bad: #9C2F29; --bad-soft: #F9E3E1;
   --focus: #2F6BFF;
   --display: "Helvetica Neue", Helvetica, Arial, sans-serif;
   --body: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -44,14 +44,14 @@ img{max-width:100%}
   --r: 10px;
 }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) {
-  --paper: #071426; --card: #0D1E36; --ink: #E6EDF7; --ink-2: #A6B5CC; --ink-3: #8193AE; --line: #1E3354; --chip: #132845;
+  --paper: #071426; --card: #0D1E36; --ink: #E6EDF7; --ink-2: #A6B5CC; --ink-3: #8193AE; --line: #1E3354; --field-line: #5A6F92; --chip: #132845;
   --navy: #9EC2F2; --navy-ink: #071426; --band: #0A2A52; --band-ink: #FFFFFF; --band-2: #A9BEDD; --band-line: #24497A;
-  --gold: #F5C02E; --gold-soft: #2D240C; --yellow: #F5B800; --good: #63CB9C; --good-soft: #112A1F; --warn: #F2A46B; --warn-soft: #2D1D11; --bad: #F2908A; --bad-soft: #2E1514;
+  --gold: #F5C02E; --gold-ink: #F5C02E; --gold-soft: #2D240C; --yellow: #F5B800; --good: #63CB9C; --good-soft: #112A1F; --warn: #F2A46B; --warn-soft: #2D1D11; --bad: #F2908A; --bad-soft: #2E1514;
   --focus: #7EA2FF; color-scheme: dark; } }
 :root[data-theme="dark"] {
-  --paper: #071426; --card: #0D1E36; --ink: #E6EDF7; --ink-2: #A6B5CC; --ink-3: #8193AE; --line: #1E3354; --chip: #132845;
+  --paper: #071426; --card: #0D1E36; --ink: #E6EDF7; --ink-2: #A6B5CC; --ink-3: #8193AE; --line: #1E3354; --field-line: #5A6F92; --chip: #132845;
   --navy: #9EC2F2; --navy-ink: #071426; --band: #0A2A52; --band-ink: #FFFFFF; --band-2: #A9BEDD; --band-line: #24497A;
-  --gold: #F5C02E; --gold-soft: #2D240C; --yellow: #F5B800; --good: #63CB9C; --good-soft: #112A1F; --warn: #F2A46B; --warn-soft: #2D1D11; --bad: #F2908A; --bad-soft: #2E1514;
+  --gold: #F5C02E; --gold-ink: #F5C02E; --gold-soft: #2D240C; --yellow: #F5B800; --good: #63CB9C; --good-soft: #112A1F; --warn: #F2A46B; --warn-soft: #2D1D11; --bad: #F2908A; --bad-soft: #2E1514;
   --focus: #7EA2FF; color-scheme: dark; }
 
 * { box-sizing: border-box; }
@@ -62,9 +62,11 @@ h1, h2, h3 { font-family: var(--display); text-wrap: balance; margin: 0; letter-
 p { margin: 0; }
 a { color: var(--navy); }
 button { font: inherit; color: inherit; cursor: pointer; }
+select, summary, label[for], input[type="checkbox"], input[type="radio"], input[type="date"], label:has(> input[type="checkbox"]) { cursor: pointer; }
 :focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; }
 .num { font-family: var(--mono); font-variant-numeric: tabular-nums; }
-.eyebrow { font-size: 11.5px; letter-spacing: .09em; text-transform: uppercase; font-weight: 700; color: var(--ink-3); }
+/* Label kecil di atas judul: tebal, huruf biasa. Huruf kapital hanya untuk status surat (.badge). */
+.eyebrow { font-size: 12.5px; font-weight: 700; color: var(--ink-3); }
 
 /* Pita atas */
 .band { background: var(--band); color: var(--band-ink); }
@@ -177,31 +179,31 @@ main .wrap { padding-block: 26px 48px; }
 
 .contoh { margin: 18px 24px 0; padding: 14px 16px; border-radius: var(--r); background: var(--gold-soft); display: grid; gap: 10px; }
 .contoh .lbl { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: center; }
-.contoh .lbl span { font-size: 11.5px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--gold); }
+.contoh .lbl span { font-size: 12.5px; font-weight: 700; color: var(--gold-ink); }
 .contoh p { font-size: 14px; }
 .contoh .edited { font-size: 13px; color: var(--ink-2); }
 .coba { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; font-size: 12.5px; color: var(--ink-2); }
 .cbtn { border: 1px solid var(--gold); background: var(--card); color: var(--ink); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; }
-.cbtn[aria-pressed="true"] { background: var(--gold); color: var(--card); }
+.cbtn[aria-pressed="true"] { background: var(--gold-ink); border-color: var(--gold-ink); color: var(--card); }
 .lnk { border: 0; background: none; padding: 0; text-decoration: underline; text-underline-offset: 2px; color: var(--ink-2); font-size: 12.5px; }
 
 .form { padding: 18px 24px 4px; display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px 16px; }
 .field { display: grid; gap: 5px; align-content: start; min-width: 0; }
 .field label { font-size: 13px; font-weight: 600; }
 .field .hint { font-size: 11.5px; color: var(--ink-3); }
-.field input, .field select, .field textarea { width: 100%; font: inherit; font-size: 15px; padding: 9px 11px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); min-width: 0; }
+.field input, .field select, .field textarea { width: 100%; font: inherit; font-size: 15px; padding: 9px 11px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--paper); color: var(--ink); min-width: 0; }
 .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--focus); box-shadow: 0 0 0 3px color-mix(in srgb, var(--focus) 18%, transparent); }
 .money { position: relative; }
 .money span { position: absolute; left: 11px; top: 50%; transform: translateY(-50%); color: var(--ink-3); font-size: 14px; pointer-events: none; }
 .money input { padding-left: 34px; font-family: var(--mono); }
-.field.primary label { color: var(--gold); }
+.field.primary label { color: var(--gold-ink); }
 .field.primary input { border-color: var(--gold); background: var(--card); }
 
 .result { margin: 18px 24px 0; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 20px; align-items: center; padding: 18px; border-radius: var(--r); border: 1px solid var(--line); }
 .stamp { width: 132px; height: 132px; border-radius: 50%; border: 3px double currentColor; display: grid; place-content: center; text-align: center; transform: rotate(-7deg); padding: 10px; }
 .stamp .pct { font-family: var(--display); font-weight: 800; font-size: 38px; line-height: 1; }
 .stamp .w { font-family: var(--mono); font-size: 10.5px; letter-spacing: .12em; font-weight: 600; margin-top: 4px; }
-.r100 { color: var(--good); } .r90, .r75, .r50 { color: var(--gold); } .r25 { color: var(--warn); } .r0 { color: var(--bad); }
+.r100 { color: var(--good); } .r90, .r75, .r50 { color: var(--gold-ink); } .r25 { color: var(--warn); } .r0 { color: var(--bad); }
 .result.s-r100 { background: var(--good-soft); border-color: transparent; }
 .result.s-r90, .result.s-r75, .result.s-r50 { background: var(--gold-soft); border-color: transparent; }
 .result.s-r25 { background: var(--warn-soft); border-color: transparent; }
@@ -225,7 +227,7 @@ main .wrap { padding-block: 26px 48px; }
 .bar { position: relative; display: flex; height: 34px; border-radius: 6px; overflow: visible; }
 .seg { display: grid; place-content: center; font-family: var(--mono); font-size: 12px; font-weight: 600; min-width: 34px; border-right: 2px solid var(--card); color: var(--card); }
 .seg:first-child { border-radius: 6px 0 0 6px; } .seg:last-child { border-radius: 0 6px 6px 0; border-right: 0; }
-.seg.b100 { background: var(--good); } .seg.b90, .seg.b75, .seg.b50 { background: var(--gold); } .seg.b25 { background: var(--warn); } .seg.b0 { background: var(--line); color: var(--ink-3); }
+.seg.b100 { background: var(--good); } .seg.b90, .seg.b75, .seg.b50 { background: var(--gold-ink); } .seg.b25 { background: var(--warn); } .seg.b0 { background: var(--line); color: var(--ink-2); }
 .mark { position: absolute; top: -6px; bottom: -6px; width: 0; border-left: 2px solid var(--ink); }
 .mark span { position: absolute; top: -20px; transform: translateX(-50%); font-size: 11px; font-weight: 700; white-space: nowrap; background: var(--ink); color: var(--card); padding: 1px 6px; border-radius: 4px; }
 .mark.today { border-left-style: dashed; border-left-color: var(--ink-3); }
@@ -242,7 +244,7 @@ table.jadwal { width: 100%; border-collapse: collapse; font-size: 13.5px; }
 .jadwal tr.on td { background: var(--gold-soft); font-weight: 600; }
 .jadwal tr.on td:first-child { box-shadow: inset 3px 0 0 var(--gold); }
 .pill { display: inline-block; padding: 2px 8px; border-radius: 999px; font-size: 12px; font-weight: 700; font-family: var(--mono); }
-.pill.b100 { background: var(--good-soft); color: var(--good); } .pill.b90, .pill.b75, .pill.b50 { background: var(--gold-soft); color: var(--gold); } .pill.b25 { background: var(--warn-soft); color: var(--warn); } .pill.b0 { background: var(--bad-soft); color: var(--bad); }
+.pill.b100 { background: var(--good-soft); color: var(--good); } .pill.b90, .pill.b75, .pill.b50 { background: var(--gold-soft); color: var(--gold-ink); } .pill.b25 { background: var(--warn-soft); color: var(--warn); } .pill.b0 { background: var(--bad-soft); color: var(--bad); }
 ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 14px; }
 .pfoot { padding: 18px 24px 24px; display: flex; flex-wrap: wrap; gap: 10px; }
 .btn { border: 1px solid var(--line); background: var(--card); padding: 9px 14px; border-radius: 8px; font-weight: 600; font-size: 13.5px; }
@@ -265,14 +267,14 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .opt .d { color: var(--ink-2); font-size: 13px; font-weight: 400; line-height: 1.4; }
 .opt .p { justify-self: start; font-size: 11.5px; font-weight: 600; color: var(--ink-3); background: var(--chip); padding: 1px 7px; border-radius: 5px; }
 .dateq { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
-.dateq input { font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; background: var(--paper); color: var(--ink); min-width: 0; }
+.dateq input { font: inherit; font-size: 16px; padding: 10px 12px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--paper); color: var(--ink); min-width: 0; }
 .wnav, .wbtns { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
 .where { border: 1px solid var(--line); border-radius: 10px; background: var(--paper); }
 .where summary { cursor: pointer; padding: 10px 14px; font-size: 13.5px; font-weight: 600; color: var(--navy); }
 .where-b { padding: 0 14px 14px; display: grid; gap: 10px; font-size: 14px; }
 .docs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
 .doc { background: #FFFFFF; color: #1F2937; border: 1px solid #C9D2DE; border-radius: 6px; padding: 12px 12px 14px; font-size: 11.5px; display: grid; gap: 6px; min-width: 0; }
-.doc-tag { font-size: 9.5px; letter-spacing: .06em; color: #9A6A00; font-weight: 700; text-transform: uppercase; }
+.doc-tag { font-size: 11px; color: #855C00; font-weight: 700; }
 .doc-title { text-align: center; font-weight: 700; font-size: 12.5px; letter-spacing: .02em; }
 .doc-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 10px; color: #4B5563; }
 .doc-t { width: 100%; border-collapse: collapse; }
@@ -287,7 +289,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .quick { display: flex; flex-wrap: wrap; gap: 6px; }
 .quick .cbtn { border-color: var(--line); font-size: 12px; }
 .plan { border-radius: 12px; padding: 18px; display: grid; gap: 8px; background: var(--chip); }
-.plan .k { font-size: 11.5px; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: var(--ink-3); }
+.plan .k { font-size: 12.5px; font-weight: 700; color: var(--ink-3); }
 .plan .head { font-family: var(--display); font-size: 24px; font-weight: 700; line-height: 1.2; text-wrap: balance; }
 .plan.r100 { background: var(--good-soft); } .plan.r100 .head { color: var(--good); }
 .plan.r90, .plan.r75, .plan.r50 { background: var(--gold-soft); }
@@ -301,7 +303,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .opt::after { content: "→"; color: var(--ink-3); }
 .ans { border-radius: 12px; padding: 18px; background: var(--good-soft); display: grid; gap: 8px; }
 .ans.dead { background: var(--warn-soft); }
-.ans .k { font-size: 12px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-3); }
+.ans .k { font-size: 12.5px; font-weight: 700; color: var(--ink-2); }
 .ans h3 { font-size: 20px; }
 
 .sqs { display: grid; gap: 12px; }
@@ -309,9 +311,9 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 .sq-h { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 10px; align-items: start; }
 .sq-n { width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center; background: var(--chip); color: var(--ink-2); font-weight: 700; font-size: 13px; }
 .sq.done .sq-n { background: var(--good); color: var(--card); }
-.sq.st-na .sq-n { background: var(--ink-3); }
-.sq.st-todo .sq-n, .sq.st-warn .sq-n { background: var(--gold); }
-.sq.st-block .sq-n { background: var(--bad); }
+.sq.st-na .sq-n { background: var(--ink-3); color: var(--card); }
+.sq.st-todo .sq-n, .sq.st-warn .sq-n { background: var(--gold-ink); color: var(--card); }
+.sq.st-block .sq-n { background: var(--bad); color: var(--card); }
 .sq-q { font-weight: 700; font-size: 15.5px; line-height: 1.35; }
 .sq-o { display: flex; flex-wrap: wrap; gap: 8px; padding-left: 38px; }
 .sopt { text-align: left; border: 1px solid var(--line); background: var(--paper); border-radius: 10px; padding: 9px 12px; font-size: 14px; font-weight: 600; display: grid; gap: 2px; max-width: 100%; }
@@ -387,7 +389,7 @@ ul.syarat { margin: 0; padding-left: 20px; display: grid; gap: 6px; font-size: 1
 
 .pasal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 12px; }
 .pcard { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 16px; display: grid; gap: 8px; align-content: start; }
-.pcard .nm { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--gold); }
+.pcard .nm { font-family: var(--mono); font-size: 12.5px; font-weight: 600; color: var(--gold-ink); }
 .pcard h3 { font-size: 16px; }
 .pcard p { font-size: 13.5px; color: var(--ink-2); }
 .pcard .go { display: flex; flex-wrap: wrap; gap: 5px; }
@@ -480,7 +482,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 .bnav, .ssel-wrap { display: none; }
 .ssel-wrap { gap: 5px; }
 .ssel-wrap label { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-.ssel { width: 100%; font: inherit; font-size: 14.5px; font-weight: 600; padding: 11px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--card); color: var(--ink); }
+.ssel { width: 100%; font: inherit; font-size: 14.5px; font-weight: 600; padding: 11px 12px; border: 1px solid var(--field-line); border-radius: 10px; background: var(--card); color: var(--ink); }
 @media (max-width: 760px) {
   .tabs { display: none; }
   body { padding-bottom: calc(74px + env(safe-area-inset-bottom, 0px)); }
@@ -510,6 +512,25 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
   .side { gap: 10px; }
   .foot .wrap { padding-block: 18px 22px; }
 }
+/* Tanda ketukan: di HP tidak ada hover, jadi tombol perlu bereaksi saat ditekan. */
+button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap a:active, .vinline:active { transform: translateY(1px); }
+.btn:active, .opt:active, .sopt:active, .kbtn:active, .seg2 button:active, .cbtn:active, .pcard .go button:active { background: var(--chip); }
+.btn.pri:active { background: var(--navy); filter: brightness(.88); }
+.cbtn[aria-pressed="true"]:active { background: var(--gold-ink); filter: brightness(.9); }
+
+/* Area ketuk minimal 44 px untuk layar sentuh dan layar sempit */
+@media (max-width: 900px), (pointer: coarse) {
+  .home, .inst, .btn, .cbtn, .vchip, .saran .btn, .vclose, .pcard .go button, .seg2 button, .sopt { min-height: 44px; }
+  .home, .inst, .vchip, .cbtn, .pcard .go button { display: inline-flex; align-items: center; }
+  .ver { min-height: 44px; min-width: 44px; }
+  .lnk, .vinline, .tut .x { min-height: 44px; display: inline-flex; align-items: center; text-align: left; }
+  .field input, .field select, .field textarea, .ssel, .dateq input, .dateq .btn { min-height: 44px; }
+  .chap a { min-height: 44px; align-content: center; }
+  .where summary, .wizlink, .thm, .vlink { min-height: 44px; }
+  .where summary { display: flex; align-items: center; }
+  .tut .txt > a { min-height: 44px; display: flex; align-items: center; }
+  .wx { width: 44px; height: 44px; top: 6px; right: 6px; }
+}
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
@@ -518,7 +539,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 <header class="band">
   <div class="wrap">
     <div>
-      <div class="topline"><a class="home" href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><button class="ver" data-go="tentang" data-ver="1">v2.0</button><button class="inst" data-install hidden>Instal aplikasi LEGA</button><button class="thm" data-theme-btn aria-label="Ganti tema tampilan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="thm-l">Tema: Otomatis</span></button></div>
+      <div class="topline"><a class="home" href="https://s.id/widodomaruf"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11.5 12 4l9 7.5"/><path d="M5.5 9.5V20h13V9.5"/><path d="M10 20v-5h4v5"/></svg>Beranda Widodo Ma'ruf</a><button class="ver" data-go="tentang" data-ver="1">v2.1</button><button class="inst" data-install hidden>Instal aplikasi LEGA</button><button class="thm" data-theme-btn aria-label="Ganti tema tampilan"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg><span class="thm-l">Tema: Otomatis</span></button></div>
       <div class="eyebrow">PMK 71 Tahun 2026 · KEP-239/PJ/2026</div>
       <div class="brand"><img class="lmark" src="data:image/png;base64,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" alt="" width="54" height="54"><div><span class="bname">LEGA</span><span class="bsub"><b>L</b>ihat sanksi · <b>E</b>valuasi syarat · <b>G</b>arap surat · <b>A</b>jukan</span></div></div>
       <h1>Simulasi <em>PSA</em> 2026</h1>
@@ -542,7 +563,6 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 
 <main>
   <div class="wrap">
-    <!-- KALKULATOR -->
     <section class="view" id="v-kalkulator" aria-label="Kalkulator" hidden>
       <div class="calc">
         <aside class="side">
@@ -551,14 +571,13 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
           <p class="kket" id="kket"></p>
           <div class="eyebrow">2 · Pilih skenario</div>
           <div class="slist" id="slist"></div>
-          <div class="ssel-wrap"><label for="sselect">Skenario</label><select class="ssel" id="sselect"></select><button class="lnk" data-go="cek" style="justify-self:start;margin-top:4px">Bingung pilih? Jawab pertanyaan di Cek Sanksi →</button></div>
-          <button class="wizlink" data-go="cek">Bingung pilih yang mana? Jawab beberapa pertanyaan di <b>Cek Sanksi Saya</b> →</button>
+          <div class="ssel-wrap"><label for="sselect">Skenario</label><select class="ssel" id="sselect"></select><button class="lnk" data-go="cek" style="justify-self:start;margin-top:4px">Bingung pilih? Jawab pertanyaan di Cek Sanksi</button></div>
+          <button class="wizlink" data-go="cek">Bingung pilih yang mana? Jawab beberapa pertanyaan di <b>Cek Sanksi Saya</b></button>
         </aside>
         <article class="panel" id="panel" aria-live="polite"></article>
       </div>
     </section>
 
-    <!-- WIZARD -->
     <section class="view page wiz" id="v-cek" aria-label="Cek sanksi">
       <div>
         <h2>Cek Sanksi Saya</h2>
@@ -568,7 +587,6 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       <div class="card" id="wiz"></div>
     </section>
 
-    <!-- SYARAT -->
     <section class="view page" id="v-syarat" aria-label="Cek syarat permohonan" hidden>
       <div>
         <h2>Cek Syarat Permohonan</h2>
@@ -581,7 +599,6 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       <p class="kket">Dasar: Pasal 23 dan 24 PMK 118/2024 s.t.d.d. PMK 71/2026 (dikutip di Lampiran H KEP-239/PJ/2026), Diktum KETIGA dan KEEMPAT KEP-239/PJ/2026. Pengurangan hanya untuk sanksi yang belum dibayar, dan pembayaran atas SKP dihitung untuk pokok pajak lebih dulu.</p>
     </section>
 
-    <!-- SURAT -->
     <section class="view page" id="v-surat" aria-label="Surat permohonan" style="max-width:none" hidden>
       <div>
         <h2>Surat Permohonan &amp; Pernyataan</h2>
@@ -627,7 +644,6 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       </div>
     </section>
 
-    <!-- PASAL -->
     <section class="view page" id="v-pasal" aria-label="Kamus pasal" style="max-width:none" hidden>
       <div>
         <h2>Kamus Pasal Sanksi</h2>
@@ -636,7 +652,6 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       <div class="pasal-grid" id="pgrid"></div>
     </section>
 
-    <!-- TENTANG -->
     <section class="view page" id="v-tentang" aria-label="Tentang PSA" hidden>
       <div>
         <h2>Tentang PSA 2026</h2>
@@ -672,6 +687,13 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       <div class="card" id="catatan-versi">
         <h3>Catatan versi</h3>
         <div class="vlog">
+          <div><p class="vlog-h"><b>Versi 2.1</b> <span class="kket">14 November 2026</span></p>
+            <ul class="notes">
+              <li>Teks lebih mudah dibaca: warna abu-abu dan emas dipertegas, kotak isian surat diberi garis yang lebih jelas.</li>
+              <li>Tombol dan tautan di HP lebih besar sehingga mudah diketuk, dan tombol memberi tanda saat ditekan.</li>
+              <li>Banner sambutan bisa dipakai penuh dengan keyboard: tombol Tab tidak lagi keluar dari banner.</li>
+            </ul>
+          </div>
           <div><p class="vlog-h"><b>Versi 2.0</b> <span class="kket">11 November 2026</span></p>
             <ul class="notes">
               <li><b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.</li>
@@ -694,7 +716,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
       <div class="card">
         <h3>Penting</h3>
         <p>Situs ini alat bantu edukasi, bukan keputusan DJP. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Anda. Untuk kepastian, hubungi KPP terdaftar atau Kring Pajak <span class="num">1500200</span>.</p>
-        <p>Disusun oleh <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube <b><a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a></b> · <a href="https://www.linkedin.com/in/mwidodomaruf/" target="_blank" rel="noopener">LinkedIn</a> · saran dan pertanyaan: <span class="num">hi.widodomaruf@gmail.com</span></p>
+        <p>Disusun oleh <b>Muhammad Widodo Ma'ruf</b> · Edukator Pajak · Instagram &amp; YouTube <b><a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a></b> · <a href="https://www.linkedin.com/in/mwidodomaruf/" target="_blank" rel="noopener">LinkedIn</a> · saran dan pertanyaan: <span class="num">hi.widodomaruf@gmail.com</span></p>
       </div>
     </section>
   </div>
@@ -704,8 +726,8 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
   <div class="wrap">
     <a class="li-card" href="https://www.linkedin.com/in/mwidodomaruf/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="4" fill="#0A66C2"/><path d="M7 10v7M7 7.2v.1M11 17v-4.2c0-1.6 1-2.6 2.4-2.6s2.1 1 2.1 2.6V17M11 10v7" stroke="#fff" stroke-width="2" stroke-linecap="round" fill="none"/></svg><span><b>Terhubung dengan saya di LinkedIn</b><small>linkedin.com/in/mwidodomaruf</small></span><span class="go">→</span></a>
     <div class="saran" role="note"><p><b>Catatan:</b> ada saran, koreksi, atau menemukan hasil hitung yang janggal? Kirim email ke:</p><div class="row2"><span class="mail">hi.widodomaruf@gmail.com</span><button class="btn" data-copy="hi.widodomaruf@gmail.com">Salin alamat</button><a class="btn" href="mailto:hi.widodomaruf@gmail.com?subject=Saran%20Simulasi%20PSA%202026" style="text-decoration:none;color:var(--ink)">Tulis email</a></div></div>
-    <span>© 2026 <b>Muhammad Widodo Ma'ruf</b> – Edukator Pajak · Instagram &amp; YouTube <a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a> · <a href="https://s.id/widodomaruf">s.id/widodomaruf</a></span>
-    <span><b>LEGA</b> versi 2.0 · diperbarui 11 November 2026 · <button class="lnk" data-go="tentang" data-ver="1">catatan versi</button></span>
+    <span>© 2026 <b>Muhammad Widodo Ma'ruf</b> · Edukator Pajak · Instagram &amp; YouTube <a class="ig" href="https://www.instagram.com/widodomaruf/" target="_blank" rel="noopener">@widodomaruf</a> · <a href="https://s.id/widodomaruf">s.id/widodomaruf</a></span>
+    <span><b>LEGA</b> versi 2.1 · diperbarui 14 November 2026 · <button class="lnk" data-go="tentang" data-ver="1">catatan versi</button></span>
     <span>Alat edukasi independen, bukan situs resmi atau keputusan DJP · berdasarkan PMK 71/2026 dan KEP-239/PJ/2026</span>
   </div>
 </footer>
@@ -749,7 +771,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
 <div class="vmodal" id="vmodal" role="dialog" aria-modal="true" aria-labelledby="vtitle" hidden><div class="vbox"><div class="vhead"><b id="vtitle"></b><button class="vclose" id="vclose">Tutup ✕</button></div><div class="vframe" id="vframe"></div><p class="vhint">Ketuk tombol putar di video untuk mulai menonton.</p></div></div>
 
 <script>
-/* Mesin hitung PSA — KEP-239/PJ/2026 jo. PMK 71 Tahun 2026 */
+/* Mesin hitung PSA: KEP-239/PJ/2026 jo. PMK 71 Tahun 2026 */
 var PSA = (function () {
   var START = '2026-10-08', D31 = '2026-12-31', M31 = '2027-03-31', J30 = '2027-06-30', DEC27 = '2027-12-31';
   var BATAS_PERMOHONAN = '2028-10-01';
@@ -801,7 +823,7 @@ var PSA = (function () {
     return [];
   }
 
-  /* ---------------- Skenario (Tabel A–D Lampiran KEP-239/PJ/2026) ---------------- */
+  /* Skenario (Tabel A–D Lampiran KEP-239/PJ/2026) */
   var K = {
     pengawasan: { nama: 'Pengawasan', tabel: 'Tabel A', ket: 'SPT terlambat, pembetulan, dan STP di luar pemeriksaan' },
     pemeriksaan: { nama: 'Pemeriksaan', tabel: 'Tabel B', ket: 'SKP dan STP hasil pemeriksaan yang terbit mulai 8 Okt 2026' },
@@ -850,7 +872,7 @@ var PSA = (function () {
 
     { id: 'b1', kluster: 'pemeriksaan', judul: 'SKPKB/SKPKBT/SKP PBB hasil pemeriksaan', pasal: 'Pasal 13 ayat (2)/(3), 15 ayat (2), 17C ayat (5), 17D ayat (5) UU KUP; Pasal 10 ayat (3)/(4) UU PBB', diktum: 'KESATU huruf d',
       pattern: 'relatif31', windowT: 'f', aksi: 'Tanggal pokok pajak dilunasi', pokok: 'dalam', pokokLabel: 'Pokok pajak dalam SKP', terbitLabel: 'Tanggal SKP terbit', fields: ['terbit', 'pokok', 'sanksi', 'dibayar', 'aksi'],
-      syarat: ['SKP terbit 8 Okt 2026 – 30 Jun 2027 dan tidak diajukan keberatan.', '100% bila pokok lunas ≤1 bulan setelah SKP terbit — atau s.d. 31 Des 2026 untuk SKP yang terbit sampai 31 Des 2026.', '50% bila lunas setelah 1 bulan s.d. 2 bulan; 25% setelah 2 bulan s.d. 30 Jun 2027.'],
+      syarat: ['SKP terbit 8 Okt 2026 – 30 Jun 2027 dan tidak diajukan keberatan.', '100% bila pokok lunas ≤1 bulan setelah SKP terbit, atau s.d. 31 Des 2026 untuk SKP yang terbit sampai 31 Des 2026.', '50% bila lunas setelah 1 bulan s.d. 2 bulan; 25% setelah 2 bulan s.d. 30 Jun 2027.'],
       contoh: { sumber: 'Lampiran E angka 2.a, Contoh 1', cerita: 'KPP menerbitkan SKPKB Rp115.000.000 kepada PT ABC: pokok Rp100.000.000 dan bunga Pasal 13 ayat (2) Rp15.000.000. PT ABC melunasi pokoknya dan mengajukan permohonan.',
         v: { terbit: '2026-10-12', pokok: 100000000, sanksi: 15000000, dibayar: 0, aksi: '2026-11-13' }, coba: ['2026-11-13', '2027-01-02', '2027-03-25', '2027-07-01'] } },
     { id: 'b2', kluster: 'pemeriksaan', judul: 'STP berdasarkan hasil pemeriksaan', pasal: 'Pasal 7 ayat (1), 8 ayat (2)/(2a), 9 ayat (2a)/(2b), 14 ayat (4) UU KUP', diktum: 'KESATU huruf f',
@@ -986,7 +1008,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     function fallback() { var ta = document.createElement('textarea'); ta.value = text; ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select(); try { document.execCommand('copy'); done(); } catch (e) { toast('Pilih teks pratinjau lalu salin manual'); } ta.remove(); }
   }
 
-  /* ---------- Tenggat ---------- */
+  /* Tenggat */
   (function () {
     var list = [['100% / 90%', 'Tier tertinggi', PSA.D31], ['50%', 'Skema kalender', PSA.M31], ['25% / 75%', 'Batas pelunasan & bayar', PSA.J30], ['PPS', 'SKPKB terkait PPS', PSA.DEC27], ['Permohonan', 'Batas akhir diajukan', PSA.BATAS_PERMOHONAN]];
     var nextSet = false;
@@ -997,7 +1019,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     }).join('');
   })();
 
-  /* ---------- Routing ---------- */
+  /* Routing */
   var VIEWS = ['cek', 'kalkulator', 'syarat', 'surat', 'pasal', 'tentang'];
   function show(view, push) {
     if (VIEWS.indexOf(view) < 0) view = 'cek';
@@ -1021,7 +1043,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   window.addEventListener('hashchange', route);
 
-  /* ---------- Kalkulator ---------- */
+  /* Kalkulator */
   var state = { kluster: 'pengawasan', id: 'a1', vals: {}, edited: {} };
   function vals(id) { if (!state.vals[id]) state.vals[id] = Object.assign({}, PSA.byId(id).contoh.v); return state.vals[id]; }
 
@@ -1187,7 +1209,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     return h;
   }
 
-  /* ---------- Cek Sanksi Saya (alur tanya-jawab bahasa sehari-hari) ---------- */
+  /* Cek Sanksi Saya (alur tanya-jawab bahasa sehari-hari) */
   var START8 = PSA.START;
   // Ilustrasi surat (tiruan, bukan dokumen asli)
   function mk(n, on, html) { return '<span class="mk' + (on ? ' on' : '') + '"><i>' + n + '</i>' + html + '</span>'; }
@@ -1381,7 +1403,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
       h += '<div id="wres"></div>';
     } else if (node.charAt(0) === '!') {
       var dd = DEAD[node.slice(1)];
-      h += '<div class="ans dead"><span class="k">Perlu perhatian</span><h3>' + esc(dd.h) + '</h3><p>' + esc(dd.p) + '</p>' + (dd.go ? '<div><button class="btn" data-open="' + dd.go + '">Lihat skenario terkait di kalkulator →</button></div>' : '') + '</div>';
+      h += '<div class="ans dead"><span class="k">Perlu perhatian</span><h3>' + esc(dd.h) + '</h3><p>' + esc(dd.p) + '</p>' + (dd.go ? '<div><button class="btn" data-open="' + dd.go + '">Lihat skenario terkait di kalkulator</button></div>' : '') + '</div>';
     } else {
       var n = NODES[node];
       h += '<p class="q">' + esc(nodeVal(n.q, d)) + '</p>' + (n.d ? '<p class="kket" style="margin-top:-6px">' + esc(n.d) + '</p>' : '');
@@ -1422,7 +1444,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
         : (sc.id === 'a3' ? 'Setor pajaknya' : sc.id === 'a2' ? 'Sampaikan dan bayar pembetulan SPT' : 'Laporkan SPT') + ' paling lambat ' + fdl((r.seg || best).end) + ', bila belum.';
       h += '<p class="k" style="margin-top:6px">Yang perlu Anda lakukan</p><ol class="steps">' +
         '<li>' + esc(s1) + '</li>' +
-        '<li>Siapkan surat permohonan dan dua surat pernyataan bermeterai. <button class="lnk" id="wDocs">Buat dokumennya sekarang →</button></li>' +
+        '<li>Siapkan surat permohonan dan dua surat pernyataan bermeterai. <button class="lnk" id="wDocs">Buat dokumennya sekarang</button></li>' +
         '<li>Ajukan permohonan lewat Coretax, paling lambat 1 Oktober 2028. ' + vLink('psa', 1904, 'Lihat caranya') + '</li></ol>';
     }
     h += '<div class="wbtns"><button class="btn" id="wCalc">Lihat jadwal lengkap di kalkulator</button>' + (VIDEOS.psa.id && VIDEOS.psa.bab[sc.kluster] != null ? vLink('psa', VIDEOS.psa.bab[sc.kluster], 'Penjelasan video untuk kasus ini') : '') + '</div>';
@@ -1454,7 +1476,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   $('#wiz').addEventListener('focusout', function (e) { var el = e.target; if (el.dataset && el.dataset.money && W.form) { var v = W.form[el.dataset.wk]; el.value = v === '' || v == null ? '' : Number(v).toLocaleString('id-ID'); } });
 
-  /* ---------- Cek Syarat Permohonan (tanya-jawab, sesuai kondisi WP) ---------- */
+  /* Cek Syarat Permohonan (tanya-jawab, sesuai kondisi WP) */
   // st: ok = terpenuhi, na = tidak berlaku, todo = selesaikan dulu, warn = konfirmasi KPP, block = tidak bisa lewat program ini
   // doc: dokumen yang perlu disiapkan; j: jenis surat di generator
   function jenisS(A) { return A.jenis || ''; }
@@ -1514,7 +1536,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     F: { t: 'Surat pernyataan tidak mengajukan gugatan/upaya hukum lain (Lampiran F)', d: 'Bermeterai.', j: 'F' },
     C: { t: 'Surat pernyataan pencabutan banding/gugatan', d: 'Ke Ketua Pengadilan Pajak, 2 rangkap. Salinannya dilampirkan sebagai pengganti surat pernyataan tidak mengajukan gugatan.', j: 'C' },
     G: { t: 'Surat pernyataan sanksi timbul karena kekhilafan (Lampiran G)', d: 'Bermeterai.', j: 'G' },
-    salinan: { t: 'Salinan surat yang dimohonkan (STP/SKP)', j: 'S', btn: 'Tidak punya? Buat surat permohonan cetak ulang →' },
+    salinan: { t: 'Salinan surat yang dimohonkan (STP/SKP)', j: 'S', btn: 'Tidak punya? Buat surat permohonan cetak ulang' },
     bukti: { t: 'Bukti pelunasan pokok pajak (dan bukti bayar sebagian sanksi, bila skemanya bayar sebagian)' },
     kuasa: { t: 'Surat kuasa khusus' }
   };
@@ -1531,7 +1553,6 @@ if (typeof module !== 'undefined') module.exports = PSA;
         (picked && picked.msg ? '<p class="sq-msg">' + esc(picked.msg) + '</p>' : '') + (q.src ? '<p class="sq-src">Dasar: ' + esc(q.src) + '</p>' : '') + '</div>';
     }).join('');
     $('#sq').innerHTML = h;
-    // Ringkasan
     if (!SA.jenis) { $('#sres').innerHTML = '<p class="kket">Jawab pertanyaan di atas. Kesimpulan dan daftar dokumen muncul di sini.</p>'; return; }
     var iR = docs.indexOf('R'); if (iR > 0) { docs.splice(iR, 1); docs.unshift('R'); }
     docs.splice(docs.indexOf('P') + 1, 0, 'salinan'); if (docs.indexOf('F') < 0 && docs.indexOf('C') < 0) docs.push('F'); docs.push('G');
@@ -1546,7 +1567,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     var list = blocks.concat(todos, warns);
     if (list.length) out += '<ul class="steps">' + list.map(function (x) { return '<li>' + esc(x.o.msg || x.o.t) + '</li>'; }).join('') + '</ul>';
     if (!blocks.length) {
-      out += '<p class="k" style="margin-top:6px">Dokumen yang perlu disiapkan</p><ol class="steps">' + docs.map(function (k) { var D = DOCS[k]; return '<li><b>' + esc(D.t) + '</b>' + (D.d ? '<br><span class="kket">' + esc(D.d) + '</span>' : '') + (D.j ? ' <button class="lnk" data-surat="' + D.j + '">' + (D.btn || 'Buat suratnya →') + '</button>' : '') + '</li>'; }).join('') + '</ol>';
+      out += '<p class="k" style="margin-top:6px">Dokumen yang perlu disiapkan</p><ol class="steps">' + docs.map(function (k) { var D = DOCS[k]; return '<li><b>' + esc(D.t) + '</b>' + (D.d ? '<br><span class="kket">' + esc(D.d) + '</span>' : '') + (D.j ? ' <button class="lnk" data-surat="' + D.j + '">' + (D.btn || 'Buat suratnya') + '</button>' : '') + '</li>'; }).join('') + '</ol>';
       out += '<p class="kket">Ajukan paling lambat <b>1 Oktober 2028</b>. Satu permohonan untuk satu surat: punya tiga STP berarti tiga permohonan.</p>';
     }
     out += '</div>';
@@ -1560,7 +1581,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     if (s) { S.j = s.dataset.surat; show('surat'); document.querySelectorAll('#jenisSurat button').forEach(function (x) { x.setAttribute('aria-pressed', x.dataset.j === S.j); }); renderSForm(); renderPaper(); window.scrollTo({ top: 0 }); }
   });
 
-  /* ---------- Surat permohonan & pernyataan ---------- */
+  /* Surat permohonan & pernyataan */
   var CABUT = [['Pengajuan Keberatan', 'keberatan']];
   var JS_FULL = { 'STP': 'Surat Tagihan Pajak', 'SKPKB': 'Surat Ketetapan Pajak Kurang Bayar', 'SKPKBT': 'Surat Ketetapan Pajak Kurang Bayar Tambahan', 'SKP PBB': 'Surat Ketetapan Pajak Pajak Bumi dan Bangunan', 'STP PBB': 'Surat Tagihan Pajak Pajak Bumi dan Bangunan' };
   var SDEF = { j: 'P', selaku: 'Wakil', nama: 'Widodo Ma\'ruf', npwp: '0123456789012345', jabatan: 'Direktur', alamat: 'Jl. Contoh No. 1, Tangerang', telp: '0812-0000-0000',
@@ -1795,7 +1816,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
     var SEBAB = { a1: 'keterlambatan penyampaian SPT', d1: 'keterlambatan penyampaian SPT', a2: 'kurang bayar yang kami betulkan melalui pembetulan SPT', a3: 'keterlambatan pembayaran atau penyetoran pajak', a4: 'kekurangan pembayaran PPh tahun berjalan', a5: 'keterlambatan pembuatan faktur pajak', b1: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', c2: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', c3: 'kekurangan pembayaran pajak berdasarkan hasil pemeriksaan', d2: 'harta yang belum atau kurang diungkapkan dalam Program Pengungkapan Sukarela', a7: 'keterlambatan pelunasan pajak', c4: 'keterlambatan pelunasan tagihan pajak', c5: 'keterlambatan pelunasan tagihan pajak', c6: 'keterlambatan pelunasan tagihan pajak', c7: 'keterlambatan pelunasan tagihan pajak', c8: 'keterlambatan pelunasan tagihan pajak' }[sc.id] || 'keterlambatan penyampaian SPT atau pembayaran pajak';
     S.alasan = 'Sanksi administratif dalam ' + skp + ' tersebut timbul karena ' + SEBAB + '. Hal tersebut terjadi karena kekhilafan, bukan kesengajaan' + (sc.pokok ? ', dan pokok pajaknya telah kami lunasi' : '') + '. Berdasarkan PMK 71 Tahun 2026 dan KEP-239/PJ/2026, kami mengajukan permohonan ' + (r.rate === 100 ? 'penghapusan' : 'pengurangan') + ' sanksi administratif tersebut.';
     renderSForm(); renderPaper();
-    toast(r.rate ? 'Terisi: ' + r.rate + '% → sanksi menjadi Rp' + Number(S.sanksiWP).toLocaleString('id-ID') : 'Menurut kalkulator, tanggal itu tidak mendapat pengurangan');
+    toast(r.rate ? 'Terisi: ' + r.rate + '%, sanksi menjadi Rp' + Number(S.sanksiWP).toLocaleString('id-ID') : 'Menurut kalkulator, tanggal itu tidak mendapat pengurangan');
   }
   $('#jenisSurat').addEventListener('click', function (e) { var b = e.target.closest('button'); if (!b) return; S.j = b.dataset.j; document.querySelectorAll('#jenisSurat button').forEach(function (x) { x.setAttribute('aria-pressed', x === b); }); renderSForm(); renderPaper(); });
   $('#sform').addEventListener('input', function (e) {
@@ -1822,7 +1843,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   $('#resetSurat').addEventListener('click', function () { var j = S.j; S = Object.assign({}, SDEF, { j: j }); renderSForm(); renderPaper(); });
 
-  /* ---------- Kamus pasal ---------- */
+  /* Kamus pasal */
   var PASAL = [
     ['Pasal 7 ayat (1) UU KUP', 'Denda terlambat lapor SPT', 'Denda tetap: SPT Masa PPN Rp500.000, SPT Masa lain Rp100.000, SPT Tahunan PPh Badan Rp1.000.000, SPT Tahunan PPh Orang Pribadi Rp100.000.', ['a1', 'a6', 'b2', 'c1', 'd1']],
     ['Pasal 8 ayat (2) dan (2a) UU KUP', 'Bunga karena pembetulan SPT', 'Bunga per bulan sesuai tarif KMK atas pajak kurang bayar akibat pembetulan, dihitung sejak jatuh tempo pembayaran sampai tanggal bayar.', ['a2', 'a6', 'b2', 'c1']],
@@ -1845,8 +1866,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   $('#pgrid').addEventListener('click', function (e) { var b = e.target.closest('[data-open]'); if (!b) return; pick(b.dataset.open, false); show('kalkulator'); window.scrollTo({ top: 0 }); });
 
 
-  /* ---------- Video ----------
-     Isi id YouTube di sini. Bila id kosong, semua tempat video itu disembunyikan.
+  /* Video. Isi id YouTube di sini. Bila id kosong, semua tempat video itu disembunyikan.
      bab: menit mulai (dalam detik) per kluster, dipakai untuk tautan di kalkulator dan hasil Cek Kluster.
      Contoh: bab: { pengawasan: 90, pemeriksaan: 240, penagihan: 400, basisdata: 610 } */
   var VIDEOS = {
@@ -1904,7 +1924,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeVideo(); });
 
-  /* ---------- Tema terang / gelap ---------- */
+  /* Tema terang / gelap */
   var TEMA = ['auto', 'light', 'dark'], TLBL = { auto: 'Otomatis', light: 'Terang', dark: 'Gelap' };
   var ICON = {
     auto: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>',
@@ -1931,7 +1951,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   applyTema();
 
-  /* ---------- Aplikasi (PWA): instal & offline ---------- */
+  /* Aplikasi (PWA): instal & offline */
   var deferredPrompt = null;
   var standalone = false; try { standalone = window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true; } catch (e) {}
   var isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
@@ -1948,14 +1968,33 @@ if (typeof module !== 'undefined') module.exports = PSA;
     if (e.target.closest('[data-install]')) {
       closeMore();
       if (deferredPrompt) { deferredPrompt.prompt(); deferredPrompt.userChoice.then(function () { deferredPrompt = null; }); }
-      else { $('#ihelp').hidden = false; $('#ihClose').focus(); }
+      else { ihOpener = e.target.closest('[data-install]'); $('#ihelp').hidden = false; $('#ihClose').focus(); }
       return;
     }
-    if (e.target.id === 'ihelp' || e.target.closest('#ihClose')) $('#ihelp').hidden = true;
+    if (e.target.id === 'ihelp' || e.target.closest('#ihClose')) closeIhelp();
   });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') $('#ihelp').hidden = true; });
+  var ihOpener = null;
+  function closeIhelp() {
+    if ($('#ihelp').hidden) return;
+    $('#ihelp').hidden = true;
+    if (ihOpener && ihOpener.offsetParent !== null) ihOpener.focus();
+  }
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeIhelp(); });
 
-  /* ---------- Banner sambutan ---------- */
+  // Dialog modal yang terbuka menahan fokus Tab di dalamnya, sesuai aria-modal.
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Tab') return;
+    var dlg = Array.prototype.filter.call(document.querySelectorAll('[role="dialog"][aria-modal="true"]'), function (d) { return !d.hidden; }).pop();
+    if (!dlg) return;
+    var f = Array.prototype.filter.call(dlg.querySelectorAll('a[href], button, input, select, textarea, iframe, [tabindex]:not([tabindex="-1"])'), function (el) { return !el.disabled && el.offsetParent !== null; });
+    if (!f.length) return;
+    var first = f[0], last = f[f.length - 1];
+    if (!dlg.contains(document.activeElement)) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+    else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
+
+  /* Banner sambutan */
   function closeWelcome() {
     var w = $('#welcome'); if (w.hidden) return;
     w.hidden = true;
@@ -1976,7 +2015,7 @@ if (typeof module !== 'undefined') module.exports = PSA;
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeWelcome(); });
 
-  /* ---------- Start ---------- */
+  /* Start */
   setupVideos();
   renderKlusters(); renderPanel(); renderWiz(); renderSyarat(); renderSForm(); renderPaper();
   route();
