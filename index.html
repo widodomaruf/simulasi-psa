@@ -2305,7 +2305,8 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
   function saveHist() {
     try { localStorage.setItem(RIWAYAT_KEY, JSON.stringify(hist)); } catch (e) { /* penyimpanan penuh atau diblokir: riwayat tetap ada selama halaman terbuka */ }
   }
-  var hist = loadHist(), started = false, busy = false, lastQ = '', chips = null;
+  var hist = loadHist(), started = false, busy = false, lastQ = '', lastJalur = [];
+  var chipBoxes = [], jalurAktif = [];
   function remember(q, a) {
     hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: a.slice(0, 1500) });
     hist = hist.slice(-40);
@@ -2369,6 +2370,57 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
       else { d.setAttribute('data-noi18n', ''); d.innerHTML = render(reply); toEnd(); done(); }
     })();
   }
+  // Pohon pilihan lokal (tanpa Gemini). Daun berisi ID skenario yang sama dengan knowledge base.
+  var URL_SKENARIO = 'https://legapsa.vercel.app/#skenario-';
+  var JUDUL = {a1:'Terlambat lapor SPT (status kurang bayar)',a2:'Pembetulan SPT (status kurang bayar)',a3:'Terlambat bayar/setor pajak dalam SPT',a4:'STP pajak tahun berjalan tidak/kurang bayar',a5:'STP faktur pajak terlambat/tidak lengkap',a6:'STP atas SPT yang sudah dilapor sebelum 8 Okt 2026',b1:'SKPKB/SKPKBT/SKP PBB hasil pemeriksaan',c1:'STP lama: telat lapor, pembetulan, telat bayar, faktur',c2:'SKP lama, pokok belum lunas',c3:'SKP lama, pokok sudah lunas sebelum 8 Okt 2026',c4:'STP bunga penagihan lama, pokok belum lunas',c5:'STP bunga penagihan lama, pokok/utang lunas sebelum 8 Okt',c6:'STP bunga penagihan lama, SKP diajukan keberatan',c7:'STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas',c8:'STP bunga penagihan baru, pokok/utang lunas sebelum 8 Okt',d1:'WP baru daftar NPWP / PKP baru dikukuhkan',d2:'SKPKB terkait Program Pengungkapan Sukarela (PPS)'};
+  var POHON = {
+    root: { q: 'Apa yang paling dekat dengan kasus Anda?', opsi: [['Terlambat atau salah lapor SPT', 'spt'], ['Menerima STP dari KPP (denda, bunga, atau faktur)', 'stp'], ['SKP atau SKPKB hasil pemeriksaan', 'skp'], ['Tagihan bunga dari KPP (STP bunga)', 'bunga'], ['Baru daftar NPWP atau dikukuhkan PKP', 'd1'], ['Program Pengungkapan Sukarela (PPS)', 'd2']] },
+    spt: { q: 'Apa yang terjadi pada SPT Anda?', opsi: [['Belum lapor atau terlambat lapor', 'telat'], ['Pembetulan SPT atas kemauan sendiri', 'a2'], ['Terlambat bayar pajak yang tertulis di SPT', 'a3']] },
+    telat: { q: 'Apakah SPT sudah dilaporkan sebelum 8 Okt 2026 dan STP-nya sudah terbit?', opsi: [['Ya', 'a6'], ['Tidak', 'a1']] },
+    stp: { q: 'Jenis STP apa?', opsi: [['Denda terlambat lapor, bayar, atau pembetulan', 'stpTgl'], ['Pajak tahun berjalan tidak atau kurang dibayar', 'a4'], ['Faktur pajak terlambat atau tidak lengkap', 'a5']] },
+    stpTgl: { q: 'STP terbit sebelum 8 Okt 2026?', opsi: [['Ya', 'c1'], ['Tidak', 'telat']] },
+    skp: { q: 'Kapan SKP atau SKPKB terbit?', opsi: [['Sebelum 8 Okt 2026', 'skpLama'], ['8 Okt 2026 atau sesudahnya', 'b1']] },
+    skpLama: { q: 'Pokok pajak sudah lunas sebelum 8 Okt 2026?', opsi: [['Ya', 'c3'], ['Belum', 'skpKeberatan']] },
+    skpKeberatan: { q: 'SKP ini diajukan keberatan?', opsi: [['Tidak', 'c2'], ['Ya', 'tanya']] },
+    bunga: { q: 'STP bunga terbit sebelum 8 Okt 2026?', opsi: [['Ya', 'bungaLama'], ['Tidak', 'bungaBaru']] },
+    bungaLama: { q: 'Utang pokok sudah lunas sebelum 8 Okt 2026?', opsi: [['Ya', 'c5'], ['Belum', 'bungaKeberatan']] },
+    bungaKeberatan: { q: 'SKP terkait diajukan keberatan?', opsi: [['Ya', 'c6'], ['Tidak', 'c4']] },
+    bungaBaru: { q: 'Pokok atau utang pajak sudah lunas sebelum 8 Okt 2026?', opsi: [['Ya', 'c8'], ['Belum', 'c7']] }
+  };
+  function clearChips() { chipBoxes.forEach(function (b) { if (b.parentNode) b.parentNode.removeChild(b); }); chipBoxes = []; }
+  function tombol(teks, aksi) { var c = document.createElement('button'); c.type = 'button'; c.className = 'tl-chip'; c.textContent = teks; c.addEventListener('click', aksi); return c; }
+  function kotak(items) { var box = document.createElement('div'); box.className = 'tl-chips'; items.forEach(function (x) { box.appendChild(x); }); log.appendChild(box); chipBoxes.push(box); toEnd(); }
+  function askNode(key, jalur) {
+    var n = POHON[key];
+    add('bot', n.q);
+    var items = n.opsi.map(function (o) { return tombol(o[0], function () { pick(o[0], o[1], jalur); }); });
+    items.push(tombol('Ketik sendiri', function () { ketikSendiri(jalur); }));
+    kotak(items);
+  }
+  function pick(label, val, jalur) {
+    clearChips();
+    add('user', label);
+    var path = jalur.concat([label]);
+    if (POHON[val]) { askNode(val, path); return; }
+    var text;
+    if (val === 'tanya') {
+      text = 'Kasus ini belum punya jalur khusus di pilihan. Ketik pertanyaan Anda, atau kirim email ' + MAIL + '.';
+      add('bot', '', render(text));
+    } else {
+      text = 'Kemungkinan skenario ' + val + ': ' + JUDUL[val] + '.\nCek simulasinya di kalkulator: ' + URL_SKENARIO + val + '\nIni simulasi, bukan keputusan DJP.';
+      add('bot', '', render(text));
+    }
+    remember(label, text);
+    kotak([tombol('Ketik sendiri', function () { ketikSendiri(path); }), tombol('Mulai dari awal', function () { clearChips(); askNode('root', []); })]);
+  }
+  // Tombol "Ketik sendiri": pertanyaan bebas dikirim ke Gemini bersama jalur pilihan yang sudah diklik.
+  function ketikSendiri(jalur) {
+    clearChips();
+    jalurAktif = jalur.slice(0, 6);
+    add('bot', jalurAktif.length ? 'Silakan tulis pertanyaan Anda. Pilihan tadi ikut dikirim sebagai konteks.' : 'Silakan tulis pertanyaan Anda.');
+    input.focus();
+  }
+
   function setBusy(b) { busy = b; input.disabled = b; sendBtn.disabled = b; }
   function grow() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 130) + 'px'; }
 
@@ -2378,17 +2430,13 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
       started = true;
       add('bot', HELLO);
       if (hist.length) {
-        // Pulihkan percakapan sebelumnya dari localStorage; chip contoh tidak ditampilkan lagi.
+        // Pulihkan percakapan sebelumnya dari localStorage.
         hist.forEach(function (r) { if (r.role === 'user') add('user', r.text); else add('bot', '', render(r.text)); });
         toEnd();
+        kotak([tombol('Pilih kasus dari awal', function () { clearChips(); askNode('root', []); }), tombol('Ketik sendiri', function () { ketikSendiri([]); })]);
       } else {
-      chips = document.createElement('div'); chips.className = 'tl-chips';
-      SUGG.forEach(function (q) {
-        var c = document.createElement('button'); c.type = 'button'; c.className = 'tl-chip'; c.textContent = q;
-        c.addEventListener('click', function () { send(q); });
-        chips.appendChild(c);
-      });
-      log.appendChild(chips); toEnd();
+        askNode('root', []);
+        kotak(SUGG.map(function (q) { return tombol(q, function () { send(q); }); }));
       }
     }
     // Fokus otomatis hanya di perangkat dengan mouse; di HP keyboard akan muncul dan menutupi jawaban.
@@ -2412,7 +2460,9 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     q = (q || '').trim();
     if (!q || busy) return;
     lastQ = q;
-    if (chips && chips.parentNode) { chips.parentNode.removeChild(chips); chips = null; }
+    clearChips();
+    var jalur = retry ? lastJalur : jalurAktif;
+    lastJalur = jalur; jalurAktif = [];
     if (!retry) add('user', q);
     // Pertanyaan umum dijawab dari teks lokal (tanpa memanggil Gemini), supaya hemat kuota dan cepat.
     if (LOKAL[q]) {
@@ -2426,7 +2476,7 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     wait.innerHTML = '<span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Tanya LEGA sedang mengetik…</span>';
     var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 30000);
     var lang = document.documentElement.lang === 'en' ? 'en' : 'id';
-    fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q, history: hist.slice(-8), lang: lang }), signal: ctl.signal })
+    fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q, history: hist.slice(-8), lang: lang, path: jalur }), signal: ctl.signal })
       .then(function (r) {
         return r.json().catch(function () { return {}; }).then(function (data) { return { r: r, data: data }; });
       })

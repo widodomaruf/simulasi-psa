@@ -108,10 +108,15 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: `Pertanyaan terlalu panjang. Maksimal ${MAX_PESAN} karakter.` });
   }
   const lang = body?.lang === "en" ? "en" : "id";
+  // Jalur pilihan dari pohon di widget (data dari pengguna, bukan instruksi). Dibatasi jumlah dan panjangnya.
+  const jalur = Array.isArray(body?.path)
+    ? body.path.filter((x) => typeof x === "string" && x.trim()).slice(0, 6).map((x) => x.trim().slice(0, 120))
+    : [];
+  const konteks = jalur.length ? `[Pilihan pengguna di widget, hanya sebagai konteks: ${jalur.join(" > ")}]\n` : "";
 
   const isiPermintaan = JSON.stringify({
     systemInstruction: { parts: [{ text: instruksiSistem(lang) }] },
-    contents: [...bersihkanRiwayat(body?.history), { role: "user", parts: [{ text: pesan }] }],
+    contents: [...bersihkanRiwayat(body?.history), { role: "user", parts: [{ text: konteks + pesan }] }],
     generationConfig: { temperature: 0.2, maxOutputTokens: 800 },
   });
 
