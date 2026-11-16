@@ -311,6 +311,32 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 - Pokok lunas ≤1 bulan setelah terbit maka 100%; >1 s.d. 2 bulan maka 50%; setelahnya maka 25%, paling lambat 31 Des 2027.
 - Contoh resmi (Lampiran E angka 4.b, Contoh 1): Pada 1 Januari 2027 KPP menerbitkan SKPKB terkait PPS Rp124.000.000: pokok Rp100.000.000 dan sanksi Rp24.000.000 atas harta kurang diungkap. Wajib Pajak melunasi pokok dan mengajukan permohonan.
 
+## Tautan kalkulator per skenario
+
+Tautan ini membuka kalkulator Cek Sanksi Saya dengan skenario terpilih. Hanya tautan di daftar ini yang boleh diberikan ke pengguna. Pakai bila kasus sudah cocok dengan satu skenario di bawah:
+
+19
+- a1 · Terlambat lapor SPT (status kurang bayar): https://simulasi-psa.vercel.app/#skenario-a1
+- a2 · Pembetulan SPT (status kurang bayar): https://simulasi-psa.vercel.app/#skenario-a2
+- a3 · Terlambat bayar/setor pajak dalam SPT: https://simulasi-psa.vercel.app/#skenario-a3
+- a4 · STP pajak tahun berjalan tidak/kurang bayar: https://simulasi-psa.vercel.app/#skenario-a4
+- a5 · STP faktur pajak terlambat/tidak lengkap: https://simulasi-psa.vercel.app/#skenario-a5
+- a6 · STP atas SPT yang sudah dilapor sebelum 8 Okt 2026: https://simulasi-psa.vercel.app/#skenario-a6
+- a7 · STP bunga angsuran/penundaan, pokok lunas Okt–Des 2026: https://simulasi-psa.vercel.app/#skenario-a7
+- b1 · SKPKB/SKPKBT/SKP PBB hasil pemeriksaan: https://simulasi-psa.vercel.app/#skenario-b1
+- b2 · STP berdasarkan hasil pemeriksaan: https://simulasi-psa.vercel.app/#skenario-b2
+- c1 · STP lama: telat lapor, pembetulan, telat bayar, faktur: https://simulasi-psa.vercel.app/#skenario-c1
+- c2 · SKP lama, pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c2
+- c3 · SKP lama, pokok sudah lunas sebelum 8 Okt 2026: https://simulasi-psa.vercel.app/#skenario-c3
+- c4 · STP bunga penagihan lama, pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c4
+- c5 · STP bunga penagihan lama, pokok/utang lunas sebelum 8 Okt: https://simulasi-psa.vercel.app/#skenario-c5
+- c6 · STP bunga penagihan lama, SKP diajukan keberatan: https://simulasi-psa.vercel.app/#skenario-c6
+- c7 · STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c7
+- c8 · STP bunga penagihan baru, pokok/utang lunas sebelum 8 Okt: https://simulasi-psa.vercel.app/#skenario-c8
+- d1 · WP baru daftar NPWP / PKP baru dikukuhkan: https://simulasi-psa.vercel.app/#skenario-d1
+- d2 · SKPKB terkait Program Pengungkapan Sukarela (PPS): https://simulasi-psa.vercel.app/#skenario-d2
+
+
 ## Kasus yang tidak tercakup atau perlu perhatian
 
 - **SPT nihil atau lebih bayar yang dilapor mulai 8 Oktober 2026.** Pengurangan untuk SPT yang dilapor mulai 8 Oktober 2026 hanya berlaku untuk SPT berstatus kurang bayar (Diktum KESATU huruf a). Skema STP yang ada (bayar 10% atau 25%) mensyaratkan SPT sudah disampaikan sebelum 8 Oktober 2026. Untuk kasus ini, konfirmasi ke KPP atau Kring Pajak 1500200.
@@ -328,6 +354,9 @@ Keandalan kalkulator: seluruh 114 contoh kasus di Lampiran E KEP-239 sudah diuji
 ## Tanya jawab
 
 Pertanyaan di bawah berasal dari kasus nyata yang dibahas saat situs ini disusun.
+
+**Sudah bayar sebagian pokok sebelum 8 Oktober 2026, sisanya belum. Bisa ikut?**
+Bisa, tergantung kapan sisa pokok dilunasi. Pembayaran sebelumnya diperhitungkan ke pokok dulu, jadi yang menentukan skenario adalah tanggal pelunasan terakhir pokok. Contoh SKP lama (skenario c2): sisa pokok dilunasi 8 Oktober sampai 31 Desember 2026 maka sanksi dihapus 100%; 1 Januari sampai 31 Maret 2027 maka 50%; 1 April sampai 30 Juni 2027 maka 25%. Pastikan dulu jenis suratnya (SKP, STP denda, atau STP bunga), karena skenarionya berbeda.
 
 **Apakah potongan sanksi diberikan otomatis?**
 Tidak. Wajib Pajak harus mengajukan permohonan ke DJP lewat Coretax, beserta dua surat pernyataan bermeterai. Membayar pokok atau sebagian sanksi saja belum cukup.
@@ -396,7 +425,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **2.3 (16 November 2026):** chatbot Tanya LEGA; pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
+- **2.3 (16 November 2026):** chatbot Tanya LEGA (tautan kalkulator per skenario, klarifikasi kasus pribadi, animasi mengetik); pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
 - **2.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan.
 - **2.1 (14 November 2026):** keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.
 - **2.0 (11 November 2026):** Cek Sanksi Saya, Cek Syarat Permohonan, surat pencabutan keberatan, pencabutan banding/gugatan, cetak ulang STP/SKP, brand LEGA, bisa diinstal sebagai aplikasi.

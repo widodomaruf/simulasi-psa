@@ -627,6 +627,11 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
 .tl-m.user { align-self: flex-end; background: var(--band); color: var(--band-ink); white-space: pre-wrap; }
 .tl-m.err { border-color: var(--bad); }
 .tl-m.wait { color: var(--ink-3); }
+.tl-dots { display: inline-flex; align-items: center; gap: 5px; height: 1.5em; }
+.tl-dots i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .55; animation: tl-bounce 1s ease-in-out infinite; }
+.tl-dots i:nth-child(2) { animation-delay: .15s; }
+.tl-dots i:nth-child(3) { animation-delay: .3s; }
+@keyframes tl-bounce { 0%, 60%, 100% { transform: translateY(0); opacity: .45; } 30% { transform: translateY(-5px); opacity: 1; } }
 .tl-retry { margin-top: 8px; min-height: 44px; padding: 0 14px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--card); color: var(--ink); font: 600 14px/1 var(--body); cursor: pointer; }
 .tl-chips { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; }
 .tl-chip { min-height: 44px; padding: 8px 14px; border: 1px solid var(--field-line); border-radius: 8px; background: var(--card); color: var(--ink); font: 500 14px/1.3 var(--body); text-align: left; cursor: pointer; }
@@ -638,11 +643,11 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
 .tl-send:disabled, .tl-form textarea:disabled { opacity: .55; cursor: not-allowed; }
 @media (max-width: 900px) { .tl-open { right: 12px; bottom: calc(76px + env(safe-area-inset-bottom)); } .tl-panel { bottom: calc(76px + env(safe-area-inset-bottom)); } }
 @media (max-width: 560px) {
-  .tl-panel { left: 8px; right: 8px; top: 8px; bottom: calc(8px + var(--kb, 0px)); width: auto; max-width: none; max-height: none; border-radius: 12px; }
+  .tl-panel { left: 8px; right: 8px; top: calc(var(--vvt, 0px) + 8px); bottom: auto; height: calc(var(--vvh, 100vh) - 16px); width: auto; max-width: none; max-height: none; border-radius: 12px; }
   .tl-open[aria-expanded="true"] { display: none; }
 }
 @media print { .tl-open, .tl-panel { display: none !important; } }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .tl-dots i { animation: none !important; } }
 </style>
 
 </head>
@@ -2284,13 +2289,15 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
   var btn = document.getElementById('tlOpen'), panel = document.getElementById('tlPanel'), log = document.getElementById('tlLog');
   var form = document.getElementById('tlForm'), input = document.getElementById('tlInput'), sendBtn = document.getElementById('tlSend');
   var hist = [], started = false, busy = false, lastQ = '', chips = null;
-  // Tinggi keyboard di HP: panel ikut naik tepat di atasnya, dan menu bawah tertutup panel.
+  // Panel HP mengikuti visual viewport (posisi atas dan tinggi), jadi pas di atas keyboard.
   function syncKb() {
-    var vv = window.visualViewport;
-    var kb = vv ? Math.max(0, window.innerHeight - vv.height - vv.offsetTop) : 0;
-    document.documentElement.style.setProperty('--kb', Math.round(kb) + 'px');
+    var vv = window.visualViewport, st = document.documentElement.style;
+    st.setProperty('--vvt', vv ? Math.round(vv.offsetTop) + 'px' : '0px');
+    st.setProperty('--vvh', vv ? Math.round(vv.height) + 'px' : '100vh');
   }
   if (window.visualViewport) { window.visualViewport.addEventListener('resize', syncKb); window.visualViewport.addEventListener('scroll', syncKb); }
+  window.addEventListener('resize', syncKb);
+  syncKb();
   var SUGG = ['Apakah potongan sanksi otomatis?', 'Dokumen apa saja yang perlu disiapkan?', 'Sampai kapan batas potongan 100%?'];
   var HELLO = 'Halo, saya Tanya LEGA. Saya bisa menjelaskan program PSA, syarat permohonan, surat yang perlu disiapkan, dan cara memakai situs ini. Jawaban saya simulasi, bukan keputusan DJP.';
   var MAIL = 'hi.widodomaruf@gmail.com';
@@ -2323,6 +2330,16 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     var d = document.createElement('div'); d.className = 'tl-m ' + cls;
     if (html) { d.setAttribute('data-noi18n', ''); d.innerHTML = html; } else d.textContent = text;
     log.appendChild(d); toEnd(); return d;
+  }
+  function typeIn(reply, done) {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { add('bot', '', render(reply)); done(); return; }
+    var d = add('bot', ''), i = 0, step = Math.max(2, Math.ceil(reply.length / 187));
+    (function tick() {
+      i = Math.min(reply.length, i + step);
+      d.textContent = reply.slice(0, i); toEnd();
+      if (i < reply.length) setTimeout(tick, 16);
+      else { d.setAttribute('data-noi18n', ''); d.innerHTML = render(reply); toEnd(); done(); }
+    })();
   }
   function setBusy(b) { busy = b; input.disabled = b; sendBtn.disabled = b; }
   function grow() { input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 130) + 'px'; }
@@ -2365,7 +2382,8 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     if (!retry) add('user', q);
     if (navigator.onLine === false) { fail('Anda sedang offline. Tanya LEGA butuh internet; fitur lain LEGA tetap bisa dipakai.'); return; }
     setBusy(true);
-    var wait = add('wait bot', 'Tanya LEGA sedang mengetik…');
+    var wait = add('wait bot', '');
+    wait.innerHTML = '<span class="tl-dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="sr-only">Tanya LEGA sedang mengetik…</span>';
     var ctl = new AbortController(), timer = setTimeout(function () { ctl.abort(); }, 30000);
     var lang = document.documentElement.lang === 'en' ? 'en' : 'id';
     fetch('/api/chat', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ message: q, history: hist.slice(-8), lang: lang }), signal: ctl.signal })
@@ -2376,9 +2394,14 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
         clearTimeout(timer);
         if (wait.parentNode) wait.parentNode.removeChild(wait);
         if (x.r.ok && x.data && typeof x.data.reply === 'string' && x.data.reply) {
-          add('bot', '', render(x.data.reply));
           hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: x.data.reply.slice(0, 1500) });
           hist = hist.slice(-8);
+          typeIn(x.data.reply, function () {
+            hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: x.data.reply.slice(0, 1500) });
+            hist = hist.slice(-8);
+            setBusy(false);
+          });
+          return;
         } else if (x.r.status === 429) {
           fail('Terlalu banyak pertanyaan dalam waktu singkat. Coba lagi sebentar lagi.');
         } else {
