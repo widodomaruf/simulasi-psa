@@ -2293,7 +2293,24 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
 (function () {
   var btn = document.getElementById('tlOpen'), panel = document.getElementById('tlPanel'), log = document.getElementById('tlLog');
   var form = document.getElementById('tlForm'), input = document.getElementById('tlInput'), sendBtn = document.getElementById('tlSend');
-  var hist = [], started = false, busy = false, lastQ = '', chips = null;
+  // Riwayat disimpan di localStorage perangkat ini, supaya tetap ada saat tab ditutup lalu dibuka lagi.
+  var RIWAYAT_KEY = 'psa:tl-riwayat';
+  function loadHist() {
+    try {
+      var v = JSON.parse(localStorage.getItem(RIWAYAT_KEY));
+      if (!Array.isArray(v)) return [];
+      return v.filter(function (r) { return r && (r.role === 'user' || r.role === 'model') && typeof r.text === 'string'; }).slice(-40);
+    } catch (e) { return []; }
+  }
+  function saveHist() {
+    try { localStorage.setItem(RIWAYAT_KEY, JSON.stringify(hist)); } catch (e) { /* penyimpanan penuh atau diblokir: riwayat tetap ada selama halaman terbuka */ }
+  }
+  var hist = loadHist(), started = false, busy = false, lastQ = '', chips = null;
+  function remember(q, a) {
+    hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: a.slice(0, 1500) });
+    hist = hist.slice(-40);
+    saveHist();
+  }
   // Panel HP mengikuti visual viewport (posisi atas dan tinggi), jadi pas di atas keyboard.
   function syncKb() {
     var vv = window.visualViewport, st = document.documentElement.style;
@@ -2360,6 +2377,11 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     if (!started) {
       started = true;
       add('bot', HELLO);
+      if (hist.length) {
+        // Pulihkan percakapan sebelumnya dari localStorage; chip contoh tidak ditampilkan lagi.
+        hist.forEach(function (r) { if (r.role === 'user') add('user', r.text); else add('bot', '', render(r.text)); });
+        toEnd();
+      } else {
       chips = document.createElement('div'); chips.className = 'tl-chips';
       SUGG.forEach(function (q) {
         var c = document.createElement('button'); c.type = 'button'; c.className = 'tl-chip'; c.textContent = q;
@@ -2367,6 +2389,7 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
         chips.appendChild(c);
       });
       log.appendChild(chips); toEnd();
+      }
     }
     // Fokus otomatis hanya di perangkat dengan mouse; di HP keyboard akan muncul dan menutupi jawaban.
     if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) input.focus();
@@ -2393,9 +2416,8 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     if (!retry) add('user', q);
     // Pertanyaan umum dijawab dari teks lokal (tanpa memanggil Gemini), supaya hemat kuota dan cepat.
     if (LOKAL[q]) {
-      var lokalBubble = add('bot', '', render(LOKAL[q]));
-      hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: LOKAL[q].slice(0, 1500) });
-      hist = hist.slice(-8); toEnd();
+      add('bot', '', render(LOKAL[q]));
+      remember(q, LOKAL[q]); toEnd();
       return;
     }
     if (navigator.onLine === false) { fail('Anda sedang offline. Tanya LEGA butuh internet; fitur lain LEGA tetap bisa dipakai.'); return; }
@@ -2412,11 +2434,8 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
         clearTimeout(timer);
         if (wait.parentNode) wait.parentNode.removeChild(wait);
         if (x.r.ok && x.data && typeof x.data.reply === 'string' && x.data.reply) {
-          hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: x.data.reply.slice(0, 1500) });
-          hist = hist.slice(-8);
           typeIn(x.data.reply, function () {
-            hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: x.data.reply.slice(0, 1500) });
-            hist = hist.slice(-8);
+            remember(q, x.data.reply);
             setBusy(false);
           });
           return;
