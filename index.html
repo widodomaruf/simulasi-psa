@@ -113,6 +113,14 @@ select, summary, label[for], input[type="checkbox"], input[type="radio"], input[
 .ver { border: 0; background: rgba(245, 184, 0, .16); color: var(--yellow); font-family: var(--mono); font-size: 11.5px; font-weight: 600; padding: 4px 9px; border-radius: 999px; }
 .vlog { display: grid; gap: 14px; }
 .vlog-h { display: flex; gap: 10px; align-items: baseline; margin-bottom: 6px; }
+/* Catatan versi: tiap versi bisa dibuka lewat details, tanpa skrip */
+.vlog-d { border-bottom: 1px solid var(--line); padding: 4px 0; }
+.vlog-d:last-child { border-bottom: 0; }
+.vlog-d summary { cursor: pointer; list-style: none; min-height: 44px; display: flex; align-items: center; gap: 10px; }
+.vlog-d summary::-webkit-details-marker { display: none; }
+.vlog-d summary::after { content: '+'; margin-left: auto; color: var(--ink-3); font-size: 1.2em; }
+.vlog-d[open] summary::after { content: '–'; }
+.vlog-d .notes { margin: 4px 0 12px; }
 .foot a { color: inherit; }
 .credit .ig { color: var(--band-ink); text-underline-offset: 2px; }
 .li-card { flex: 1 1 100%; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--card); color: var(--ink) !important; text-decoration: none; }
@@ -869,7 +877,7 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
       <div class="card" id="catatan-versi">
         <h3>Catatan versi</h3>
         <div class="vlog">
-          <div><p class="vlog-h"><b>Versi 1.3</b> <span class="kket">16 November 2026</span></p>
+          <details class="vlog-d" open><summary><b>Versi 1.3</b> <span class="kket">16 November 2026</span></summary>
             <ul class="notes">
               <li>Tanya LEGA: pilihan kasus lewat tombol, tanpa mengetik. Pilihan berakhir di skenario yang cocok dan tautan kalkulator.</li>
               <li>Tanya LEGA: tombol "Ketik sendiri" untuk pertanyaan bebas. Pilihan yang sudah diklik ikut dikirim sebagai konteks.</li>
@@ -884,8 +892,8 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
               <li>Pilihan penyebab STP dikelompokkan, dan pilihan "Tidak tahu" langsung membawa ke contoh letak pasal. Tanggal surat tidak bisa diisi setelah hari ini.</li>
               <li>Lebih mudah dipakai dengan pembaca layar, dan teks kecil diperbesar.</li>
             </ul>
-          </div>
-          <div><p class="vlog-h"><b>Versi 1.2</b> <span class="kket">14 November 2026</span></p>
+          </details>
+          <details class="vlog-d"><summary><b>Versi 1.2</b> <span class="kket">14 November 2026</span></summary>
             <ul class="notes">
               <li>Pertanyaan pertama Cek Sanksi langsung terlihat saat situs dibuka. Pop-up sambutan diganti ringkasan singkat di atas pertanyaan, dan pita atas di HP dibuat lebih ringkas.</li>
               <li>Jawaban sebelumnya bisa diubah satu per satu lewat tombol "Ubah", tanpa mengulang dari awal. Ada penanda nomor pertanyaan.</li>
@@ -894,8 +902,8 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
               <li>Tombol dan tautan di HP lebih besar sehingga mudah diketuk, dan tombol memberi tanda saat ditekan.</li>
               <li>Banner sambutan bisa dipakai penuh dengan keyboard: tombol Tab tidak lagi keluar dari banner.</li>
             </ul>
-          </div>
-          <div><p class="vlog-h"><b>Versi 1.1</b> <span class="kket">11 November 2026</span></p>
+          </details>
+          <details class="vlog-d"><summary><b>Versi 1.1</b> <span class="kket">11 November 2026</span></summary>
             <ul class="notes">
               <li><b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.</li>
               <li><b>Cek Syarat Permohonan</b> menggantikan ceklist: pertanyaan sesuai kondisi, syarat yang tidak berlaku otomatis dilewati, kesimpulan, dan daftar dokumen.</li>
@@ -910,9 +918,10 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
               <li>Halaman Surat: surat wajib ditandai jelas, contoh pengisian alasan permohonan, dan nomor/tanggal di surat pernyataan kekhilafan kini memakai nomor/tanggal STP/SKP sesuai petunjuk KEP.</li>
               <li>Bisa <b>diinstal sebagai aplikasi</b> di HP dan komputer, dan tetap bisa dipakai tanpa internet (kecuali video).</li>
             </ul>
-          </div>
-          <div><p class="vlog-h"><b>Versi 1.0</b> <span class="kket">rilis pertama</span></p>
-            <ul class="notes"><li>Kalkulator per kluster KEP-239/PJ/2026, cek kluster, ceklist syarat, generator surat permohonan dan surat pernyataan, kamus pasal, serta video penjelasan.</li></ul></div>
+          </details>
+          <details class="vlog-d"><summary><b>Versi 1.0</b> <span class="kket">rilis pertama</span></summary>
+            <ul class="notes"><li>Kalkulator per kluster KEP-239/PJ/2026, cek kluster, ceklist syarat, generator surat permohonan dan surat pernyataan, kamus pasal, serta video penjelasan.</li></ul>
+          </details>
         </div>
       </div>
       <div class="card">
