@@ -16,6 +16,9 @@ const ASAL_DIIZINKAN = [/^https:\/\/simulasi-psa\.vercel\.app$/, /^https:\/\/leg
 // Bukan pengaman penuh (instance bisa lebih dari satu), tapi mencegah klik beruntun dan skrip iseng.
 const JENDELA_MS = 5 * 60 * 1000;
 const MAKS_PER_JENDELA = 12;
+// Batas permintaan ke Gemini yang berjalan bersamaan per instance. Lebihnya ditolak dengan sopan, bukan dibiarkan antre.
+const MAKS_BERSAMAAN = 6;
+let sedangJalan = 0;
 const catatanIp = new Map();
 
 const materi = fs.readFileSync(path.join(process.cwd(), "knowledge", "lega-kb.md"), "utf-8");
@@ -112,6 +115,10 @@ export default async function handler(req, res) {
     generationConfig: { temperature: 0.2, maxOutputTokens: 800 },
   });
 
+  if (sedangJalan >= MAKS_BERSAMAAN) {
+    return res.status(429).json({ error: "Tanya LEGA sedang melayani banyak pengguna sekaligus. Coba lagi beberapa menit lagi." });
+  }
+  sedangJalan++;
   try {
     // Coba dua kali bila Gemini sedang penuh (503). Total waktu tetap di bawah maxDuration 30 detik.
     let balasan;
@@ -145,5 +152,7 @@ export default async function handler(req, res) {
   } catch (err) {
     console.error("Kesalahan server Tanya LEGA", err?.name, err?.message);
     return res.status(504).json({ error: "Koneksi ke layanan AI terputus. Coba lagi nanti." });
+  } finally {
+    sedangJalan--;
   }
 }

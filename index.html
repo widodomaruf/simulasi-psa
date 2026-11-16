@@ -2304,6 +2304,12 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
   window.addEventListener('resize', syncKb);
   syncKb();
   var SUGG = ['Apakah potongan sanksi otomatis?', 'Dokumen apa saja yang perlu disiapkan?', 'Sampai kapan batas potongan 100%?'];
+  // Jawaban lokal diambil dari bagian Tanya jawab dan Dokumen permohonan di knowledge base.
+  var LOKAL = {
+    'Apakah potongan sanksi otomatis?': 'Tidak. Wajib Pajak harus mengajukan permohonan ke DJP lewat Coretax, beserta dua surat pernyataan bermeterai. Membayar pokok atau sebagian sanksi saja belum cukup.',
+    'Dokumen apa saja yang perlu disiapkan?': 'Wajib di setiap permohonan:\n1. Surat permohonan (format Lampiran C PMK 71/2026), tanpa meterai.\n2. Surat pernyataan tidak mengajukan gugatan atau upaya hukum lain (Lampiran F KEP-239), bermeterai.\n3. Surat pernyataan bahwa sanksi timbul karena kekhilafan (Lampiran G KEP-239), bermeterai.\nBila perlu: fotokopi STP atau SKP, bukti pelunasan pokok, dan bukti pembayaran sebagian sanksi.',
+    'Sampai kapan batas potongan 100%?': 'Potongan tertinggi (100% atau 90%) berlaku sampai 31 Desember 2026. Permohonan bisa diajukan paling lambat 1 Oktober 2028, tetapi besar potongan mengikuti tanggal pelunasan pokok atau pembayaran sebagian sanksi.'
+  };
   var HELLO = 'Halo, saya Tanya LEGA. Saya bisa menjelaskan program PSA, syarat permohonan, surat yang perlu disiapkan, dan cara memakai situs ini. Jawaban saya simulasi, bukan keputusan DJP.';
   var MAIL = 'hi.widodomaruf@gmail.com';
 
@@ -2385,6 +2391,13 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
     lastQ = q;
     if (chips && chips.parentNode) { chips.parentNode.removeChild(chips); chips = null; }
     if (!retry) add('user', q);
+    // Pertanyaan umum dijawab dari teks lokal (tanpa memanggil Gemini), supaya hemat kuota dan cepat.
+    if (LOKAL[q]) {
+      var lokalBubble = add('bot', '', render(LOKAL[q]));
+      hist.push({ role: 'user', text: q.slice(0, 1500) }, { role: 'model', text: LOKAL[q].slice(0, 1500) });
+      hist = hist.slice(-8); toEnd();
+      return;
+    }
     if (navigator.onLine === false) { fail('Anda sedang offline. Tanya LEGA butuh internet; fitur lain LEGA tetap bisa dipakai.'); return; }
     setBusy(true);
     var wait = add('wait bot', '');
@@ -2408,7 +2421,7 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
           });
           return;
         } else if (x.r.status === 429) {
-          fail('Terlalu banyak pertanyaan dalam waktu singkat. Coba lagi sebentar lagi.');
+          fail(x.data && typeof x.data.error === 'string' && x.data.error ? x.data.error : 'Terlalu banyak pertanyaan dalam waktu singkat. Coba lagi sebentar lagi.');
         } else {
           fail(x.data && typeof x.data.error === 'string' && x.data.error ? x.data.error : 'Tanya LEGA sedang tidak bisa menjawab. Coba lagi nanti, atau email ' + MAIL + '.');
         }
