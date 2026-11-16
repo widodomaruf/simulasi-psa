@@ -647,6 +647,8 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
 .tl-send { flex: none; min-height: 44px; padding: 0 16px; border: 0; border-radius: 8px; background: var(--navy); color: var(--navy-ink); font: 600 15px/1 var(--body); cursor: pointer; }
 .tl-send:disabled, .tl-form textarea:disabled { opacity: .55; cursor: not-allowed; }
 @media (max-width: 900px) { .tl-open { right: 12px; bottom: calc(76px + env(safe-area-inset-bottom)); } .tl-panel { bottom: calc(76px + env(safe-area-inset-bottom)); } }
+@media (max-width: 900px) { html.more-open .tl-open { bottom: calc(76px + var(--more-h, 0px) + 8px + env(safe-area-inset-bottom)); } }
+@media (max-width: 900px) and (prefers-reduced-motion: no-preference) { .tl-open { transition: bottom .2s ease; } }
 @media (max-width: 560px) {
   .tl-panel { left: 8px; right: 8px; top: calc(var(--vvt, 0px) + 8px); bottom: auto; height: calc(var(--vvh, 100vh) - 16px); width: auto; max-width: none; max-height: none; border-radius: 12px; }
   .tl-open[aria-expanded="true"] { display: none; }
@@ -1232,9 +1234,15 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
   var state = { kluster: 'pengawasan', id: 'a1', vals: {}, edited: {} };
   function vals(id) { if (!state.vals[id]) state.vals[id] = Object.assign({}, PSA.byId(id).contoh.v); return state.vals[id]; }
 
-  function closeMore() { var m = $('#more'); if (m) { m.hidden = true; $('#bMore').setAttribute('aria-expanded', 'false'); } }
+  // Saat menu Lainnya terbuka, tombol Tanya LEGA ikut naik sebesar tinggi menu supaya tidak tertutup.
+  function setMoreH(open) {
+    var m = $('#more'), root = document.documentElement;
+    if (open) { root.style.setProperty('--more-h', m.offsetHeight + 'px'); root.classList.add('more-open'); }
+    else { root.classList.remove('more-open'); }
+  }
+  function closeMore() { var m = $('#more'); if (m) { m.hidden = true; $('#bMore').setAttribute('aria-expanded', 'false'); setMoreH(false); } }
   document.addEventListener('click', function (e) {
-    if (e.target.closest('#bMore')) { var m = $('#more'); m.hidden = !m.hidden; $('#bMore').setAttribute('aria-expanded', String(!m.hidden)); return; }
+    if (e.target.closest('#bMore')) { var m = $('#more'); m.hidden = !m.hidden; $('#bMore').setAttribute('aria-expanded', String(!m.hidden)); setMoreH(!m.hidden); return; }
     if (!e.target.closest('#more')) closeMore();
   });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeMore(); });
