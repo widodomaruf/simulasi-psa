@@ -20,6 +20,10 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 - **Video penjelasan** program PSA dan cara memakai situs ini.
 - **Bisa diinstal sebagai aplikasi** di HP (Android/iPhone) dan komputer (Chrome/Edge), dan tetap bisa dipakai tanpa internet, kecuali video.
 
+## Basis pengetahuan chatbot
+
+Seluruh isi penting situs (profil, biaya, ketentuan layanan, aturan PSA, skenario, syarat, dokumen, kamus pasal, tanya jawab) dirangkum di [`knowledge/lega-kb.md`](knowledge/lega-kb.md) dalam format Markdown untuk melatih chatbot. Berkas ini diperbarui setiap kali versi naik.
+
 ## Dasar hukum
 
 - [PMK 71 Tahun 2026](https://pajak.go.id/peraturan/perubahan-atas-peraturan-menteri-keuangan-nomor-118-tahun-2024-tentang-tata-cara) tentang Perubahan atas PMK 118 Tahun 2024
