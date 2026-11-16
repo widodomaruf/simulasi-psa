@@ -16,6 +16,7 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 - **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi Anda. Hasilnya kesimpulan apakah permohonan bisa diajukan, ditambah daftar dokumen yang perlu disiapkan.
 - **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
 - **Kalkulator Lengkap.** Perhitungan per kluster dan skenario KEP-239/PJ/2026, untuk petugas dan praktisi.
+- **Tanya LEGA.** Chatbot AI (Google Gemini) di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs. Pertanyaan dikirim ke Google Gemini; jangan menulis data pribadi.
 - **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP.
 - **Video penjelasan** program PSA dan cara memakai situs ini.
 - **Bisa diinstal sebagai aplikasi** di HP (Android/iPhone) dan komputer (Chrome/Edge), dan tetap bisa dipakai tanpa internet, kecuali video.
@@ -35,6 +36,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 ## Catatan versi
 
 **Versi 2.3 (16 November 2026)**
+- Tanya LEGA: chatbot AI di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs. Pertanyaan dikirim ke Google Gemini, jadi jangan menulis data pribadi.
 - Pilihan bahasa Inggris lewat tombol English/Indonesia di pita atas. Surat permohonan dan surat pernyataan tetap berbahasa Indonesia karena diajukan ke DJP.
 - Tombol tema Gelap/Terang pindah ke pita atas dan selalu terlihat, di HP maupun komputer.
 - Di HP, pertanyaan pertama Cek Sanksi tampil lebih ke atas. Tombol Beranda, versi, dan instal pindah ke menu "Lainnya".

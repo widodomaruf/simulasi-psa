@@ -38,6 +38,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 - Situs ini alat bantu edukasi. Hasil simulasi bukan keputusan DJP.
 - Semua hitungan berjalan di peramban pengguna. Isian kalkulator dan surat **tidak dikirim ke server mana pun**. Yang disimpan di peramban hanya pilihan tema, bahasa, dan jawaban tanya-jawab supaya tidak hilang saat halaman dimuat ulang.
 - Situs memakai Vercel Speed Insights untuk mengukur kecepatan halaman. Video diputar dari YouTube.
+- **Tanya LEGA** (chatbot di pojok kanan bawah) mengirim pertanyaan yang diketik pengguna ke Google Gemini untuk dijawab. Isian kalkulator dan surat tidak ikut terkirim. Pengguna diminta tidak menulis NPWP, NIK, nama, atau data pribadi lain di chatbot. Riwayat obrolan tidak disimpan oleh LEGA dan hilang saat halaman ditutup.
 - Bisa diinstal sebagai aplikasi (Android, iPhone, Chrome/Edge di komputer) dan tetap bisa dipakai tanpa internet, kecuali video.
 - Tersedia dalam bahasa Indonesia dan Inggris. Surat yang dihasilkan selalu berbahasa Indonesia karena diajukan ke DJP dan Pengadilan Pajak.
 - Tema terang dan gelap bisa dipilih lewat tombol di pita atas.
@@ -50,6 +51,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
 5. **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP, beserta skenario yang berlaku.
 6. **Tentang PSA.** Dasar hukum, cara kerja program, catatan cara hitung, video penjelasan, dan catatan versi.
+7. **Tanya LEGA.** Chatbot di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs, dalam bahasa Indonesia atau Inggris. Butuh internet.
 
 **Di mana melihat pasalnya?** Di STP, pasal tercantum pada bagian dasar penagihan atau uraian sanksi, misalnya "Pasal 7 ayat (1)". Tanggal terbit ada di bagian atas surat, dekat nomor surat.
 
@@ -309,6 +311,32 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 - Pokok lunas ≤1 bulan setelah terbit maka 100%; >1 s.d. 2 bulan maka 50%; setelahnya maka 25%, paling lambat 31 Des 2027.
 - Contoh resmi (Lampiran E angka 4.b, Contoh 1): Pada 1 Januari 2027 KPP menerbitkan SKPKB terkait PPS Rp124.000.000: pokok Rp100.000.000 dan sanksi Rp24.000.000 atas harta kurang diungkap. Wajib Pajak melunasi pokok dan mengajukan permohonan.
 
+## Tautan kalkulator per skenario
+
+Tautan ini membuka kalkulator Cek Sanksi Saya dengan skenario terpilih. Hanya tautan di daftar ini yang boleh diberikan ke pengguna. Pakai bila kasus sudah cocok dengan satu skenario di bawah:
+
+19
+- a1 · Terlambat lapor SPT (status kurang bayar): https://simulasi-psa.vercel.app/#skenario-a1
+- a2 · Pembetulan SPT (status kurang bayar): https://simulasi-psa.vercel.app/#skenario-a2
+- a3 · Terlambat bayar/setor pajak dalam SPT: https://simulasi-psa.vercel.app/#skenario-a3
+- a4 · STP pajak tahun berjalan tidak/kurang bayar: https://simulasi-psa.vercel.app/#skenario-a4
+- a5 · STP faktur pajak terlambat/tidak lengkap: https://simulasi-psa.vercel.app/#skenario-a5
+- a6 · STP atas SPT yang sudah dilapor sebelum 8 Okt 2026: https://simulasi-psa.vercel.app/#skenario-a6
+- a7 · STP bunga angsuran/penundaan, pokok lunas Okt–Des 2026: https://simulasi-psa.vercel.app/#skenario-a7
+- b1 · SKPKB/SKPKBT/SKP PBB hasil pemeriksaan: https://simulasi-psa.vercel.app/#skenario-b1
+- b2 · STP berdasarkan hasil pemeriksaan: https://simulasi-psa.vercel.app/#skenario-b2
+- c1 · STP lama: telat lapor, pembetulan, telat bayar, faktur: https://simulasi-psa.vercel.app/#skenario-c1
+- c2 · SKP lama, pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c2
+- c3 · SKP lama, pokok sudah lunas sebelum 8 Okt 2026: https://simulasi-psa.vercel.app/#skenario-c3
+- c4 · STP bunga penagihan lama, pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c4
+- c5 · STP bunga penagihan lama, pokok/utang lunas sebelum 8 Okt: https://simulasi-psa.vercel.app/#skenario-c5
+- c6 · STP bunga penagihan lama, SKP diajukan keberatan: https://simulasi-psa.vercel.app/#skenario-c6
+- c7 · STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas: https://simulasi-psa.vercel.app/#skenario-c7
+- c8 · STP bunga penagihan baru, pokok/utang lunas sebelum 8 Okt: https://simulasi-psa.vercel.app/#skenario-c8
+- d1 · WP baru daftar NPWP / PKP baru dikukuhkan: https://simulasi-psa.vercel.app/#skenario-d1
+- d2 · SKPKB terkait Program Pengungkapan Sukarela (PPS): https://simulasi-psa.vercel.app/#skenario-d2
+
+
 ## Kasus yang tidak tercakup atau perlu perhatian
 
 - **SPT nihil atau lebih bayar yang dilapor mulai 8 Oktober 2026.** Pengurangan untuk SPT yang dilapor mulai 8 Oktober 2026 hanya berlaku untuk SPT berstatus kurang bayar (Diktum KESATU huruf a). Skema STP yang ada (bayar 10% atau 25%) mensyaratkan SPT sudah disampaikan sebelum 8 Oktober 2026. Untuk kasus ini, konfirmasi ke KPP atau Kring Pajak 1500200.
@@ -327,11 +355,17 @@ Keandalan kalkulator: seluruh 114 contoh kasus di Lampiran E KEP-239 sudah diuji
 
 Pertanyaan di bawah berasal dari kasus nyata yang dibahas saat situs ini disusun.
 
+**Sudah bayar sebagian pokok sebelum 8 Oktober 2026, sisanya belum. Bisa ikut?**
+Bisa, tergantung kapan sisa pokok dilunasi. Pembayaran sebelumnya diperhitungkan ke pokok dulu, jadi yang menentukan skenario adalah tanggal pelunasan terakhir pokok. Contoh SKP lama (skenario c2): sisa pokok dilunasi 8 Oktober sampai 31 Desember 2026 maka sanksi dihapus 100%; 1 Januari sampai 31 Maret 2027 maka 50%; 1 April sampai 30 Juni 2027 maka 25%. Pastikan dulu jenis suratnya (SKP, STP denda, atau STP bunga), karena skenarionya berbeda.
+
 **Apakah potongan sanksi diberikan otomatis?**
 Tidak. Wajib Pajak harus mengajukan permohonan ke DJP lewat Coretax, beserta dua surat pernyataan bermeterai. Membayar pokok atau sebagian sanksi saja belum cukup.
 
 **Berapa biaya memakai LEGA?**
-Gratis, tanpa daftar akun. Isian Anda tidak dikirim ke server.
+Gratis, tanpa daftar akun. Isian kalkulator dan surat tidak dikirim ke server. Hanya pertanyaan yang Anda ketik di Tanya LEGA yang dikirim ke Google Gemini untuk dijawab.
+
+**Apa itu Tanya LEGA?**
+Asisten AI di pojok kanan bawah situs LEGA yang menjawab pertanyaan seputar program PSA, syarat, surat, dan cara memakai situs, berdasarkan isi berkas ini. Jawabannya simulasi, bukan keputusan DJP. Untuk menghitung kasus Anda sendiri, pakai menu Cek Sanksi Saya.
 
 **Apakah hasil di LEGA pasti sama dengan keputusan DJP?**
 Tidak selalu. Hasil LEGA adalah simulasi berdasarkan KEP-239. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Anda.
@@ -391,7 +425,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **2.3 (16 November 2026):** pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
+- **2.3 (16 November 2026):** chatbot Tanya LEGA (tautan kalkulator per skenario, klarifikasi kasus pribadi, animasi mengetik); pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
 - **2.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan.
 - **2.1 (14 November 2026):** keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.
 - **2.0 (11 November 2026):** Cek Sanksi Saya, Cek Syarat Permohonan, surat pencabutan keberatan, pencabutan banding/gugatan, cetak ulang STP/SKP, brand LEGA, bisa diinstal sebagai aplikasi.
