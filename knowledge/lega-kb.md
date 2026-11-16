@@ -425,7 +425,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **2.4 (16 November 2026):** Tanya LEGA punya pohon pilihan kasus (tombol, tanpa mengetik) dan "Ketik sendiri" yang membawa jalur pilihan; riwayat percakapan tersimpan di perangkat.
+- **2.4 (16 November 2026):** Tanya LEGA punya pohon pilihan kasus (tombol, tanpa mengetik) dan "Ketik sendiri" yang membawa jalur pilihan; riwayat percakapan tersimpan di perangkat; menu FAQ dan Kontak.
 - **2.3 (16 November 2026):** chatbot Tanya LEGA (tautan kalkulator per skenario, klarifikasi kasus pribadi, animasi mengetik); pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
 - **2.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan.
 - **2.1 (14 November 2026):** keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.

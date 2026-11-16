@@ -39,6 +39,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 - Tanya LEGA: pilihan kasus lewat tombol, tanpa mengetik. Pilihan berakhir di skenario yang cocok dan tautan kalkulator.
 - Tanya LEGA: tombol "Ketik sendiri" untuk pertanyaan bebas. Pilihan yang sudah diklik ikut dikirim sebagai konteks.
 - Tanya LEGA: riwayat percakapan tersimpan di perangkat ini, jadi tetap ada setelah tab ditutup lalu dibuka lagi.
+- FAQ dan Kontak: tanya-jawab yang sering ditanyakan dan saluran kontak. Di HP ada di menu Lainnya, di komputer di pita atas.
 
 **Versi 2.3 (16 November 2026)**
 - Tanya LEGA: chatbot AI di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs. Pertanyaan dikirim ke Google Gemini, jadi jangan menulis data pribadi.
