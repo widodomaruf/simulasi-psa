@@ -3,7 +3,7 @@
 import fs from "fs";
 import path from "path";
 
-const MODEL = "gemini-flash-latest";
+const MODEL = "gemini-3.1-flash-lite";
 const ENDPOINT = `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`;
 const MAX_PESAN = 600;
 const MAX_RIWAYAT = 8;
@@ -103,17 +103,25 @@ export default async function handler(req, res) {
   }
   const lang = body?.lang === "en" ? "en" : "id";
 
+  const isiPermintaan = JSON.stringify({
+    systemInstruction: { parts: [{ text: instruksiSistem(lang) }] },
+    contents: [...bersihkanRiwayat(body?.history), { role: "user", parts: [{ text: pesan }] }],
+    generationConfig: { temperature: 0.2, maxOutputTokens: 800 },
+  });
+
   try {
-    const balasan = await fetch(ENDPOINT, {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: instruksiSistem(lang) }] },
-        contents: [...bersihkanRiwayat(body?.history), { role: "user", parts: [{ text: pesan }] }],
-        generationConfig: { temperature: 0.2, maxOutputTokens: 800 },
-      }),
-      signal: AbortSignal.timeout(25000),
-    });
+    // Coba dua kali bila Gemini sedang penuh (503). Total waktu tetap di bawah maxDuration 30 detik.
+    let balasan;
+    for (let coba = 1; coba <= 2; coba++) {
+      balasan = await fetch(ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
+        body: isiPermintaan,
+        signal: AbortSignal.timeout(12000),
+      });
+      if (balasan.status !== 503 || coba === 2) break;
+      await new Promise((r) => setTimeout(r, 1500));
+    }
     const data = await balasan.json().catch(() => ({}));
 
     if (!balasan.ok) {
