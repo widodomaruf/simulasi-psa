@@ -10,7 +10,7 @@ const MAX_RIWAYAT = 8;
 const MAX_TEKS_RIWAYAT = 1500;
 
 // Hanya halaman LEGA sendiri yang boleh memanggil fungsi ini, supaya kuota API tidak dipakai situs lain.
-const ASAL_DIIZINKAN = [/^https:\/\/simulasi-psa\.vercel\.app$/, /^https:\/\/simulasi-psa-[a-z0-9-]+\.vercel\.app$/, /^http:\/\/localhost(:\d+)?$/];
+const ASAL_DIIZINKAN = [/^https:\/\/simulasi-psa\.vercel\.app$/, /^https:\/\/legapsa\.vercel\.app$/, /^https:\/\/simulasi-psa-[a-z0-9-]+\.vercel\.app$/, /^http:\/\/localhost(:\d+)?$/];
 
 // Batas sederhana per IP: maksimal 12 pertanyaan per 5 menit per instance fungsi.
 // Bukan pengaman penuh (instance bisa lebih dari satu), tapi mencegah klik beruntun dan skrip iseng.
