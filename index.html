@@ -2333,7 +2333,8 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
       });
       log.appendChild(chips); toEnd();
     }
-    input.focus();
+    // Fokus otomatis hanya di perangkat dengan mouse; di HP keyboard akan muncul dan menutupi jawaban.
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) input.focus();
   }
   function close(back) {
     panel.hidden = true; btn.setAttribute('aria-expanded', 'false');
@@ -2376,13 +2377,13 @@ window.LEGA_EN = {"s":{"Beranda Widodo Ma'ruf":"Widodo Ma'ruf home","Instal apli
         } else {
           fail(x.data && typeof x.data.error === 'string' && x.data.error ? x.data.error : 'Tanya LEGA sedang tidak bisa menjawab. Coba lagi nanti, atau email ' + MAIL + '.');
         }
-        setBusy(false); input.focus();
+        setBusy(false);
       })
       .catch(function () {
         clearTimeout(timer);
         if (wait.parentNode) wait.parentNode.removeChild(wait);
         fail('Tanya LEGA sedang tidak bisa menjawab. Coba lagi nanti, atau email ' + MAIL + '.');
-        setBusy(false); input.focus();
+        setBusy(false);
       });
   }
   form.addEventListener('submit', function (e) {

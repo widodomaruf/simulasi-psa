@@ -117,7 +117,7 @@ export default async function handler(req, res) {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
         body: isiPermintaan,
-        signal: AbortSignal.timeout(12000),
+        signal: AbortSignal.timeout(20000),
       });
       if (balasan.status !== 503 || coba === 2) break;
       await new Promise((r) => setTimeout(r, 1500));
