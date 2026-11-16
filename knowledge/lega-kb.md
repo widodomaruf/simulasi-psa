@@ -38,6 +38,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 - Situs ini alat bantu edukasi. Hasil simulasi bukan keputusan DJP.
 - Semua hitungan berjalan di peramban pengguna. Isian kalkulator dan surat **tidak dikirim ke server mana pun**. Yang disimpan di peramban hanya pilihan tema, bahasa, dan jawaban tanya-jawab supaya tidak hilang saat halaman dimuat ulang.
 - Situs memakai Vercel Speed Insights untuk mengukur kecepatan halaman. Video diputar dari YouTube.
+- **Tanya LEGA** (chatbot di pojok kanan bawah) mengirim pertanyaan yang diketik pengguna ke Google Gemini untuk dijawab. Isian kalkulator dan surat tidak ikut terkirim. Pengguna diminta tidak menulis NPWP, NIK, nama, atau data pribadi lain di chatbot. Riwayat obrolan tidak disimpan oleh LEGA dan hilang saat halaman ditutup.
 - Bisa diinstal sebagai aplikasi (Android, iPhone, Chrome/Edge di komputer) dan tetap bisa dipakai tanpa internet, kecuali video.
 - Tersedia dalam bahasa Indonesia dan Inggris. Surat yang dihasilkan selalu berbahasa Indonesia karena diajukan ke DJP dan Pengadilan Pajak.
 - Tema terang dan gelap bisa dipilih lewat tombol di pita atas.
@@ -50,6 +51,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
 5. **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP, beserta skenario yang berlaku.
 6. **Tentang PSA.** Dasar hukum, cara kerja program, catatan cara hitung, video penjelasan, dan catatan versi.
+7. **Tanya LEGA.** Chatbot di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs, dalam bahasa Indonesia atau Inggris. Butuh internet.
 
 **Di mana melihat pasalnya?** Di STP, pasal tercantum pada bagian dasar penagihan atau uraian sanksi, misalnya "Pasal 7 ayat (1)". Tanggal terbit ada di bagian atas surat, dekat nomor surat.
 
@@ -331,7 +333,10 @@ Pertanyaan di bawah berasal dari kasus nyata yang dibahas saat situs ini disusun
 Tidak. Wajib Pajak harus mengajukan permohonan ke DJP lewat Coretax, beserta dua surat pernyataan bermeterai. Membayar pokok atau sebagian sanksi saja belum cukup.
 
 **Berapa biaya memakai LEGA?**
-Gratis, tanpa daftar akun. Isian Anda tidak dikirim ke server.
+Gratis, tanpa daftar akun. Isian kalkulator dan surat tidak dikirim ke server. Hanya pertanyaan yang Anda ketik di Tanya LEGA yang dikirim ke Google Gemini untuk dijawab.
+
+**Apa itu Tanya LEGA?**
+Asisten AI di pojok kanan bawah situs LEGA yang menjawab pertanyaan seputar program PSA, syarat, surat, dan cara memakai situs, berdasarkan isi berkas ini. Jawabannya simulasi, bukan keputusan DJP. Untuk menghitung kasus Anda sendiri, pakai menu Cek Sanksi Saya.
 
 **Apakah hasil di LEGA pasti sama dengan keputusan DJP?**
 Tidak selalu. Hasil LEGA adalah simulasi berdasarkan KEP-239. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Anda.

@@ -1,6 +1,6 @@
 # CLAUDE.md · LEGA (Simulasi PSA 2026)
 
-Situs statis satu berkas (`index.html`), dideploy Vercel dari branch `main`. Lihat `PRODUCT.md` untuk konteks produk dan `DESIGN.md` bila ada.
+Situs statis satu berkas (`index.html`), dideploy Vercel dari branch `main`. Satu fungsi server: `api/chat.js` (chatbot Tanya LEGA, memanggil Gemini dengan Environment Variable `GEMINI_API_KEY` di Vercel; materi jawabannya `knowledge/lega-kb.md`, disertakan lewat `vercel.json`). Jangan pernah menulis kunci API di repo. Lihat `PRODUCT.md` untuk konteks produk dan `DESIGN.md` bila ada.
 
 ## Aturan rilis
 
