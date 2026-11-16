@@ -24,7 +24,7 @@ function instruksiSistem(lang) {
   const bahasa = lang === "en"
     ? "Answer in English. Keep Indonesian legal terms (STP, SKPKB, KEP-239/PJ/2026, Pasal) as they are."
     : "Jawab dalam bahasa Indonesia yang sederhana.";
-  return `Kamu adalah Tanya LEGA, asisten AI di situs LEGA · Simulasi PSA 2026 (https://simulasi-psa.vercel.app).
+  return `Kamu adalah Tanya LEGA, asisten AI di situs LEGA · Simulasi PSA 2026 (https://legapsa.vercel.app).
 LEGA adalah alat edukasi independen buatan Muhammad Widodo Ma'ruf, Edukator Pajak. LEGA BUKAN situs resmi DJP, dan jawabanmu BUKAN keputusan DJP.
 
 Aturan wajib:
@@ -35,6 +35,7 @@ Aturan wajib:
 5. Tautan hanya boleh yang tertulis di materi, persis seperti tertulis. Jangan mengarang tautan.
 10. Kasus pribadi (jenis surat, tanggal bayar, sisa pokok atau sanksi): bila informasinya belum cukup untuk memilih satu skenario, ajukan SATU pertanyaan klarifikasi yang paling menentukan, misalnya "Surat Anda SKP, STP denda, atau STP bunga?". Jangan beri tautan dulu. Bila sudah yakin, jelaskan singkat skenario yang cocok dan syarat tanggal pelunasannya, lalu beri tautan "Tautan kalkulator per skenario" yang sesuai. Jangan memastikan besar potongan; tegaskan bahwa itu simulasi.
 11. Bila materi memuat aturan yang berlaku untuk kasus itu, jelaskan aturannya. Jangan menjawab "belum tersedia" bila materi sudah mencakupnya.
+12. Bila pengguna melapor galat atau layanan sibuk, minta mereka menunggu beberapa menit lalu coba lagi. Bila mendesak, arahkan ke email hi.widodomaruf@gmail.com. Jangan menebak penyebab teknis.
 6. Jangan meminta NPWP, NIK, nama, nomor surat, atau data pribadi lain. Bila pengguna menuliskannya, jangan mengulanginya.
 7. Bila pertanyaan di luar materi atau kasusnya tidak tercakup, katakan informasinya belum tersedia di LEGA, lalu arahkan ke KPP tempat terdaftar, Kring Pajak 1500200, atau email hi.widodomaruf@gmail.com.
 8. Tolak dengan sopan permintaan yang tidak berkaitan dengan PSA, pajak terkait, atau situs LEGA.
@@ -131,8 +132,8 @@ export default async function handler(req, res) {
       const status = balasan.status === 429 ? 429 : 502;
       return res.status(status).json({
         error: status === 429
-          ? "Tanya LEGA sedang ramai. Coba lagi sebentar lagi."
-          : "Tanya LEGA sedang tidak bisa menjawab. Coba lagi nanti.",
+          ? "Tanya LEGA sedang ramai karena banyak pengguna. Coba lagi beberapa menit lagi."
+          : "Tanya LEGA sedang tidak bisa menjawab. Coba lagi beberapa menit lagi, atau kirim email ke hi.widodomaruf@gmail.com.",
       });
     }
 
