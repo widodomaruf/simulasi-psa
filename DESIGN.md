@@ -6,10 +6,11 @@ Arah desain LEGA. Dibaca sebelum mengubah tampilan, supaya setiap keputusan puny
 
 Alat bantu pajak untuk Wajib Pajak, petugas, dan konsultan. Nadanya tenang, jelas, dan bisa dipercaya, mirip layanan publik. Bukan halaman promosi.
 
-Dial: ENERGY 1 / RHYTHM 2 / MOTION 1
+Dial: ENERGY 1 / RHYTHM 2 / MOTION 1 (PC) dan 2 (HP)
 - ENERGY 1: orang datang dengan surat tagihan di tangan dan sedikit cemas. Tampilan tidak boleh ramai.
 - RHYTHM 2: tiap halaman punya bentuk sesuai isinya (tanya-jawab, kalkulator dua kolom, surat dengan pratinjau), tetapi komponennya seragam.
-- MOTION 1: gerak hanya untuk hover, ketukan, dan perpindahan halaman. Tidak ada animasi hiasan.
+- MOTION 1 (PC): gerak hanya untuk hover, ketukan, dan perpindahan halaman. Tidak ada animasi hiasan.
+- MOTION 2 (HP, gaya iOS): gerak pegas `cubic-bezier(.34, 1.3, .64, 1)` sekali jalan untuk buka panel/menu, tombol ditekan (`scale(.97)`, .18 dtk), dan pindah tab di pita bawah. Alasan: di layar sentuh, respons fisik kecil memberi kepastian bahwa ketukan terbaca. Tidak ada gerak berulang selain titik mengetik, dan semuanya mati di prefers-reduced-motion.
 - Pengecualian widget Tanya LEGA: gerak buka/tutup panel, pesan masuk, dan titik-titik saat menunggu jawaban. Semua sekali jalan atau selama menunggu, tidak berulang, dan mati bila prefers-reduced-motion aktif.
 
 ## Warna
@@ -45,3 +46,10 @@ Cap persentase yang miring (`.stamp`) di hasil kalkulator, seperti stempel di su
 - Panah → hanya untuk langkah maju di tanya-jawab ("Lanjut" dan pilihan jawaban).
 - Fokus utama Cek Sanksi adalah pertanyaan yang sedang aktif. Di HP, pertanyaan pertama harus terlihat tanpa menggulir jauh: pita atas ringkas, pengantar singkat di atasnya, video di bawahnya.
 - Jawaban yang sudah diisi selalu bisa diubah satu per satu.
+
+## Gaya iOS (terang, lembut)
+
+- Radius tiga tingkat di `:root`: `--r-sm` 10px (input, tombol kecil), `--r-md` 14px (tombol utama, kartu kecil), `--r-lg` 20px (kartu, panel). Pil 999px hanya untuk chip, tag, dan badge karena isinya label pendek.
+- Glass (blur) hanya di `.bnav`, pita bawah HP. Tidak di kartu, modal, atau header. Tanpa dukungan `backdrop-filter`, pita tetap solid.
+- Bayangan hanya di elemen mengambang: `.bnav`, `.tl-open`, `.tl-panel`. Kartu memakai border tipis.
+- Warna token dan font tidak berubah.
