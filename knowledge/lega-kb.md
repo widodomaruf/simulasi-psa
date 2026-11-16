@@ -1,6 +1,6 @@
 ---
 judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
-versi_situs: 2.4
+versi_situs: 1.3
 diperbarui: 16 November 2026
 bahasa: Indonesia
 sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
@@ -425,9 +425,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **2.4 (16 November 2026):** Tanya LEGA punya pohon pilihan kasus (tombol, tanpa mengetik) dan "Ketik sendiri" yang membawa jalur pilihan; riwayat percakapan tersimpan di perangkat; menu FAQ dan Kontak.
-- **2.3 (16 November 2026):** chatbot Tanya LEGA (tautan kalkulator per skenario, klarifikasi kasus pribadi, animasi mengetik); pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
-- **2.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan.
-- **2.1 (14 November 2026):** keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.
-- **2.0 (11 November 2026):** Cek Sanksi Saya, Cek Syarat Permohonan, surat pencabutan keberatan, pencabutan banding/gugatan, cetak ulang STP/SKP, brand LEGA, bisa diinstal sebagai aplikasi.
+- **1.3 (16 November 2026):** Tanya LEGA punya pohon pilihan kasus (tombol, tanpa mengetik) dan "Ketik sendiri" yang membawa jalur pilihan; chatbot dengan tautan kalkulator per skenario, klarifikasi kasus pribadi, dan animasi mengetik; riwayat percakapan tersimpan di perangkat; pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; menu FAQ dan Kontak; aksesibilitas pembaca layar.
+- **1.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan; keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.
+- **1.1 (11 November 2026):** Cek Sanksi Saya, Cek Syarat Permohonan, surat pencabutan keberatan, pencabutan banding/gugatan, cetak ulang STP/SKP, brand LEGA, bisa diinstal sebagai aplikasi.
 - **1.0:** kalkulator per kluster, cek kluster, ceklist syarat, generator surat, kamus pasal, video.
