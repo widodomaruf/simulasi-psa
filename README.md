@@ -2,7 +2,7 @@
 
 **L**ihat sanksi · **E**valuasi syarat · **G**arap surat · **A**jukan
 
-**Versi 2.2** · diperbarui 14 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
+**Versi 2.3** · diperbarui 16 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
 
 Alat bantu untuk memahami dan menghitung program **Pengurangan atau Penghapusan Sanksi Administratif (PSA)** berdasarkan **PMK 71 Tahun 2026** dan **KEP-239/PJ/2026**.
 
@@ -29,6 +29,13 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **1500200**.
 
 ## Catatan versi
+
+**Versi 2.3 (16 November 2026)**
+- Di HP, pertanyaan pertama Cek Sanksi tampil lebih ke atas. Tombol Beranda, versi, tema, dan instal pindah ke menu "Lainnya".
+- Hasil Cek Sanksi punya tombol utama "Buat surat permohonan", sisa hari sampai tenggat, keterangan bahwa hasilnya simulasi, dan penegasan bahwa sisa sanksi tetap dibayar.
+- Tombol "Ubah" hanya mengubah satu jawaban: jawaban sesudahnya tetap tersimpan selama masih berlaku. Jawaban juga tidak hilang saat halaman dimuat ulang, dan "Ulang dari awal" meminta konfirmasi.
+- Pilihan penyebab STP dikelompokkan, dan pilihan "Tidak tahu" langsung membawa ke contoh letak pasal. Tanggal surat tidak bisa diisi setelah hari ini.
+- Lebih mudah dipakai dengan pembaca layar, dan teks kecil diperbesar.
 
 **Versi 2.2 (14 November 2026)**
 - Pertanyaan pertama Cek Sanksi langsung terlihat saat situs dibuka; pop-up sambutan diganti ringkasan singkat di atas pertanyaan, dan pita atas di HP lebih ringkas.
