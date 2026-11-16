@@ -396,7 +396,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **2.3 (16 November 2026):** pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
+- **2.3 (16 November 2026):** chatbot Tanya LEGA; pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; aksesibilitas pembaca layar.
 - **2.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan.
 - **2.1 (14 November 2026):** keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.
 - **2.0 (11 November 2026):** Cek Sanksi Saya, Cek Syarat Permohonan, surat pencabutan keberatan, pencabutan banding/gugatan, cetak ulang STP/SKP, brand LEGA, bisa diinstal sebagai aplikasi.
