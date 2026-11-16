@@ -10,6 +10,7 @@ Dial: ENERGY 1 / RHYTHM 2 / MOTION 1
 - ENERGY 1: orang datang dengan surat tagihan di tangan dan sedikit cemas. Tampilan tidak boleh ramai.
 - RHYTHM 2: tiap halaman punya bentuk sesuai isinya (tanya-jawab, kalkulator dua kolom, surat dengan pratinjau), tetapi komponennya seragam.
 - MOTION 1: gerak hanya untuk hover, ketukan, dan perpindahan halaman. Tidak ada animasi hiasan.
+- Pengecualian widget Tanya LEGA: gerak buka/tutup panel, pesan masuk, dan titik-titik saat menunggu jawaban. Semua sekali jalan atau selama menunggu, tidak berulang, dan mati bila prefers-reduced-motion aktif.
 
 ## Warna
 

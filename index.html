@@ -627,6 +627,11 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
 .tl-m.user { align-self: flex-end; background: var(--band); color: var(--band-ink); white-space: pre-wrap; }
 .tl-m.err { border-color: var(--bad); }
 .tl-m.wait { color: var(--ink-3); }
+/* Gerak chat: panel meluncur dari tombol, pesan masuk halus. Hanya sekali, tidak berulang. */
+.tl-panel:not([hidden]) { animation: tl-in .24s cubic-bezier(.2, .7, .2, 1) both; transform-origin: bottom right; }
+.tl-m { animation: tl-msg .28s cubic-bezier(.2, .7, .2, 1) both; }
+@keyframes tl-in { from { opacity: 0; transform: translateY(10px) scale(.97); } to { opacity: 1; transform: none; } }
+@keyframes tl-msg { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .tl-dots { display: inline-flex; align-items: center; gap: 5px; height: 1.5em; }
 .tl-dots i { width: 7px; height: 7px; border-radius: 50%; background: currentColor; opacity: .55; animation: tl-bounce 1s ease-in-out infinite; }
 .tl-dots i:nth-child(2) { animation-delay: .15s; }
@@ -647,7 +652,7 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
   .tl-open[aria-expanded="true"] { display: none; }
 }
 @media print { .tl-open, .tl-panel { display: none !important; } }
-@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .tl-dots i { animation: none !important; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } .tl-dots i, .tl-panel, .tl-m { animation: none !important; } }
 </style>
 
 </head>
