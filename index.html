@@ -547,7 +547,7 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
   .bnav { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); position: fixed; left: 0; right: 0; bottom: 0; z-index: 15; background: var(--card); border-top: 1px solid var(--line); box-shadow: 0 -6px 18px rgba(10, 30, 60, .08);
     padding: 6px max(6px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(6px, env(safe-area-inset-left, 0px)); }
   .bnav > button { border: 0; background: none; display: grid; justify-items: center; gap: 3px; padding: 5px 2px 4px; font-size: 12px; font-weight: 600; color: var(--ink-3); line-height: 1.1; min-width: 0; }
-  .bnav > button .ic { display: grid; place-items: center; width: 48px; height: 28px; border-radius: 999px; transition: background .2s; }
+  .bnav > button .ic { display: grid; place-items: center; width: 48px; height: 28px; border-radius: 999px; }
   .bnav svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
   .bnav > button[aria-current="page"] { color: var(--navy); }
   .bnav > button[aria-current="page"] .ic { background: var(--chip); }
@@ -661,7 +661,6 @@ button:active, .btn:active, .vchip:active, .home:active, .li-card:active, .chap 
 .tl-send:disabled, .tl-form textarea:disabled { opacity: .55; cursor: not-allowed; }
 @media (max-width: 900px) { .tl-open { right: 12px; bottom: calc(76px + env(safe-area-inset-bottom)); } .tl-panel { bottom: calc(76px + env(safe-area-inset-bottom)); } }
 @media (max-width: 900px) { html.more-open .tl-open { bottom: calc(76px + var(--more-h, 0px) + 8px + env(safe-area-inset-bottom)); } }
-@media (max-width: 900px) and (prefers-reduced-motion: no-preference) { .tl-open { transition: bottom .2s ease; } }
 @media (max-width: 560px) {
   .tl-panel { left: 8px; right: 8px; top: calc(var(--vvt, 0px) + 8px); bottom: auto; height: calc(var(--vvh, 100vh) - 16px); width: auto; max-width: none; max-height: none; border-radius: 12px; }
   .tl-open[aria-expanded="true"] { display: none; }
