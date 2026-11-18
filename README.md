@@ -2,7 +2,7 @@
 
 **L**ihat sanksi · **E**valuasi syarat · **G**arap surat · **A**jukan
 
-**Versi 1.3** · diperbarui 16 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
+**Versi v.2** · diperbarui 16 November 2026 · [Beranda Widodo Ma'ruf](https://s.id/widodomaruf)
 
 Alat bantu untuk memahami dan menghitung program **Pengurangan atau Penghapusan Sanksi Administratif (PSA)** berdasarkan **PMK 71 Tahun 2026** dan **KEP-239/PJ/2026**.
 
@@ -35,7 +35,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 
 ## Catatan versi
 
-**Versi 1.3 (16 November 2026)**
+**Versi v.2 (16 November 2026)**
 - Tanya LEGA: pilihan kasus lewat tombol, tanpa mengetik. Pilihan berakhir di skenario yang cocok dan tautan kalkulator.
 - Tanya LEGA: tombol "Ketik sendiri" untuk pertanyaan bebas. Pilihan yang sudah diklik ikut dikirim sebagai konteks.
 - Tanya LEGA: riwayat percakapan tersimpan di perangkat ini, jadi tetap ada setelah tab ditutup lalu dibuka lagi.
@@ -49,7 +49,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 - Pilihan penyebab STP dikelompokkan, dan pilihan "Tidak tahu" langsung membawa ke contoh letak pasal. Tanggal surat tidak bisa diisi setelah hari ini.
 - Lebih mudah dipakai dengan pembaca layar, dan teks kecil diperbesar.
 
-**Versi 1.2 (14 November 2026)**
+**Versi v.1.2 (14 November 2026)**
 - Pertanyaan pertama Cek Sanksi langsung terlihat saat situs dibuka. Pop-up sambutan diganti ringkasan singkat di atas pertanyaan, dan pita atas di HP dibuat lebih ringkas.
 - Jawaban sebelumnya bisa diubah satu per satu lewat tombol "Ubah", tanpa mengulang dari awal. Ada penanda nomor pertanyaan.
 - Petunjuk "Di mana melihat pasalnya?" dipindah ke atas pilihan jawaban, dan denda tetap Pasal 7 diberi keterangan.
@@ -57,7 +57,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 - Tombol dan tautan di HP lebih besar sehingga mudah diketuk, dan tombol memberi tanda saat ditekan.
 - Banner sambutan bisa dipakai penuh dengan keyboard: tombol Tab tidak lagi keluar dari banner.
 
-**Versi 1.1 (11 November 2026)**
+**Versi v.1.1 (11 November 2026)**
 - <b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.
 - <b>Cek Syarat Permohonan</b> menggantikan ceklist: pertanyaan sesuai kondisi, syarat yang tidak berlaku otomatis dilewati, kesimpulan, dan daftar dokumen.
 - Surat baru: <b>permohonan pencabutan keberatan</b> (format PMK 118/2024), <b>pernyataan pencabutan banding/gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.
@@ -71,7 +71,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 - Halaman Surat: surat wajib ditandai jelas, contoh pengisian alasan permohonan, dan nomor/tanggal di surat pernyataan kekhilafan kini memakai nomor/tanggal STP/SKP sesuai petunjuk KEP.
 - Bisa <b>diinstal sebagai aplikasi</b> di HP dan komputer, dan tetap bisa dipakai tanpa internet (kecuali video).
 
-**Versi 1.0**: rilis pertama.
+**Versi v.1.0**: rilis pertama.
 
 ## Saran dan koreksi
 

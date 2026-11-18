@@ -49,7 +49,7 @@ Satu alur yang membawa WP dari surat tagihan di tangan sampai berkas permohonan 
 
 - Dasar hukum: PMK 71 Tahun 2026 (perubahan PMK 118/2024) dan KEP-239/PJ/2026. Semua angka, persentase, dan tenggat berasal dari keduanya.
 - Video penjelasan program PSA dan cara memakai situs (YouTube).
-- Catatan versi 1.0 sampai 1.3 di `README.md`.
+- Catatan versi v.1.0 sampai v.2 di `README.md`.
 - **Tidak ada** testimoni, statistik pengguna, jumlah unduhan, atau dukungan resmi DJP. Jangan dikarang.
 
 ## Product Principles
