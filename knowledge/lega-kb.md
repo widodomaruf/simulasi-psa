@@ -45,7 +45,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 
 ## Fitur dan cara pakai
 
-1. **Kalkulator Lengkap.** Untuk pengguna dan praktisi. Pertama pilih kapan surat terbit: sebelum 8 Okt 2026 (kluster Penagihan), atau 8 Okt 2026 dan seterusnya (kluster Pengawasan, Pemeriksaan, Basis Data). Lalu pilih kluster dan skenario. Skenario c7 dan c8 sementara tidak tampil di daftar. Setiap skenario terisi contoh resmi dari Lampiran E KEP-239, dan pengguna tinggal mengganti angkanya. Ada jadwal potongan per periode.
+1. **Kalkulator Lengkap.** Untuk pengguna dan praktisi. Pertama pilih kapan surat terbit: sebelum 8 Okt 2026 (kluster Penagihan), atau 8 Okt 2026 dan seterusnya (kluster Pengawasan, Pemeriksaan, Basis Data, dan Penagihan untuk STP bunga baru c7 dan c8). Lalu pilih kluster dan skenario. Setiap skenario terisi contoh resmi dari Lampiran E KEP-239, dan pengguna tinggal mengganti angkanya. Ada jadwal potongan per periode.
 3. **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi. Syarat yang tidak berlaku otomatis dilewati. Hasilnya kesimpulan (bisa diajukan, belum bisa, atau perlu konfirmasi ke KPP) dan daftar dokumen.
 4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
 5. **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP, beserta skenario yang berlaku.
@@ -426,8 +426,8 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 - **v.2.1 (21 November 2026):**
   - Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.
-  - Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, atau Basis Data.
-  - Skenario STP bunga penagihan baru (c7 dan c8) sementara tidak ditampilkan di daftar. Tautan langsungnya tetap berfungsi.
+  - Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, Basis Data, dan Penagihan untuk STP bunga baru (butir 4c KEP).
+  - STP bunga penagihan yang terbit 8 Okt 2026 s.d. 30 Jun 2027 (c7 dan c8, butir 4c KEP) masuk grup 8 Okt 2026 dan seterusnya.
   - Tanggal surat boleh tanggal yang akan datang untuk simulasi, misalnya SKPKB yang terbit tahun depan.
   - Dasar hukum skenario c4 dan c7 ditambah Pasal 19 ayat (2) dan (3) UU KUP.
   - Video penjelasan cara pakai situs pindah ke halaman Kalkulator Lengkap.
