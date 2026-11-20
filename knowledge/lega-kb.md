@@ -1,7 +1,7 @@
 ---
 judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
-versi_situs: v.2
-diperbarui: 16 November 2026
+versi_situs: v.2.1
+diperbarui: 21 November 2026
 bahasa: Indonesia
 sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
 dasar_hukum: PMK 71 Tahun 2026; KEP-239/PJ/2026
@@ -45,8 +45,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 
 ## Fitur dan cara pakai
 
-1. **Cek Sanksi Saya.** Tanya-jawab dalam bahasa sehari-hari tentang surat yang diterima (STP, SKPKB/SKPKBT, surat PBB dari DJP, atau belum ada surat). Pengguna mengisi tanggal dan angka dari suratnya. Hasilnya berupa rencana tindakan: berapa yang dibayar, paling lambat kapan, berapa yang dihapus, dan sisa hari sampai tenggat. Jawaban bisa diubah satu per satu lewat tombol "Ubah".
-2. **Kalkulator Lengkap.** Untuk petugas dan praktisi. Pilih kluster (Pengawasan, Pemeriksaan, Penagihan, Basis Data) lalu skenario. Setiap skenario terisi contoh resmi dari Lampiran E KEP-239, dan pengguna tinggal mengganti angkanya. Ada jadwal potongan per periode.
+1. **Kalkulator Lengkap.** Untuk pengguna dan praktisi. Pertama pilih kapan surat terbit: sebelum 8 Okt 2026 (kluster Penagihan), atau 8 Okt 2026 dan seterusnya (kluster Pengawasan, Pemeriksaan, Basis Data). Lalu pilih kluster dan skenario. Skenario c7 dan c8 sementara tidak tampil di daftar. Setiap skenario terisi contoh resmi dari Lampiran E KEP-239, dan pengguna tinggal mengganti angkanya. Ada jadwal potongan per periode.
 3. **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi. Syarat yang tidak berlaku otomatis dilewati. Hasilnya kesimpulan (bisa diajukan, belum bisa, atau perlu konfirmasi ke KPP) dan daftar dokumen.
 4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
 5. **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP, beserta skenario yang berlaku.
@@ -249,7 +248,7 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 
 #### c4 · STP bunga penagihan lama, pokok belum lunas
 
-- Pasal: Pasal 19 ayat (1) UU KUP; Pasal 11 ayat (3) UU PBB
+- Pasal: Pasal 19 ayat (1)/(2)/(3) UU KUP; Pasal 11 ayat (3) UU PBB
 - Dasar: KEP-239/PJ/2026 Diktum KESATU huruf e
 - STP/STP PBB terbit sebelum 8 Okt 2026; SKP terkait tidak diajukan keberatan.
 - Pokok dilunasi 8 Okt – 31 Des 2026 maka 100%; 1 Jan – 31 Mar 2027 maka 50%; 1 Apr – 30 Jun 2027 maka 25%.
@@ -276,7 +275,7 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 
 #### c7 · STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas
 
-- Pasal: Pasal 19 ayat (1)/(2) UU KUP; Pasal 11 ayat (3) UU PBB
+- Pasal: Pasal 19 ayat (1)/(2)/(3) UU KUP; Pasal 11 ayat (3) UU PBB
 - Dasar: KEP-239/PJ/2026 Diktum KESATU huruf f
 - STP/STP PBB terbit 8 Okt 2026 – 30 Jun 2027 (diajukan keberatan atau tidak).
 - Lunasi pokok (tanpa keberatan) atau utang pajak (dengan keberatan): 8 Okt – 31 Des 2026 maka 100%; 1 Jan – 31 Mar 2027 maka 50%; 1 Apr – 30 Jun 2027 maka 25%.
@@ -313,7 +312,7 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 
 ## Tautan kalkulator per skenario
 
-Tautan ini membuka kalkulator Cek Sanksi Saya dengan skenario terpilih. Hanya tautan di daftar ini yang boleh diberikan ke pengguna. Pakai bila kasus sudah cocok dengan satu skenario di bawah:
+Tautan ini membuka Kalkulator Lengkap dengan skenario terpilih. Hanya tautan di daftar ini yang boleh diberikan ke pengguna. Pakai bila kasus sudah cocok dengan satu skenario di bawah:
 
 19
 - a1 · Terlambat lapor SPT (status kurang bayar): https://legapsa.vercel.app/#skenario-a1
@@ -421,9 +420,17 @@ Kirim email ke hi.widodomaruf@gmail.com.
 ## Video penjelasan
 
 - **Penjelasan lengkap PSA 2026** (YouTube, lebih dari 50 menit), per bab: Pendahuluan 00:00 · Latar Belakang & Dasar Hukum 01:37 · Kedudukan KEP-239 05:32 · Persyaratan Umum 10:13 · Kluster Basis Data 13:08 · Kluster Pengawasan 16:39 · Kluster Pemeriksaan 20:50 · Kluster Penagihan 23:31 · Alur penelitian permohonan oleh Penelaah Keberatan Kanwil 28:15 · Contoh Kasus 29:26 · Tutorial pengajuan via Coretax 31:44 · Mengisi formulir permohonan 34:50 · Demo situs LEGA 42:57 · Penutup 50:47.
-- **Cara pakai situs ini**: video tutorial singkat di halaman Cek Sanksi.
+- **Cara pakai situs ini**: video tutorial singkat di halaman Kalkulator Lengkap.
 
 ## Catatan versi
+
+- **v.2.1 (21 November 2026):**
+  - Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.
+  - Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, atau Basis Data.
+  - Skenario STP bunga penagihan baru (c7 dan c8) sementara tidak ditampilkan di daftar. Tautan langsungnya tetap berfungsi.
+  - Tanggal surat boleh tanggal yang akan datang untuk simulasi, misalnya SKPKB yang terbit tahun depan.
+  - Dasar hukum skenario c4 dan c7 ditambah Pasal 19 ayat (2) dan (3) UU KUP.
+  - Video penjelasan cara pakai situs pindah ke halaman Kalkulator Lengkap.
 
 - **v.2 (16 November 2026):** Tanya LEGA punya pohon pilihan kasus (tombol, tanpa mengetik) dan "Ketik sendiri" yang membawa jalur pilihan; chatbot dengan tautan kalkulator per skenario, klarifikasi kasus pribadi, dan animasi mengetik; riwayat percakapan tersimpan di perangkat; pilihan bahasa Inggris (surat tetap bahasa Indonesia); tombol tema Gelap/Terang di pita atas; hasil Cek Sanksi dengan tombol "Buat surat permohonan" dan sisa hari; tombol "Ubah" untuk satu jawaban; jawaban tersimpan saat dimuat ulang; pilihan penyebab STP dikelompokkan; menu FAQ dan Kontak; aksesibilitas pembaca layar.
 - **v.1.2 (14 November 2026):** pertanyaan pertama langsung terlihat; ringkasan program menggantikan pop-up sambutan; penanda nomor pertanyaan; keterbacaan, area ketuk di HP lebih besar, banner bisa dipakai dengan keyboard.

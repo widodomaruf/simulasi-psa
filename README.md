@@ -12,10 +12,9 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 
 ## Fitur
 
-- **Cek Sanksi Saya.** Tanya-jawab dalam bahasa sehari-hari tentang surat yang Anda terima. Hasilnya berupa rencana tindakan: berapa yang dibayar, paling lambat kapan, dan berapa yang dihapus.
 - **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi Anda. Hasilnya kesimpulan apakah permohonan bisa diajukan, ditambah daftar dokumen yang perlu disiapkan.
 - **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
-- **Kalkulator Lengkap.** Perhitungan per kluster dan skenario KEP-239/PJ/2026, untuk petugas dan praktisi.
+- **Kalkulator Lengkap.** Mulai dari tanggal terbit surat (sebelum atau sejak 8 Okt 2026), lalu kluster dan skenario KEP-239/PJ/2026. Untuk pengguna, petugas, dan praktisi.
 - **Tanya LEGA.** Chatbot AI (Google Gemini) di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs. Pertanyaan dikirim ke Google Gemini; jangan menulis data pribadi.
 - **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP.
 - **Video penjelasan** program PSA dan cara memakai situs ini.
@@ -34,6 +33,14 @@ Seluruh isi penting situs (profil, biaya, ketentuan layanan, aturan PSA, skenari
 Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **1500200**.
 
 ## Catatan versi
+
+**Versi v.2.1 (21 November 2026)**
+- Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.
+- Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, atau Basis Data.
+- Skenario STP bunga penagihan baru (c7 dan c8) sementara tidak ditampilkan di daftar. Tautan langsungnya tetap berfungsi.
+- Tanggal surat boleh tanggal yang akan datang untuk simulasi, misalnya SKPKB yang terbit tahun depan.
+- Dasar hukum skenario c4 dan c7 ditambah Pasal 19 ayat (2) dan (3) UU KUP.
+- Video penjelasan cara pakai situs pindah ke halaman Kalkulator Lengkap.
 
 **Versi v.2 (16 November 2026)**
 - Tanya LEGA: pilihan kasus lewat tombol, tanpa mengetik. Pilihan berakhir di skenario yang cocok dan tautan kalkulator.

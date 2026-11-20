@@ -31,7 +31,7 @@ Satu alur yang membawa WP dari surat tagihan di tangan sampai berkas permohonan 
 
 ## Capabilities and Constraints
 
-- Tampilan (tab): Cek Sanksi Saya, Kalkulator Lengkap, Cek Syarat, Surat Permohonan, Kamus Pasal, Tentang PSA.
+- Tampilan (tab): Kalkulator Lengkap, Cek Syarat, Surat Permohonan, Kamus Pasal, Tentang PSA.
 - Teknis: satu berkas statis `index.html` (HTML/CSS/JS tanpa framework atau build step), `sw.js` untuk offline, `manifest.webmanifest`. Dideploy di Vercel (`simulasi-psa.vercel.app`). Bahasa antarmuka: Indonesia (`lang="id"`), dengan pilihan Inggris (kamus `window.LEGA_EN` di `index.html`; teks tanpa terjemahan tetap tampil dalam bahasa Indonesia). Surat yang dihasilkan selalu berbahasa Indonesia.
 - Video penjelasan lewat embed YouTube; bila id video kosong, semua tempat video disembunyikan.
 - Jawaban yang sudah diisi di tanya-jawab selalu bisa diubah satu per satu.
