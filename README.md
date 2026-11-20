@@ -34,6 +34,10 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 
 ## Catatan versi
 
+**Versi v.2.1.1 (21 November 2026)**
+- Panah dekoratif di pilihan Cek Syarat dihapus.
+- Tautan dan tombol kecil di layar komputer punya area klik minimal 24 px.
+
 **Versi v.2.1 (21 November 2026)**
 - Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.
 - Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, Basis Data, dan Penagihan untuk STP bunga baru (butir 4c KEP).

@@ -1,6 +1,6 @@
 ---
 judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
-versi_situs: v.2.1
+versi_situs: v.2.1.1
 diperbarui: 21 November 2026
 bahasa: Indonesia
 sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
@@ -424,6 +424,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
+- **v.2.1.1 (21 November 2026):** panah dekoratif di pilihan Cek Syarat dihapus; tautan dan tombol kecil di layar komputer diperbesar area kliknya (minimal 24 px). Tidak ada perubahan isi, aturan, atau skenario.
 - **v.2.1 (21 November 2026):**
   - Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.
   - Kalkulator dibagi menurut tanggal terbit: sebelum 8 Okt 2026 masuk kluster Penagihan; 8 Okt 2026 dan seterusnya masuk kluster Pengawasan, Pemeriksaan, Basis Data, dan Penagihan untuk STP bunga baru (butir 4c KEP).

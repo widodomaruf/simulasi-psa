@@ -1,6 +1,6 @@
 /* LEGA – service worker: membuat situs bisa dibuka tanpa internet.
    Naikkan VERSI setiap kali index.html diperbarui agar pengguna mendapat versi terbaru. */
-const VERSI = 'lega-v.2.1-a';
+const VERSI = 'lega-v.2.1.1-a';
 const INTI = ['./', './index.html', './manifest.webmanifest', './icon-192.png', './icon-512.png', './icon-maskable-512.png', './favicon.png', './apple-touch-icon.png'];
 
 self.addEventListener('install', (e) => {
