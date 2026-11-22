@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://simulasi-psa.vercel.app/sitemap.xml
+Sitemap: https://legapsa.vercel.app/sitemap.xml
