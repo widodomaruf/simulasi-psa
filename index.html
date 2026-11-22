@@ -542,6 +542,21 @@ a:hover .yt-play svg, a:focus-visible .yt-play svg { transform: scale(1.08); }
   .klusters { grid-template-columns: 1fr 1fr; }
 }
 
+/* Menu kiri (laptop): daftar vertikal, Tanya LEGA tetap ikon mengambang di kanan bawah */
+@media (min-width: 761px) {
+  body { margin-left: 240px; }
+  .tabs { position: fixed; top: 0; left: 0; bottom: 0; width: 240px; z-index: 6; background: var(--card); border-right: 1px solid var(--line); border-bottom: 0; padding: 20px 12px; overflow-y: auto; display: flex; flex-direction: column; gap: 4px; }
+  .side-brand { padding: 0 10px 16px; }
+  .side-name { font-family: var(--display); font-weight: 800; font-size: 20px; color: var(--navy); }
+  .side-lbl { display: block; font-size: 11px; font-weight: 600; letter-spacing: .06em; color: var(--ink-3); padding: 8px 10px; }
+  .tabs .wrap { flex-direction: column; gap: 4px; max-width: none; margin: 0; padding: 0; overflow: visible; }
+  .tab { display: flex; align-items: center; width: 100%; height: 42px; padding: 0 10px; border: 0; border-radius: 8px; border-bottom: 0; font-size: 14.5px; color: var(--ink); }
+  .tab[aria-current="page"] { background: var(--chip); color: var(--navy); border-bottom: 0; }
+  .tab:hover { background: var(--chip); }
+}
+@media (min-width: 761px) and (max-width: 1100px) { body { margin-left: 220px; } .tabs { width: 220px; } }
+@media print { .tabs, .bnav { display: none !important; } body { margin-left: 0 !important; } }
+
 /* Navigasi bawah (ponsel) */
 .bnav, .ssel-wrap { display: none; }
 .ssel-wrap { gap: 5px; }
@@ -708,14 +723,16 @@ html.tl-sapa .tl-open .tl-hand { display: block; animation: tl-hi .9s ease-in-ou
 </header>
 
 <nav class="tabs" aria-label="Bagian">
+  <div class="side-brand" aria-hidden="true"><span class="side-name">LEGA</span></div>
+  <span class="side-lbl" aria-hidden="true">MENU</span>
   <div class="wrap" id="tabs">
     <button class="tab" data-view="kalkulator">Kalkulator Lengkap</button>
     <button class="tab" data-view="syarat">Cek Syarat</button>
     <button class="tab" data-view="surat">Surat Permohonan</button>
     <button class="tab" data-view="pasal">Kamus Pasal</button>
-    <button class="tab" data-view="tentang">Tentang PSA</button>
     <button class="tab" data-view="faq">FAQ</button>
     <button class="tab" data-view="kontak">Kontak</button>
+    <button class="tab" data-view="tentang">Tentang PSA</button>
   </div>
 </nav>
 
