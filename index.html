@@ -2372,5 +2372,68 @@ window.LEGA_EN = {"s":{"Cara pakai Simulator Pengurangan Sanksi PMK 71":"How to 
   window.addEventListener('pagehide', catat);
 })();
 </script>
+<!-- Animasi halus: GSAP + ScrollTrigger (intro dan muncul saat digulir), Lenis (gulir halus di laptop), Motion (laci menu dan tekan tombol). Kalau pustaka gagal dimuat, situs tetap berjalan tanpa animasi. -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.15.1/dist/ScrollTrigger.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/lenis@1.3.27/dist/lenis.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/motion@14.11.1/dist/motion.js"></script>
+<script>
+(function () {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  var EASE = [.2, .7, .2, 1];
+
+  /* 1. Gulir halus dengan Lenis (hanya laptop; ponsel tetap gulir asli) */
+  if (window.Lenis && window.gsap && window.matchMedia('(pointer: fine)').matches) {
+    var lenis = new Lenis({ smoothWheel: true, duration: 1.05 });
+    gsap.ticker.add(function (t) { lenis.raf(t * 1000); });
+    gsap.ticker.lagSmoothing(0);
+    if (window.ScrollTrigger) lenis.on('scroll', ScrollTrigger.update);
+  }
+
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    /* 2. Intro pita atas */
+    gsap.from('.band .wrap > *', { y: 14, opacity: 0, duration: .6, stagger: .08, ease: 'power2.out', clearProps: 'transform,opacity' });
+
+    /* 3. Kartu muncul saat digulir; diulang setiap ganti tampilan karena isi bisa dirender ulang */
+    var SEL = '.card:not([data-rv]), .pcard:not([data-rv]), .li-card:not([data-rv])';
+    function reveal() {
+      var els = Array.prototype.slice.call(document.querySelectorAll(SEL));
+      if (!els.length) return;
+      els.forEach(function (el) { el.setAttribute('data-rv', ''); });
+      ScrollTrigger.batch(els, {
+        start: 'top 92%',
+        once: true,
+        onEnter: function (batch) {
+          gsap.from(batch, { y: 16, opacity: 0, duration: .5, stagger: .06, ease: 'power2.out', clearProps: 'transform,opacity' });
+        }
+      });
+    }
+    reveal();
+    window.addEventListener('hashchange', function () {
+      setTimeout(function () { reveal(); ScrollTrigger.refresh(); }, 80);
+    });
+  }
+
+  if (window.Motion) {
+    /* 4. Laci menu meluncur dari kanan; latar gelap memudar */
+    var more = document.getElementById('more'), scrim = document.getElementById('scrim');
+    if (more) {
+      new MutationObserver(function () {
+        if (more.hidden) return;
+        Motion.animate(more, { transform: ['translateX(100%)', 'translateX(0%)'] }, { duration: .28, ease: EASE });
+        if (scrim && !scrim.hidden) Motion.animate(scrim, { opacity: [0, 1] }, { duration: .28 });
+      }).observe(more, { attributes: true, attributeFilter: ['hidden'] });
+    }
+
+    /* 5. Tombol berdenyut kecil saat ditekan */
+    document.addEventListener('pointerdown', function (e) {
+      var b = e.target.closest && e.target.closest('.btn, .bnav button, .tab, .more-list > button, .more-tl');
+      if (b && !b.disabled) Motion.animate(b, { transform: ['scale(1)', 'scale(.97)', 'scale(1)'] }, { duration: .2, ease: EASE });
+    });
+  }
+})();
+</script>
 </body>
 </html>
