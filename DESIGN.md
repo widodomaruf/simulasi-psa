@@ -6,11 +6,24 @@ Arah desain LEGA. Dibaca sebelum mengubah tampilan, supaya setiap keputusan puny
 
 Alat bantu pajak untuk Wajib Pajak, petugas, dan konsultan. Nadanya tenang, jelas, dan bisa dipercaya, mirip layanan publik. Bukan halaman promosi.
 
-Dial: ENERGY 1 / RHYTHM 2 / MOTION 1
+Dial: ENERGY 1 / RHYTHM 2 / MOTION 2
 - ENERGY 1: orang datang dengan surat tagihan di tangan dan sedikit cemas. Tampilan tidak boleh ramai.
 - RHYTHM 2: tiap halaman punya bentuk sesuai isinya (tanya-jawab, kalkulator dua kolom, surat dengan pratinjau), tetapi komponennya seragam.
-- MOTION 1: gerak hanya untuk hover, ketukan, dan perpindahan halaman. Tidak ada animasi hiasan.
-- Pengecualian widget Tanya LEGA: gerak buka/tutup panel, pesan masuk, dan titik-titik saat menunggu jawaban. Semua sekali jalan atau selama menunggu, tidak berulang, dan mati bila prefers-reduced-motion aktif.
+- MOTION 2: gerak punya fungsi (lihat "Gerak" di bawah). Tidak ada animasi hiasan yang berulang.
+- Pengecualian widget Tanya LEGA: gerak buka/tutup panel, pesan masuk, titik-titik saat menunggu jawaban, dan lambaian tangan robot. Semua sekali jalan atau selama menunggu, tidak berulang tanpa henti.
+
+## Gerak
+
+Pustaka yang dipakai (CDN jsDelivr, versi tetap): GSAP 3.15.1 dengan ScrollTrigger (intro dan muncul saat digulir), Lenis 1.3.27 (gulir halus, hanya laptop dengan kursor), dan Motion 14.11.1 (laci menu dan umpan balik tekan). Semua gerak dihitung dari transform dan opacity.
+
+- Intro pita atas: elemen naik 14 px dan muncul, berurutan 0,08 detik, sekali saat dibuka.
+- Kartu dan daftar: naik 16 px dan muncul saat masuk layar, sekali per elemen. Tidak diulang saat menggulir kembali.
+- Laci menu HP: geser dari kanan, 0,28 detik. Latar gelap memudar bersamaan.
+- Sidebar laptop: geser 0,24 detik saat disembunyikan atau ditampilkan.
+- Tekan tombol: skala 0,97 lalu kembali, 0,2 detik. Berlaku untuk tombol, tab, dan item menu.
+- Robot Tanya LEGA: lambai tiga kali, 0,9 detik per lambaian, saat pengunjung datang kembali setelah jeda 2 jam tanpa aktivitas (kunci localStorage `lega-kunjungan-terakhir`). Tidak berulang selama halaman terbuka.
+- Semua gerak mati bila prefers-reduced-motion aktif. Bila pustaka gagal dimuat, situs tetap berfungsi tanpa gerak.
+- Gerak tidak dipakai sebagai hiasan latar, kursor, atau tampilan yang terus berputar.
 
 ## Warna
 
