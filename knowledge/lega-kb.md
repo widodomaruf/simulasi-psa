@@ -1,7 +1,7 @@
 ---
 judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
-versi_situs: v.2.1.1
-diperbarui: 21 November 2026
+versi_situs: v.2.1.2
+diperbarui: 24 November 2026
 bahasa: Indonesia
 sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
 dasar_hukum: PMK 71 Tahun 2026; KEP-239/PJ/2026
@@ -364,7 +364,10 @@ Tidak. Wajib Pajak harus mengajukan permohonan ke DJP lewat Coretax, beserta dua
 Gratis, tanpa daftar akun. Isian kalkulator dan surat tidak dikirim ke server. Hanya pertanyaan yang Anda ketik di Tanya LEGA yang dikirim ke Google Gemini untuk dijawab.
 
 **Apa itu Tanya LEGA?**
-Asisten AI di pojok kanan bawah situs LEGA yang menjawab pertanyaan seputar program PSA, syarat, surat, dan cara memakai situs, berdasarkan isi berkas ini. Jawabannya simulasi, bukan keputusan DJP. Untuk menghitung kasus Anda sendiri, pakai menu Cek Sanksi Saya.
+Asisten AI di pojok kanan bawah situs LEGA yang menjawab pertanyaan seputar program PSA, syarat, surat, dan cara memakai situs, berdasarkan isi berkas ini. Jawabannya simulasi, bukan keputusan DJP. Untuk menghitung kasus Anda sendiri, pakai Kalkulator Lengkap.
+
+**Apakah LEGA situs resmi DJP?**
+Bukan. LEGA adalah alat edukasi independen buatan Muhammad Widodo Ma'ruf, Edukator Pajak. Hasilnya bukan keputusan Direktorat Jenderal Pajak.
 
 **Apakah hasil di LEGA pasti sama dengan keputusan DJP?**
 Tidak selalu. Hasil LEGA adalah simulasi berdasarkan KEP-239. Hasil akhir ditentukan dalam Surat Keputusan atas permohonan Anda.
@@ -424,6 +427,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
+- **v.2.1.2 (24 November 2026):** animasi halus di pita atas, kartu, laci menu HP, dan lambaian robot Tanya LEGA. FAQ: rujukan menu yang sudah dihapus diganti Kalkulator Lengkap; ditambah pertanyaan apakah LEGA situs resmi DJP. Kamus pasal tidak berubah isinya.
 - **v.2.1.1 (21 November 2026):** panah dekoratif di pilihan Cek Syarat dihapus; tautan dan tombol kecil di layar komputer diperbesar area kliknya (minimal 24 px). Tidak ada perubahan isi, aturan, atau skenario.
 - **v.2.1 (21 November 2026):**
   - Menu Cek Sanksi Saya dihapus. Semua hitungan lewat Kalkulator Lengkap, yang kini dimulai dari tanggal terbit surat.

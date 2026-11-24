@@ -34,6 +34,11 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 
 ## Catatan versi
 
+**Versi v.2.1.2 (24 November 2026)**
+- Animasi halus di pita atas, kartu, laci menu HP, dan lambaian robot Tanya LEGA.
+- FAQ: rujukan menu yang sudah dihapus diganti Kalkulator Lengkap; ditambah pertanyaan apakah LEGA situs resmi DJP.
+- Kamus pasal tidak berubah isinya.
+
 **Versi v.2.1.1 (21 November 2026)**
 - Panah dekoratif di pilihan Cek Syarat dihapus.
 - Tautan dan tombol kecil di layar komputer punya area klik minimal 24 px.
