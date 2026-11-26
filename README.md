@@ -36,7 +36,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 
 **Versi v.2.1.3 (26 November 2026)**
 - Banding yang pernah diajukan tidak bisa ikut PSA, meskipun dicabut. Gugatan tetap bisa dicabut.
-- FAQ: keputusan pengurangan sanksi tidak bisa diajukan keberatan; batas dua kali permohonan; pembayaran 10% yang kurang; siapa yang bisa memanfaatkan; PPh final UMKM.
+- FAQ: keputusan pengurangan sanksi tidak bisa diajukan keberatan; batas dua kali permohonan; pembayaran 10% yang kurang; siapa yang bisa memanfaatkan; PPh final UMKM; cara menghitung 10%; pembayaran sebelum 8 Oktober; SPT pembetulan; Coretax.
 
 **Versi v.2.1.2 (24 November 2026)**
 - Animasi halus di pita atas, kartu, laci menu HP, dan lambaian robot Tanya LEGA.

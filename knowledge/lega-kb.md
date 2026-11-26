@@ -405,6 +405,18 @@ Semua Wajib Pajak: orang pribadi atau badan, yang belum atau sudah ber-NPWP, dan
 **Apakah telat atau kurang bayar PPh final UMKM 1% masa pajak tahun 2025 termasuk yang bisa dihapus sanksinya?**
 Ya, bisa.
 
+**Pembayaran 10% dihitung dari sanksi yang mana?**
+Dari sanksi yang belum dibayar, bukan dari nilai sanksi di SKP. Contoh: pokok Rp100 juta, sanksi Rp20 juta, dan sudah dibayar Rp110 juta sebelum 8 Oktober 2026. Sisa sanksi Rp10 juta. Maka 10% dari Rp10 juta, yaitu Rp1 juta, dan pengurangan 90%, yaitu Rp9 juta.
+
+**Pembayaran sanksi sebelum 8 Oktober 2026 dihitung untuk 10%?**
+Tidak. Pembayaran sebagian hanya dihitung jika dilakukan dalam periode kebijakan, yaitu 8 Oktober sampai 31 Desember 2026.
+
+**SPT Tahunan pembetulan yang kurang bayar sebelum 8 Oktober 2026, bisa ikut PSA?**
+Bisa. Anda tetap bisa mengajukan permohonan pengurangan atau penghapusan sanksi.
+
+**Cara mengajukan permohonan PSA sama dengan PSA sebelumnya?**
+Ya. Permohonan disampaikan melalui Coretax, sama seperti PSA sebelumnya.
+
 **Saya tidak punya salinan STP atau SKP-nya.**
 Ajukan surat permohonan cetak ulang (salinan) ke Kepala KPP tempat Anda terdaftar, tanpa meterai. LEGA menyediakan formatnya di halaman Surat. Format ini contoh, bukan format baku.
 
@@ -439,7 +451,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
-- **v.2.1.3 (26 November 2026):** banding yang pernah diajukan tidak bisa ikut PSA, meskipun dicabut; gugatan tetap bisa dicabut. Tanya jawab baru: keputusan pengurangan sanksi tidak bisa diajukan keberatan, batas dua kali permohonan, pembayaran 10% yang kurang, siapa yang bisa memanfaatkan, dan PPh final UMKM.
+- **v.2.1.3 (26 November 2026):** banding yang pernah diajukan tidak bisa ikut PSA, meskipun dicabut; gugatan tetap bisa dicabut. Tanya jawab baru: keputusan pengurangan sanksi tidak bisa diajukan keberatan, batas dua kali permohonan, pembayaran 10% yang kurang, siapa yang bisa memanfaatkan, PPh final UMKM, cara menghitung 10%, pembayaran sebelum 8 Oktober, SPT pembetulan, dan Coretax.
 - **v.2.1.2 (24 November 2026):** animasi halus di pita atas, kartu, laci menu HP, dan lambaian robot Tanya LEGA. FAQ: rujukan menu yang sudah dihapus diganti Kalkulator Lengkap; ditambah pertanyaan apakah LEGA situs resmi DJP. Kamus pasal tidak berubah isinya.
 - **v.2.1.1 (21 November 2026):** panah dekoratif di pilihan Cek Syarat dihapus; tautan dan tombol kecil di layar komputer diperbesar area kliknya (minimal 24 px). Tidak ada perubahan isi, aturan, atau skenario.
 - **v.2.1 (21 November 2026):**
