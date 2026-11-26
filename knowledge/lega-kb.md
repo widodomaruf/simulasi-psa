@@ -1,7 +1,7 @@
 ---
 judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
-versi_situs: v.2.1.2
-diperbarui: 24 November 2026
+versi_situs: v.2.1.3
+diperbarui: 26 November 2026
 bahasa: Indonesia
 sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
 dasar_hukum: PMK 71 Tahun 2026; KEP-239/PJ/2026
@@ -47,7 +47,7 @@ LEGA **gratis**. Tidak ada paket berbayar, tidak perlu daftar akun, dan tidak ad
 
 1. **Kalkulator Lengkap.** Untuk pengguna dan praktisi. Pertama pilih kapan surat terbit: sebelum 8 Okt 2026 (kluster Penagihan), atau 8 Okt 2026 dan seterusnya (kluster Pengawasan, Pemeriksaan, Basis Data, dan Penagihan untuk STP bunga baru c7 dan c8). Lalu pilih kluster dan skenario. Setiap skenario terisi contoh resmi dari Lampiran E KEP-239, dan pengguna tinggal mengganti angkanya. Ada jadwal potongan per periode.
 3. **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi. Syarat yang tidak berlaku otomatis dilewati. Hasilnya kesimpulan (bisa diajukan, belum bisa, atau perlu konfirmasi ke KPP) dan daftar dokumen.
-4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
+4. **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pernyataan pencabutan gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Data yang sama cukup diisi sekali. Surat bisa dicetak, disimpan sebagai PDF, atau teksnya disalin.
 5. **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP, beserta skenario yang berlaku.
 6. **Tentang PSA.** Dasar hukum, cara kerja program, catatan cara hitung, video penjelasan, dan catatan versi.
 7. **Tanya LEGA.** Chatbot di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs, dalam bahasa Indonesia atau Inggris. Butuh internet.
@@ -85,7 +85,7 @@ Dasar: Pasal 23 dan 24 PMK 118/2024 sebagaimana diubah terakhir dengan PMK 71/20
 - Surat yang dimohonkan tidak sedang diajukan keberatan. Bila sedang keberatan, cabut dulu keberatannya dan tunggu DJP menyetujui pencabutan.
 - Sanksi yang timbul dari keputusan keberatan, putusan banding, atau putusan Peninjauan Kembali (PK) yang sudah diputus **tidak bisa** dikurangi lewat program ini.
 - Tidak sedang mengajukan permohonan lain atas surat yang sama (misalnya pengurangan atau pembatalan STP yang tidak benar). Permohonan seperti itu tidak bisa dicabut; tunggu sampai diputus.
-- Tidak sedang mengajukan banding, gugatan, atau upaya hukum lain atas surat itu. Banding dan gugatan bisa dicabut dengan surat pernyataan ke Ketua Pengadilan Pajak. Upaya hukum lain (misalnya PK) tidak bisa dicabut.
+- Tidak pernah mengajukan banding atas surat itu, termasuk yang sudah dicabut: pengurangan atau penghapusan tidak bisa diberikan. Gugatan bisa dicabut dengan surat pernyataan ke Ketua Pengadilan Pajak. Upaya hukum lain (misalnya PK) tidak bisa dicabut.
 - Pokok pajak yang menjadi syarat sudah dilunasi sesuai skemanya.
 - Permohonan diajukan sebelum ada usulan lelang atau pemindahtanganan barang sitaan.
 - Paling banyak dua kali permohonan untuk surat yang sama. Permohonan kedua diajukan paling lama 3 bulan sejak surat keputusan atas permohonan pertama dikirim. Pengurangan denda administratif PBB hanya bisa diajukan sekali.
@@ -95,14 +95,14 @@ Dasar: Pasal 23 dan 24 PMK 118/2024 sebagaimana diubah terakhir dengan PMK 71/20
 
 Wajib di setiap permohonan:
 1. **Surat permohonan** (format Lampiran C PMK 71/2026), tanpa meterai. Berisi jumlah sanksi menurut Wajib Pajak dan alasannya.
-2. **Surat pernyataan tidak mengajukan gugatan atau upaya hukum lain** (Lampiran F KEP-239), bermeterai. Bila Wajib Pajak sempat mengajukan banding atau gugatan, surat ini diganti salinan surat pernyataan pencabutan banding/gugatan.
+2. **Surat pernyataan tidak mengajukan gugatan atau upaya hukum lain** (Lampiran F KEP-239), bermeterai. Bila Wajib Pajak sempat mengajukan gugatan, surat ini diganti salinan surat pernyataan pencabutan gugatan. SKP yang pernah dibanding tidak bisa diajukan.
 3. **Surat pernyataan bahwa sanksi timbul karena kekhilafan** (Lampiran G KEP-239), bermeterai. Nomor dan tanggal di surat ini memakai nomor dan tanggal STP/SKP yang dimohonkan.
 
 Bila perlu:
 - **Fotokopi surat yang dimohonkan (STP/SKP).** Bila tidak punya, ajukan surat permohonan cetak ulang (salinan) ke Kepala KPP tempat terdaftar, tanpa meterai. Satu surat bisa untuk beberapa STP/SKP.
 - **Bukti pelunasan pokok pajak**, dan bukti pembayaran sebagian sanksi bila skemanya bayar sebagian.
 - **Surat permohonan pencabutan keberatan** (format PMK 118/2024), diajukan ke DJP lewat KPP **sebelum** permohonan PSA, tanpa meterai. Permohonan PSA baru bisa diajukan setelah pencabutan disetujui.
-- **Surat pernyataan pencabutan banding/gugatan** ke Ketua Pengadilan Pajak, dibuat 2 rangkap, satu surat per banding atau gugatan. Ditandatangani Wajib Pajak orang pribadi (atau ahli warisnya), pengurus sesuai akta untuk badan, atau kuasa hukum dengan surat kuasa khusus bermeterai. Dikirim lewat pos tercatat atau jasa ekspedisi; bila diserahkan di persidangan, rangkap pertama untuk majelis dan rangkap kedua untuk Ketua Pengadilan Pajak. Format resmi bisa diunduh di setpp.kemenkeu.go.id/peraturan. Salinannya dilampirkan ke permohonan PSA.
+- **Surat pernyataan pencabutan gugatan** ke Ketua Pengadilan Pajak, dibuat 2 rangkap, satu surat per gugatan. Ditandatangani Wajib Pajak orang pribadi (atau ahli warisnya), pengurus sesuai akta untuk badan, atau kuasa hukum dengan surat kuasa khusus bermeterai. Dikirim lewat pos tercatat atau jasa ekspedisi; bila diserahkan di persidangan, rangkap pertama untuk majelis dan rangkap kedua untuk Ketua Pengadilan Pajak. Format resmi bisa diunduh di setpp.kemenkeu.go.id/peraturan. Salinannya dilampirkan ke permohonan PSA.
 
 **Meterai:** surat permohonan tidak perlu meterai. Kedua surat pernyataan wajib bermeterai. Bila dicetak, tempel meterai Rp10.000 di kotak yang tersedia lalu tanda tangani di atasnya. Bila disimpan sebagai PDF untuk diunggah lewat Coretax, bubuhkan e-Meterai pada PDF sebelum diunggah.
 
@@ -388,10 +388,22 @@ Bisa (KEP-239 Lampiran E angka 3.b Contoh 2), asalkan utang pajak sesuai keputus
 Ajukan surat permohonan pencabutan keberatan ke DJP lewat KPP lebih dulu. Permohonan PSA baru bisa diajukan setelah pencabutan disetujui.
 
 **Permohonan apa saja yang bisa dicabut?**
-Hanya keberatan (ke DJP), serta banding dan gugatan (ke Pengadilan Pajak). Permohonan lain, misalnya pembetulan atau pengurangan/pembatalan STP atau SKP yang tidak benar, tidak bisa dicabut; tunggu keputusannya dulu.
+Hanya keberatan (ke DJP) dan gugatan (ke Pengadilan Pajak). Banding tidak bisa dicabut untuk ikut PSA. Permohonan lain, misalnya pembetulan atau pengurangan/pembatalan STP atau SKP yang tidak benar, tidak bisa dicabut; tunggu keputusannya dulu.
 
 **Saya sudah mengajukan banding. Masih bisa ikut PSA?**
-Bisa, setelah banding dicabut. Buat surat pernyataan pencabutan banding ke Ketua Pengadilan Pajak (2 rangkap), lalu lampirkan salinannya ke permohonan PSA sebagai pengganti surat pernyataan tidak mengajukan gugatan.
+Tidak bisa. Pengurangan atau penghapusan sanksi tidak diberikan untuk SKP yang pernah dibanding, meskipun banding sudah dicabut, karena SKP itu sudah pernah diajukan keberatan. Dasar: Pasal 23 ayat (2) dan (3) PMK 118/2024 stdd PMK 71/2026.
+
+**Apakah keputusan pengurangan atau penghapusan sanksi bisa diajukan keberatan?**
+Tidak. Keputusan pengurangan atau penghapusan sanksi tidak bisa diajukan keberatan, karena keberatan hanya bisa diajukan atas SKP atau SPPT. Permohonan pengurangan atau penghapusan sanksi bisa diajukan paling banyak 2 kali (untuk denda administratif PBB, 1 kali). Dasar: Pasal 9, Pasal 23 ayat (2) dan (3), dan Pasal 24 PMK 118/2024 stdd PMK 71/2026.
+
+**Apakah pembayaran 10% yang kurang, misalnya 5%, sampai 31 Desember 2026 bisa dapat pengurangan?**
+Tidak. Pembayaran 10% sanksi harus terpenuhi sampai 31 Desember 2026. Jika kurang, permohonan ditolak dengan surat keputusan. Dasar: KEP-239/PJ/2026.
+
+**Siapa saja yang dapat memanfaatkan kebijakan ini?**
+Semua Wajib Pajak: orang pribadi atau badan, yang belum atau sudah ber-NPWP, dan yang belum atau sudah dikukuhkan sebagai PKP.
+
+**Apakah telat atau kurang bayar PPh final UMKM 1% masa pajak tahun 2025 termasuk yang bisa dihapus sanksinya?**
+Ya, bisa.
 
 **Saya tidak punya salinan STP atau SKP-nya.**
 Ajukan surat permohonan cetak ulang (salinan) ke Kepala KPP tempat Anda terdaftar, tanpa meterai. LEGA menyediakan formatnya di halaman Surat. Format ini contoh, bukan format baku.
@@ -427,6 +439,7 @@ Kirim email ke hi.widodomaruf@gmail.com.
 
 ## Catatan versi
 
+- **v.2.1.3 (26 November 2026):** banding yang pernah diajukan tidak bisa ikut PSA, meskipun dicabut; gugatan tetap bisa dicabut. Tanya jawab baru: keputusan pengurangan sanksi tidak bisa diajukan keberatan, batas dua kali permohonan, pembayaran 10% yang kurang, siapa yang bisa memanfaatkan, dan PPh final UMKM.
 - **v.2.1.2 (24 November 2026):** animasi halus di pita atas, kartu, laci menu HP, dan lambaian robot Tanya LEGA. FAQ: rujukan menu yang sudah dihapus diganti Kalkulator Lengkap; ditambah pertanyaan apakah LEGA situs resmi DJP. Kamus pasal tidak berubah isinya.
 - **v.2.1.1 (21 November 2026):** panah dekoratif di pilihan Cek Syarat dihapus; tautan dan tombol kecil di layar komputer diperbesar area kliknya (minimal 24 px). Tidak ada perubahan isi, aturan, atau skenario.
 - **v.2.1 (21 November 2026):**
