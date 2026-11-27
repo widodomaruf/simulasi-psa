@@ -103,3 +103,7 @@ Ada saran, koreksi, atau menemukan hasil hitung yang janggal? Kirim email ke **h
 [Instagram](https://www.instagram.com/widodomaruf/) · [LinkedIn](https://www.linkedin.com/in/mwidodomaruf/) · [s.id/widodomaruf](https://s.id/widodomaruf)
 
 © 2026 Muhammad Widodo Ma'ruf. Alat edukasi independen, bukan situs resmi atau keputusan Direktorat Jenderal Pajak.
+
+## Lisensi
+
+Kode dan konten buatan pembuat dilisensikan di bawah [MIT License](LICENSE). Dokumen resmi DJP yang dirujuk (PMK 71/2026, KEP-239/PJ/2026) tidak termasuk dalam lisensi ini.
