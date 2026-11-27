@@ -10,7 +10,13 @@ const MAX_RIWAYAT = 8;
 const MAX_TEKS_RIWAYAT = 1500;
 
 // Hanya halaman LEGA sendiri yang boleh memanggil fungsi ini, supaya kuota API tidak dipakai situs lain.
-const ASAL_DIIZINKAN = [/^https:\/\/simulasi-psa\.vercel\.app$/, /^https:\/\/legapsa\.vercel\.app$/, /^https:\/\/simulasi-psa-[a-z0-9-]+\.vercel\.app$/];
+export const ASAL_DIIZINKAN = [
+  /^https:\/\/simulasi-psa\.vercel\.app$/,
+  /^https:\/\/legapsa\.vercel\.app$/,
+  /^https:\/\/legapsa\.widodomaruf\.my\.id$/,
+  /^https:\/\/simulasi-psa-[a-z0-9-]+\.vercel\.app$/,
+  /^https:\/\/simulasi-[a-z0-9-]+-mwidodom-9684s-projects\.vercel\.app$/,
+];
 
 // Batas sederhana per IP: maksimal 12 pertanyaan per 5 menit per instance fungsi.
 // Bukan pengaman penuh (instance bisa lebih dari satu), tapi mencegah klik beruntun dan skrip iseng.
@@ -27,14 +33,14 @@ function instruksiSistem(lang) {
   const bahasa = lang === "en"
     ? "Answer in English. Keep Indonesian legal terms (STP, SKPKB, KEP-239/PJ/2026, Pasal) as they are."
     : "Jawab dalam bahasa Indonesia yang sederhana.";
-  return `Kamu adalah Tanya LEGA, asisten AI di situs LEGA · Simulasi PSA 2026 (https://legapsa.vercel.app).
+  return `Kamu adalah Tanya LEGA, asisten AI di situs LEGA · Simulasi PSA 2026 (https://legapsa.widodomaruf.my.id).
 LEGA adalah alat edukasi independen buatan Muhammad Widodo Ma'ruf, Edukator Pajak. LEGA BUKAN situs resmi DJP, dan jawabanmu BUKAN keputusan DJP.
 
 Aturan wajib:
 1. Jawab hanya berdasarkan MATERI ACUAN di bawah. Jangan menambah aturan, angka, tanggal, atau pasal yang tidak ada di materi.
 2. ${bahasa} Singkat dan langsung ke inti: paling banyak 3 kalimat atau 4 butir pendek. Jangan menjelaskan panjang lebar; tanyakan dulu hal yang kurang, lalu beri langkah berikutnya.
 3. Jangan menjanjikan potongan. Sebut hasil sebagai "simulasi" atau "perkiraan". Hasil akhir ditentukan Surat Keputusan DJP atas permohonan.
-4. Untuk menghitung kasus nyata, arahkan ke menu "Cek Sanksi Saya" di situs. Untuk membuat surat, arahkan ke menu "Surat".
+4. Untuk menghitung kasus nyata, arahkan ke menu "Kalkulator Lengkap" di situs. Untuk membuat surat, arahkan ke menu "Surat Permohonan".
 5. Tautan hanya boleh yang tertulis di materi, persis seperti tertulis. Jangan mengarang tautan.
 10. Kasus pribadi (jenis surat, tanggal bayar, sisa pokok atau sanksi): bila informasinya belum cukup untuk memilih satu skenario, ajukan SATU pertanyaan klarifikasi yang paling menentukan, misalnya "Surat Anda SKP, STP denda, atau STP bunga?". Jangan beri tautan dulu. Bila sudah yakin, jelaskan singkat skenario yang cocok dan syarat tanggal pelunasannya, lalu beri tautan "Tautan kalkulator per skenario" yang sesuai. Jangan memastikan besar potongan; tegaskan bahwa itu simulasi.
 11. Bila materi memuat aturan yang berlaku untuk kasus itu, jelaskan aturannya. Jangan menjawab "belum tersedia" bila materi sudah mencakupnya.
@@ -132,16 +138,19 @@ export default async function handler(req, res) {
   }
   sedangJalan++;
   try {
-    // Coba dua kali bila Gemini sedang penuh (503). Total waktu tetap di bawah maxDuration 30 detik.
+    // Coba dua kali bila Gemini sedang penuh (503). Batas per percobaan 12 detik; ulang hanya bila percobaan
+    // pertama selesai di bawah 12 detik. Total terburuk ±25 detik, di bawah maxDuration 30 detik.
+    const mulai = Date.now();
+    const BATAS_MS = 12000;
     let balasan;
     for (let coba = 1; coba <= 2; coba++) {
       balasan = await fetch(ENDPOINT, {
         method: "POST",
         headers: { "Content-Type": "application/json", "x-goog-api-key": apiKey },
         body: isiPermintaan,
-        signal: AbortSignal.timeout(20000),
+        signal: AbortSignal.timeout(BATAS_MS),
       });
-      if (balasan.status !== 503 || coba === 2) break;
+      if (balasan.status !== 503 || coba === 2 || Date.now() - mulai > BATAS_MS) break;
       await new Promise((r) => setTimeout(r, 1500));
     }
     const data = await balasan.json().catch(() => ({}));

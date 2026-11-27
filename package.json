@@ -1,5 +1,9 @@
 {
   "dependencies": {
     "@vercel/analytics": "^2.0.1"
+  },
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/chat.test.js"
   }
 }
