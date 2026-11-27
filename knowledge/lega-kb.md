@@ -3,7 +3,7 @@ judul: Basis pengetahuan LEGA (Simulasi PSA 2026)
 versi_situs: v.2.1.3
 diperbarui: 26 November 2026
 bahasa: Indonesia
-sumber: https://legapsa.vercel.app (kode di github.com/widodomaruf/simulasi-psa)
+sumber: https://legapsa.widodomaruf.my.id (kode di github.com/widodomaruf/simulasi-psa)
 dasar_hukum: PMK 71 Tahun 2026; KEP-239/PJ/2026
 ---
 
@@ -26,7 +26,7 @@ Berkas ini merangkum seluruh isi penting situs LEGA dalam satu tempat, untuk bah
 - **Fungsi:** menghitung berapa sanksi pajak yang bisa dihapus atau dikurangi lewat program Pengurangan atau Penghapusan Sanksi Administratif (PSA), memeriksa syarat permohonan, dan menyiapkan surat permohonannya.
 - **Pembuat:** Muhammad Widodo Ma'ruf, Edukator Pajak.
 - **Kontak:** Instagram dan YouTube @widodomaruf, LinkedIn linkedin.com/in/mwidodomaruf, beranda s.id/widodomaruf, email saran dan koreksi hi.widodomaruf@gmail.com.
-- **Alamat situs:** https://legapsa.vercel.app, tautan pendek s.id/SimulasiPSA.
+- **Alamat situs:** https://legapsa.widodomaruf.my.id, tautan pendek s.id/SimulasiPSA.
 - **Pengguna sasaran:** Wajib Pajak orang pribadi dan badan, juga petugas pajak dan konsultan (lewat Kalkulator Lengkap).
 
 ## Biaya
@@ -315,25 +315,25 @@ Setiap skenario di bawah sama dengan yang dipakai kalkulator LEGA. "Maka" berart
 Tautan ini membuka Kalkulator Lengkap dengan skenario terpilih. Hanya tautan di daftar ini yang boleh diberikan ke pengguna. Pakai bila kasus sudah cocok dengan satu skenario di bawah:
 
 19
-- a1 · Terlambat lapor SPT (status kurang bayar): https://legapsa.vercel.app/#skenario-a1
-- a2 · Pembetulan SPT (status kurang bayar): https://legapsa.vercel.app/#skenario-a2
-- a3 · Terlambat bayar/setor pajak dalam SPT: https://legapsa.vercel.app/#skenario-a3
-- a4 · STP pajak tahun berjalan tidak/kurang bayar: https://legapsa.vercel.app/#skenario-a4
-- a5 · STP faktur pajak terlambat/tidak lengkap: https://legapsa.vercel.app/#skenario-a5
-- a6 · STP atas SPT yang sudah dilapor sebelum 8 Okt 2026: https://legapsa.vercel.app/#skenario-a6
-- a7 · STP bunga angsuran/penundaan, pokok lunas Okt–Des 2026: https://legapsa.vercel.app/#skenario-a7
-- b1 · SKPKB/SKPKBT/SKP PBB hasil pemeriksaan: https://legapsa.vercel.app/#skenario-b1
-- b2 · STP berdasarkan hasil pemeriksaan: https://legapsa.vercel.app/#skenario-b2
-- c1 · STP lama: telat lapor, pembetulan, telat bayar, faktur: https://legapsa.vercel.app/#skenario-c1
-- c2 · SKP lama, pokok belum lunas: https://legapsa.vercel.app/#skenario-c2
-- c3 · SKP lama, pokok sudah lunas sebelum 8 Okt 2026: https://legapsa.vercel.app/#skenario-c3
-- c4 · STP bunga penagihan lama, pokok belum lunas: https://legapsa.vercel.app/#skenario-c4
-- c5 · STP bunga penagihan lama, pokok/utang lunas sebelum 8 Okt: https://legapsa.vercel.app/#skenario-c5
-- c6 · STP bunga penagihan lama, SKP diajukan keberatan: https://legapsa.vercel.app/#skenario-c6
-- c7 · STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas: https://legapsa.vercel.app/#skenario-c7
-- c8 · STP bunga penagihan baru, pokok/utang lunas sebelum 8 Okt: https://legapsa.vercel.app/#skenario-c8
-- d1 · WP baru daftar NPWP / PKP baru dikukuhkan: https://legapsa.vercel.app/#skenario-d1
-- d2 · SKPKB terkait Program Pengungkapan Sukarela (PPS): https://legapsa.vercel.app/#skenario-d2
+- a1 · Terlambat lapor SPT (status kurang bayar): https://legapsa.widodomaruf.my.id/#skenario-a1
+- a2 · Pembetulan SPT (status kurang bayar): https://legapsa.widodomaruf.my.id/#skenario-a2
+- a3 · Terlambat bayar/setor pajak dalam SPT: https://legapsa.widodomaruf.my.id/#skenario-a3
+- a4 · STP pajak tahun berjalan tidak/kurang bayar: https://legapsa.widodomaruf.my.id/#skenario-a4
+- a5 · STP faktur pajak terlambat/tidak lengkap: https://legapsa.widodomaruf.my.id/#skenario-a5
+- a6 · STP atas SPT yang sudah dilapor sebelum 8 Okt 2026: https://legapsa.widodomaruf.my.id/#skenario-a6
+- a7 · STP bunga angsuran/penundaan, pokok lunas Okt–Des 2026: https://legapsa.widodomaruf.my.id/#skenario-a7
+- b1 · SKPKB/SKPKBT/SKP PBB hasil pemeriksaan: https://legapsa.widodomaruf.my.id/#skenario-b1
+- b2 · STP berdasarkan hasil pemeriksaan: https://legapsa.widodomaruf.my.id/#skenario-b2
+- c1 · STP lama: telat lapor, pembetulan, telat bayar, faktur: https://legapsa.widodomaruf.my.id/#skenario-c1
+- c2 · SKP lama, pokok belum lunas: https://legapsa.widodomaruf.my.id/#skenario-c2
+- c3 · SKP lama, pokok sudah lunas sebelum 8 Okt 2026: https://legapsa.widodomaruf.my.id/#skenario-c3
+- c4 · STP bunga penagihan lama, pokok belum lunas: https://legapsa.widodomaruf.my.id/#skenario-c4
+- c5 · STP bunga penagihan lama, pokok/utang lunas sebelum 8 Okt: https://legapsa.widodomaruf.my.id/#skenario-c5
+- c6 · STP bunga penagihan lama, SKP diajukan keberatan: https://legapsa.widodomaruf.my.id/#skenario-c6
+- c7 · STP bunga penagihan baru (terbit mulai 8 Okt), pokok belum lunas: https://legapsa.widodomaruf.my.id/#skenario-c7
+- c8 · STP bunga penagihan baru, pokok/utang lunas sebelum 8 Okt: https://legapsa.widodomaruf.my.id/#skenario-c8
+- d1 · WP baru daftar NPWP / PKP baru dikukuhkan: https://legapsa.widodomaruf.my.id/#skenario-d1
+- d2 · SKPKB terkait Program Pengungkapan Sukarela (PPS): https://legapsa.widodomaruf.my.id/#skenario-d2
 
 
 ## Kasus yang tidak tercakup atau perlu perhatian
