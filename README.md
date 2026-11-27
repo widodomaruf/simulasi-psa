@@ -13,7 +13,7 @@ LEGA membantu Wajib Pajak mengetahui apakah sanksinya termasuk program PSA, bera
 ## Fitur
 
 - **Cek Syarat Permohonan.** Pertanyaan sesuai kondisi Anda. Hasilnya kesimpulan apakah permohonan bisa diajukan, ditambah daftar dokumen yang perlu disiapkan.
-- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pencabutan banding/gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
+- **Surat Permohonan.** Membuat surat permohonan, dua surat pernyataan bermeterai, surat pencabutan keberatan, surat pencabutan gugatan, dan surat permohonan cetak ulang (salinan) STP/SKP. Surat bisa dicetak atau disimpan sebagai PDF.
 - **Kalkulator Lengkap.** Mulai dari tanggal terbit surat (sebelum atau sejak 8 Okt 2026), lalu kluster dan skenario KEP-239/PJ/2026. Untuk pengguna, petugas, dan praktisi.
 - **Tanya LEGA.** Chatbot AI (Google Gemini) di pojok kanan bawah untuk bertanya seputar PSA dan cara memakai situs. Pertanyaan dikirim ke Google Gemini; jangan menulis data pribadi.
 - **Kamus Pasal.** Penjelasan pasal sanksi yang tercantum di STP dan SKP.
@@ -80,7 +80,7 @@ Untuk kepastian atas kasus tertentu, hubungi KPP terdaftar atau Kring Pajak **15
 **Versi v.1.1 (11 November 2026)**
 - <b>Cek Sanksi Saya</b> menggantikan Cek Kluster: tanya-jawab bahasa sehari-hari, tanggal diisi langsung, pertanyaan status SPT (kurang bayar/nihil/lebih bayar), ilustrasi letak informasi di STP dan SKPKB, dan hasil berupa rencana tindakan.
 - <b>Cek Syarat Permohonan</b> menggantikan ceklist: pertanyaan sesuai kondisi, syarat yang tidak berlaku otomatis dilewati, kesimpulan, dan daftar dokumen.
-- Surat baru: <b>permohonan pencabutan keberatan</b> (format PMK 118/2024), <b>pernyataan pencabutan banding/gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.
+- Surat baru: <b>permohonan pencabutan keberatan</b> (format PMK 118/2024), <b>pernyataan pencabutan gugatan</b>, dan <b>permohonan cetak ulang (salinan) STP/SKP</b>.
 - Penegasan: STP bunga Pasal 19 atas SKP yang diajukan keberatan tetap bisa dimohonkan; sanksi atas keputusan keberatan, putusan banding, dan PK yang sudah diputus tidak bisa.
 - Kasus SPT nihil atau lebih bayar yang dilapor mulai 8 Oktober 2026, PBB rumah/tanah dari pemda, dan sanksi atas putusan kini diberi penjelasan.
 - Kalkulator per kluster kini bernama <b>Kalkulator Lengkap</b>, untuk petugas dan praktisi.
